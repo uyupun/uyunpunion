@@ -28,10 +28,14 @@
 ├ ansible       Ansibleの設定
 ├ images
 ├ README.md
-├ server        Webサーバ、ASGI、API等
+├ server        TLS終端、リバプロ、ASGI、API等
 ├ manipulator   ウユンプニオン・コアを制御するためのコード
 └ vagrant       検証用途で使用するVagrantの設定
 ```
+
+## システム要件
+
+- pipenv
 
 ## 環境構築
 
@@ -40,6 +44,8 @@ $ cd server
 $ pipenv install
 $ pipenv shell
 $ uvicorn app:app --reload --port 8080
+$ open localhost:8080       # API
+$ open localhost:8080/docs  # OpenAPI
 ```
 
 <img src="images/omedetou.jpg" width="500px">
