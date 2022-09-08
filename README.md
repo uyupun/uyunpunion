@@ -36,7 +36,10 @@
 ## 環境構築
 
 ```bash
-
+$ cd server
+$ pipenv install
+$ pipenv shell
+$ uvicorn app:app --reload --port 8080
 ```
 
 <img src="images/omedetou.jpg" width="500px">
