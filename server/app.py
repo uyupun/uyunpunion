@@ -1,4 +1,3 @@
-from turtle import title
 from fastapi import FastAPI
 
 from settings import get_settings
@@ -17,4 +16,8 @@ def register_routes(app: FastAPI) -> None:
     app.include_router(ping.router)
 
 
-app = init_app(FastAPI(title=settings.PROJECT_NAME))
+app = init_app(FastAPI(
+    title=settings.PROJECT_NAME,
+    description="ウユンプニオン・インタフェースのAPI仕様書",
+    version=settings.VERSION,
+))

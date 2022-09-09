@@ -6,7 +6,8 @@ load_dotenv()
 
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = "uyunpunion"
+    PROJECT_NAME: str = "汎用五感伝達機構 ウユンプニオン 零号機"
+    VERSION: str = "0.0.0"
 
     class Config:
         env_file = ".env"
