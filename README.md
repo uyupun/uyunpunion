@@ -25,6 +25,7 @@
 ### ディレクトリ構造
 
 ```
+├ .vscode       Visual Studio Codeの設定
 ├ ansible       Ansibleの設定
 ├ images
 ├ README.md

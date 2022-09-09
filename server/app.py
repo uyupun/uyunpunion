@@ -1,8 +1,8 @@
 import uvicorn
 from fastapi import FastAPI
 
+from routes import blower, peltier, ping
 from settings import get_settings
-from routes import ping, peltier, blower
 
 settings = get_settings()
 
