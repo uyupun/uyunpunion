@@ -35,6 +35,7 @@
 
 ## システム要件
 
+- Visual Studio Code
 - pipenv
 
 ## 環境構築
@@ -42,7 +43,7 @@
 ```bash
 $ cd server
 $ cp .env.example .env
-$ pipenv install
+$ pipenv install --dev
 $ pipenv shell
 $ python app.py
 $ open localhost:8080       # API
