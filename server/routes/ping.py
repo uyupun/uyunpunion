@@ -1,9 +1,10 @@
 from fastapi import APIRouter
+from shemas.ping import PingResponse
 
 router = APIRouter(prefix="/ping", tags=["other"])
 
 
-@router.get("")
+@router.get("", response_model=PingResponse)
 def ping():
     """
     APIへの疎通確認
