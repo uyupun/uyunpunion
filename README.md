@@ -34,7 +34,8 @@
 │ ├ schemas         レスポンスのスキーマ
 │ ├ app.py          APIのエントリーポイント
 │ └ settings.py     環境変数
-└ vagrant           検証用途で使用するVagrantの設定
+├ vagrant           検証用途で使用するVagrantの設定
+└ README.md
 ```
 
 ## システム要件
