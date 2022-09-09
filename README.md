@@ -25,13 +25,16 @@
 ### ディレクトリ構造
 
 ```
-├ .vscode       Visual Studio Codeの設定
-├ ansible       Ansibleの設定
+├ .vscode           Visual Studio Codeの設定
+├ ansible           Ansibleの設定(TLS終端、リバプロ、WSGI、ASGI等)
 ├ images
-├ README.md
-├ server        TLS終端、リバプロ、ASGI、API等
-├ manipulator   ウユンプニオン・コアを制御するためのコード
-└ vagrant       検証用途で使用するVagrantの設定
+├ src
+│ ├ manipulator     ウユンプニオン・コアの制御スクリプト
+│ ├ routes          ルーティング
+│ ├ schemas         レスポンスのスキーマ
+│ ├ app.py          APIのエントリーポイント
+│ └ settings.py     環境変数
+└ vagrant           検証用途で使用するVagrantの設定
 ```
 
 ## システム要件
@@ -42,7 +45,7 @@
 ## 環境構築
 
 ```bash
-$ cd server
+$ cd src
 $ cp .env.example .env
 $ pipenv install --dev
 $ pipenv shell
