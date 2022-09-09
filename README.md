@@ -47,6 +47,7 @@ $ pipenv shell
 $ python app.py
 $ open localhost:8080       # API
 $ open localhost:8080/docs  # OpenAPI
+$ open localhost:8080/redoc # Redoc
 ```
 
 <img src="images/omedetou.jpg" width="500px">
