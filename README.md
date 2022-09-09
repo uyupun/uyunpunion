@@ -41,9 +41,10 @@
 
 ```bash
 $ cd server
+$ cp .env.example .env
 $ pipenv install
 $ pipenv shell
-$ uvicorn app:app --reload --port 8080
+$ python app.py
 $ open localhost:8080       # API
 $ open localhost:8080/docs  # OpenAPI
 ```

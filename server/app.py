@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi import FastAPI
 
 from settings import get_settings
@@ -18,6 +19,10 @@ def register_routes(app: FastAPI) -> None:
 
 app = init_app(FastAPI(
     title=settings.PROJECT_NAME,
-    description="ウユンプニオン・インタフェースのAPI仕様書",
+    description=settings.DESCRIPTION,
     version=settings.VERSION,
 ))
+
+
+if __name__ == "__main__":
+    uvicorn.run("app:app", port=settings.PORT, reload=True)
