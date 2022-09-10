@@ -1,11 +1,12 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+from manipulator.peltier import PeltierManipulator
 from shemas.peltier import ColdPeltierResponse, StopPeltierResponse, WarmPeltierResponse
 
 router = APIRouter(prefix="/peltier", tags=["peltier"])
 
 
 @router.post("/cold", response_model=ColdPeltierResponse)
-def cold_peltier():
+def cold_peltier(manipulator: PeltierManipulator = Depends()):
     """
     ペルチェ素子を冷却する
     """
@@ -13,7 +14,7 @@ def cold_peltier():
 
 
 @router.post("/warm", response_model=WarmPeltierResponse)
-def warm_peltier():
+def warm_peltier(manipulator: PeltierManipulator = Depends()):
     """
     ペルチェ素子を加熱する
     """
@@ -21,7 +22,7 @@ def warm_peltier():
 
 
 @router.post("/stop", response_model=StopPeltierResponse)
-def stop_peltier():
+def stop_peltier(manipulator: PeltierManipulator = Depends()):
     """
     ペルチェ素子を停止する
     """
