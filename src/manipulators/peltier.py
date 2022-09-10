@@ -1,4 +1,4 @@
-from manipulator.manipulator import Manipulator
+from manipulators.manipulator import Manipulator
 
 
 class PeltierManipulator(Manipulator):

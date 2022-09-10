@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends
-from manipulator.blower import BlowerManipulator
+from manipulators.blower import BlowerManipulator
 from shemas.blower import StartBlowerrResponse, StopBlowerrResponse
 
 router = APIRouter(prefix="/blower", tags=["blower"])

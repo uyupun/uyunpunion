@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends
-from manipulator.peltier import PeltierManipulator
+from manipulators.peltier import PeltierManipulator
 from shemas.peltier import ColdPeltierResponse, StopPeltierResponse, WarmPeltierResponse
 
 router = APIRouter(prefix="/peltier", tags=["peltier"])
@@ -10,6 +10,7 @@ def cold_peltier(manipulator: PeltierManipulator = Depends()):
     """
     ペルチェ素子を冷却する
     """
+    print("pepepepepeep")
     return {"message": "pong"}
 
 

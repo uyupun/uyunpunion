@@ -29,11 +29,12 @@
 ├ ansible           Ansibleの設定(TLS終端、リバプロ、WSGI、ASGI等)
 ├ images
 ├ src
-│ ├ manipulator     ウユンプニオン・コアの制御スクリプト
-│ ├ routes          ルーティング
+│ ├ manipulators    ウユンプニオン・コアの制御スクリプト
+│ ├ middlewares     カスタムミドルウェア
+│ ├ routes          APIの各エンドポイント
 │ ├ schemas         レスポンスのスキーマ
-│ ├ app.py          APIのエントリーポイント
-│ └ settings.py     環境変数
+│ ├ app.py          アプリケーションのエントリーポイント
+│ └ settings.py     環境変数、グローバル変数
 ├ vagrant           検証用途で使用するVagrantの設定
 └ README.md
 ```
@@ -47,7 +48,7 @@
 
 ```bash
 $ cd src
-$ cp .env.example .env
+$ cp .env.example .env      # UYUNPUNION_TOKENの設定が必須
 $ pipenv install --dev
 $ pipenv shell
 $ python app.py

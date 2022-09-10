@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     VERSION: str = "0.0.0"
 
     PORT: Optional[int] = 8080
+    UYUNPUNION_TOKEN: str
 
     class Config:
         env_file: str = ".env"
