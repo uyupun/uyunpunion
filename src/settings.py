@@ -1,8 +1,8 @@
+from functools import lru_cache
 from typing import Optional
 
 from dotenv import load_dotenv
 from pydantic import BaseSettings
-
 
 load_dotenv()
 
@@ -18,5 +18,6 @@ class Settings(BaseSettings):
         env_file: str = ".env"
 
 
+@lru_cache
 def get_settings():
     return Settings()
