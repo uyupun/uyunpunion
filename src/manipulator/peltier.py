@@ -1,8 +1,8 @@
-class PeltierManipulator:
-    def cold(self):
-        pass
+from manipulator.manipulator import Manipulator
 
-    def warm():
+
+class PeltierManipulator(Manipulator):
+    def start(self):
         pass
 
     def stop():
