@@ -25,17 +25,18 @@
 ### ディレクトリ構造
 
 ```
-├ .vscode           Visual Studio Codeの設定
-├ ansible           Ansibleの設定(TLS終端、リバプロ、WSGI、ASGI等)
+├ .vscode               Visual Studio Codeの設定
+├ ansible               Ansibleの設定(TLS終端、リバプロ、WSGI、ASGI等)
 ├ images
 ├ src
-│ ├ manipulators    ウユンプニオン・コアの制御スクリプト
-│ ├ middlewares     カスタムミドルウェア
-│ ├ routes          APIの各エンドポイント
-│ ├ schemas         レスポンスのスキーマ
-│ ├ app.py          アプリケーションのエントリーポイント
-│ └ settings.py     環境変数、グローバル変数
-├ vagrant           検証用途で使用するVagrantの設定
+│ ├ manipulators        ウユンプニオン・コアの制御スクリプト
+│ ├ middlewares         カスタムミドルウェア
+│ ├ routes              APIの各エンドポイント
+│ ├ schemas             レスポンスのスキーマ
+│ ├ app.py              アプリケーションのエントリーポイント
+│ ├ gunicorn.conf.py    Gunicornの設定
+│ └ settings.py         環境変数、グローバル変数
+├ vagrant               検証用途で使用するVagrantの設定
 └ README.md
 ```
 
@@ -48,13 +49,14 @@
 
 ```bash
 $ cd src
-$ cp .env.example .env      # UYUNPUNION_TOKENの設定が必須
+$ cp .env.example .env                  # UYUNPUNION_TOKENの設定が必須
 $ pipenv install --dev
 $ pipenv shell
-$ python app.py
-$ open localhost:8080       # API
-$ open localhost:8080/docs  # OpenAPI
-$ open localhost:8080/redoc # Redoc
+$ uvicorn --reload app:app --port 8080  # サーバの起動(主に開発用)
+$ gunicorn app:app                      # サーバの起動(主に本番用)
+$ open localhost:8080                   # API
+$ open localhost:8080/docs              # OpenAPI
+$ open localhost:8080/redoc             # Redoc
 ```
 
 <img src="images/omedetou.jpg" width="500px">

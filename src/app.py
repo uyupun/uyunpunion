@@ -1,4 +1,3 @@
-import uvicorn
 from fastapi import FastAPI
 
 from routes import blower, peltier, ping
@@ -25,6 +24,3 @@ app = init_app(
         version=settings.VERSION,
     )
 )
-
-if __name__ == "__main__":
-    uvicorn.run("app:app", port=settings.PORT, reload=True)

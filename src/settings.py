@@ -1,5 +1,4 @@
 from functools import lru_cache
-from typing import Optional
 
 from dotenv import load_dotenv
 from pydantic import BaseSettings
@@ -12,7 +11,6 @@ class Settings(BaseSettings):
     DESCRIPTION: str = "五感に多彩な刺激を与えるためのインタフェースを提供します"
     VERSION: str = "0.0.0"
 
-    PORT: Optional[int] = 8080
     UYUNPUNION_TOKEN: str
 
     class Config:

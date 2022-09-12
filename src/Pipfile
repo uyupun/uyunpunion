@@ -9,6 +9,8 @@ fastapi = "*"
 python-dotenv = "*"
 pydantic = "*"
 starlette = "*"
+gunicorn = "*"
+setproctitle = "*"
 
 [dev-packages]
 flake8 = "*"
