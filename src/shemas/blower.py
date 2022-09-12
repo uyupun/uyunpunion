@@ -1,9 +1,9 @@
 from pydantic import BaseModel
 
 
-class StartBlowerrResponse(BaseModel):
+class StartBlowerResponse(BaseModel):
     message: str
 
 
-class StopBlowerrResponse(BaseModel):
+class StopBlowerResponse(BaseModel):
     message: str
