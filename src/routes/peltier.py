@@ -10,7 +10,6 @@ def cold_peltier(manipulator: PeltierManipulator = Depends()):
     """
     ペルチェ素子を冷却する
     """
-    print("pepepepepeep")
     return {"message": "pong"}
 
 

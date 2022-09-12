@@ -1,16 +1,21 @@
+import secrets
 from typing import Callable
 
 from fastapi import Request, Response
+from fastapi.responses import JSONResponse
+from settings import get_settings
 from starlette.middleware.base import BaseHTTPMiddleware
-from starlette.types import ASGIApp
+from starlette.status import HTTP_401_UNAUTHORIZED
 
 
 class VerifyTokenMiddleware(BaseHTTPMiddleware):
-    def __init__(self, app: ASGIApp):
-        super().__init__(app)
-
     async def dispatch(self, request: Request, call_next: Callable) -> Response:
-        print("hoge")
+        settings = get_settings()
+
+        if not secrets.compare_digest(
+            settings.UYUNPUNION_TOKEN, request.headers["UYUNPUNION-TOKEN"]
+        ):
+            return JSONResponse(content={}, status_code=HTTP_401_UNAUTHORIZED)
+
         response = await call_next(request)
-        print("fuga")
         return response
