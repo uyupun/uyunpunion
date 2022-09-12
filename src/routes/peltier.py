@@ -1,8 +1,11 @@
 from fastapi import APIRouter, Depends
 from manipulators.peltier import PeltierManipulator
+from middlewares.verify_token import verify_token_middleware
 from shemas.peltier import ColdPeltierResponse, StopPeltierResponse, WarmPeltierResponse
 
-router = APIRouter(prefix="/peltier", tags=["peltier"])
+router = APIRouter(
+    prefix="/peltier", tags=["peltier"], dependencies=[Depends(verify_token_middleware)]
+)
 
 
 @router.post("/cold", response_model=ColdPeltierResponse)
