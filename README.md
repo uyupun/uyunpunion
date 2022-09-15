@@ -28,6 +28,7 @@
 ├ .vscode               Visual Studio Codeの設定
 ├ ansible               Ansibleの設定(TLS終端、リバプロ、WSGI、ASGI等)
 ├ images
+├ qemu                  開発環境でRaspberry Pi OSを立ち上げるための設定
 ├ src
 │ ├ manipulators        ウユンプニオン・コアの制御スクリプト
 │ ├ middlewares         カスタムミドルウェア
@@ -36,27 +37,42 @@
 │ ├ app.py              アプリケーションのエントリーポイント
 │ ├ gunicorn.conf.py    Gunicornの設定
 │ └ settings.py         環境変数、グローバル変数
-├ vagrant               検証用途で使用するVagrantの設定
 └ README.md
 ```
 
-## システム要件
-
-- Visual Studio Code
-- pipenv
-
-## 環境構築
+## APIの環境構築(開発環境)
 
 ```bash
 $ cd src
 $ cp .env.example .env                  # UYUNPUNION_TOKENの設定が必須
 $ pipenv install --dev
 $ pipenv shell
-$ uvicorn --reload app:app --port 8080  # サーバの起動(主に開発用)
-$ gunicorn app:app                      # サーバの起動(主に本番用)
+$ uvicorn --reload app:app --port 8080
 $ open localhost:8080                   # API
 $ open localhost:8080/docs              # OpenAPI
 $ open localhost:8080/redoc             # Redoc
+```
+
+## APIの環境構築(本番環境)
+
+```bash
+$ cd src
+$ cp .env.example .env  # UYUNPUNION_TOKENの設定が必須
+$ pipenv install
+$ pipenv shell
+$ gunicorn app:app
+```
+
+## Raspberry Piの検証環境の構築
+
+- Raspberry Pi OS Buster armhf
+
+```bash
+$ brew install qemu
+$ qemu-system-aarch64 --version
+$ cd qemu
+$ ./download.sh
+$ ./run.sh
 ```
 
 <img src="images/omedetou.jpg" width="500px">
