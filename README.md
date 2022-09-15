@@ -49,14 +49,16 @@
 
 ```bash
 $ cd src
-$ cp .env.example .env                  # UYUNPUNION_TOKENの設定が必須
+$ cp .env.example .env          # UYUNPUNION_TOKENの設定が必須
 $ pipenv install --dev
 $ pipenv shell
-$ uvicorn --reload app:app --port 8080  # サーバの起動(主に開発用)
-$ gunicorn app:app                      # サーバの起動(主に本番用)
-$ open localhost:8080                   # API
-$ open localhost:8080/docs              # OpenAPI
-$ open localhost:8080/redoc             # Redoc
+$ pipenv run dev                # サーバの起動(主に開発用)
+$ pipenv run dev --port 8081    # ポート指定する場合
+$ pipenv run prod               # サーバの起動(主に本番用)
+$ pipenv run prod --bind :8081  # ポート指定する場合
+$ open localhost:8080           # API
+$ open localhost:8080/docs      # OpenAPI
+$ open localhost:8080/redoc     # Redoc
 ```
 
 <img src="images/omedetou.jpg" width="500px">

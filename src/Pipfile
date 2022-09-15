@@ -18,3 +18,7 @@ black = "*"
 
 [requires]
 python_version = "3.9"
+
+[scripts]
+dev = "uvicorn --reload app:app --port 8080"
+prod = "gunicorn app:app"
