@@ -1,3 +1,3 @@
-kernel7l.img
-bcm2710-rpi-3-b-plus.dtb
-2022-09-06-raspios-buster-armhf.img
+kernel8.img
+bcm2710-rpi-3-b.dtb
+2022-09-06-raspios-bullseye-arm64-lite.img

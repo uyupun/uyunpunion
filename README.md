@@ -71,7 +71,9 @@ $ pipenv run prod --bind :8081  # ポートを指定する場合
 $ brew install qemu
 $ qemu-system-aarch64 --version
 $ cd qemu
-$ ./download.sh
+$ chmod +x ./download.sh
+$ chmod +x ./run.sh
+$ ./setup.sh
 $ ./run.sh
 ```
 
