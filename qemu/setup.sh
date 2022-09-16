@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# QEMU上でRaspberry Pi 3 model Bをエミュレートするために必要なファイルのダウンロードや設定を行うスクリプト
+
 # source: https://github.com/dhruvvyas90/qemu-rpi-kernel/tree/master/native-emulation
 curl -O https://raw.githubusercontent.com/dhruvvyas90/qemu-rpi-kernel/master/native-emulation/5.4.51%20kernels/kernel8.img
 curl -O https://raw.githubusercontent.com/dhruvvyas90/qemu-rpi-kernel/master/native-emulation/dtbs/bcm2710-rpi-3-b.dtb

@@ -74,7 +74,7 @@ $ cd qemu
 $ chmod +x ./download.sh
 $ chmod +x ./run.sh
 $ ./setup.sh
-$ ./run.sh
+$ ./run.sh                          # 初回起動時、ユーザ作成のウィザードが出ます
 ```
 
 <img src="images/omedetou.jpg" width="500px">

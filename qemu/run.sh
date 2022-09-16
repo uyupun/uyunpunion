@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# QEMU上でRaspberry Pi 3 model Bをエミュレートするスクリプト
+
 qemu-system-aarch64 \
 -M raspi3b \
 -cpu cortex-a53 -smp 4 \
