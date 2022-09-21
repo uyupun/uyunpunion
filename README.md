@@ -43,22 +43,31 @@
 ## システム要件
 
 - Visual Studio Code
+- Python or Pyenv
 - pipenv
 
-## 環境構築
+## 環境構築(開発環境)
 
 ```bash
 $ cd src
 $ cp .env.example .env          # UYUNPUNION_TOKENの設定が必須
 $ pipenv install --dev
 $ pipenv shell
-$ pipenv run dev                # サーバの起動(主に開発用)
+$ pipenv run dev                # サーバの起動
 $ pipenv run dev --port 8081    # ポート指定する場合
-$ pipenv run prod               # サーバの起動(主に本番用)
-$ pipenv run prod --bind :8081  # ポート指定する場合
 $ open localhost:8080           # API
 $ open localhost:8080/docs      # OpenAPI
 $ open localhost:8080/redoc     # Redoc
+```
+
+## 環境構築(本番環境)
+
+```bash
+$ cd src
+$ cp .env.example .env          # UYUNPUNION_TOKENの設定が必須
+$ pipenv install
+$ pipenv run prod               # サーバの起動
+$ pipenv run prod --bind :8081  # ポート指定する場合
 ```
 
 <img src="images/omedetou.jpg" width="500px">
