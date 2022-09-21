@@ -36,11 +36,15 @@
 │ ├ app.py              アプリケーションのエントリーポイント
 │ ├ gunicorn.conf.py    Gunicornの設定
 │ └ settings.py         環境変数、グローバル変数
-├ vagrant               検証用途で使用するVagrantの設定
+├ vagrant               検証サーバの設定
 └ README.md
 ```
 
 ## APIの環境構築(開発環境)
+
+- 以下の用途で使用する場合にこの手順が必要です
+    - APIを開発する場合
+    - APIの動作を検証する場合
 
 - 以下のソフトウェアが必要です
     - Python又はPyenv
@@ -73,16 +77,17 @@ $ pipenv run prod --bind :8081  # ポート指定する場合
 
 ## 検証サーバの環境構築
 
+- 以下の用途で使用します
+    - Ansibleのテスト
+    - より本番環境に近い環境での動作確認
+
 - 以下のソフトウェアが必要です
     - Homebrew
     - VirtualBox
     - Vagrant
 
-- 以下の用途で使用します
-    - Ansibleのテスト
-    - より本番環境に近い環境での動作確認
-
 ```bash
+$ cd vagrant
 $ vagrant up
 $ vagrant ssh
 $ vagrant status
