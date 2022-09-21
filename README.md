@@ -36,7 +36,7 @@
 │ ├ app.py              アプリケーションのエントリーポイント
 │ ├ gunicorn.conf.py    Gunicornの設定
 │ └ settings.py         環境変数、グローバル変数
-├ vagrant               検証サーバの設定
+├ test                  検証サーバ(Vagrant)の設定
 └ README.md
 ```
 
@@ -91,7 +91,7 @@ $ kill `cat gunicorn.pid`       # サーバの停止
     - Vagrant
 
 ```bash
-$ cd vagrant
+$ cd test
 $ vagrant up
 $ vagrant ssh
 $ vagrant status
