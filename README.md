@@ -56,14 +56,14 @@
 
 ```bash
 $ cd src
-$ cp .env.example .env                          # UYUNPUNION_TOKENの設定が必須
+$ cp .env.example .env                   # UYUNPUNION_TOKENの設定が必須
 $ pipenv install --dev
 $ pipenv shell
-$ pipenv run dev                                # サーバの起動
-$ pipenv run dev --port 8081                    # ポート指定する場合
-$ open localhost:8080                           # API
-$ open localhost:8080/docs                      # Swagger
-$ open localhost:8080/redoc                     # Redoc
+$ pipenv run dev                         # サーバの起動
+$ pipenv run dev --port 8081             # ポート指定する場合
+$ open localhost:8080                    # API
+$ open localhost:8080/docs               # Swagger
+$ open localhost:8080/redoc              # Redoc
 $ python manipulators/blower.py start    # マニピュレータ単体で実行させる場合
 ```
 
