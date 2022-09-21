@@ -1,6 +1,9 @@
 import sys
 
-from manipulator import Manipulator
+try:
+    from manipulators.manipulator import Manipulator
+except ImportError:
+    from manipulator import Manipulator
 
 
 class BlowerManipulator(Manipulator):

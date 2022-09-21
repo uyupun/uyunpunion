@@ -1,7 +1,10 @@
 import sys
 from enum import Enum
 
-from manipulator import Manipulator
+try:
+    from manipulators.manipulator import Manipulator
+except ImportError:
+    from manipulator import Manipulator
 
 
 class PeltierMode(Enum):
