@@ -1,6 +1,7 @@
+import sys
 from enum import Enum
 
-from manipulators.manipulator import Manipulator
+from manipulator import Manipulator
 
 
 class PeltierMode(Enum):
@@ -14,17 +15,29 @@ class PeltierModeNotExistsError(Exception):
 
 class PeltierManipulator(Manipulator):
     def start(self, mode=PeltierMode.Cold):
-        if mode is PeltierMode.Cold:
+        if mode == PeltierMode.Cold:
             return self._cold()
-        if mode is PeltierMode.Warm:
+        if mode == PeltierMode.Warm:
             return self._warm()
         raise PeltierModeNotExistsError
 
     def stop(self):
-        pass
+        print("peltier stop")
 
     def _cold(self):
-        pass
+        print("peltier cold")
 
     def _warm(self):
-        pass
+        print("peltier warm")
+
+
+if __name__ == "__main__":
+    action = sys.argv[1]
+    manipulator = PeltierManipulator()
+
+    if action == "cold":
+        manipulator.start(mode=PeltierMode.Cold)
+    if action == "warm":
+        manipulator.start(mode=PeltierMode.Warm)
+    elif action == "stop":
+        manipulator.stop()
