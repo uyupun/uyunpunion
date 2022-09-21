@@ -40,13 +40,14 @@
 └ README.md
 ```
 
-## システム要件
+## APIの環境構築(開発環境)
 
-- Visual Studio Code
-- Python or Pyenv
-- pipenv
-
-## 環境構築(開発環境)
+- 以下のソフトウェアが必要です
+    - Python又はPyenv
+    - Pipenv
+    - Visual Studio Code
+        - 開発しない場合(APIを動作させるのみの場合)は必要ありません
+        - 本リポジトリには[VSCode上でFlake8(リンター)とBlack(フォーマッター)を動作させるための設定](./.vscode/settings.json)が含まれています
 
 ```bash
 $ cd src
@@ -60,7 +61,7 @@ $ open localhost:8080/docs      # OpenAPI
 $ open localhost:8080/redoc     # Redoc
 ```
 
-## 環境構築(本番環境)
+## APIの環境構築(本番環境)
 
 ```bash
 $ cd src
@@ -68,6 +69,26 @@ $ cp .env.example .env          # UYUNPUNION_TOKENの設定が必須
 $ pipenv install
 $ pipenv run prod               # サーバの起動
 $ pipenv run prod --bind :8081  # ポート指定する場合
+```
+
+## 検証サーバの環境構築
+
+- 以下のソフトウェアが必要です
+    - Homebrew
+    - VirtualBox
+    - Vagrant
+
+- 以下の用途で使用します
+    - Ansibleのテスト
+    - より本番環境に近い環境での動作確認
+
+```bash
+$ vagrant up
+$ vagrant ssh
+$ vagrant status
+$ vagrant halt
+$ vagrant reload
+$ vagrant destroy
 ```
 
 <img src="images/omedetou.jpg" width="500px">
