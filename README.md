@@ -75,7 +75,8 @@ $ cp .env.example .env          # UYUNPUNION_TOKENの設定が必須
 $ pipenv install
 $ pipenv run prod               # サーバの起動
 $ pipenv run prod --bind :8081  # ポート指定する場合
-$ kill `cat gunicorn.pid`       # サーバのプロセスを殺す
+$ ps aux | grep gunicorn        # サーバのステータスの確認
+$ kill `cat gunicorn.pid`       # サーバの停止
 ```
 
 ## 検証サーバの環境構築
