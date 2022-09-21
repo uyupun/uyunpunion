@@ -45,9 +45,10 @@
 - 以下の用途で使用する場合にこの手順が必要です
     - APIを開発する場合
     - APIの動作を検証する場合
+    - API仕様(Swagger/Redoc)を閲覧したい場合
 
 - 以下のソフトウェアが必要です
-    - Python又はPyenv
+    - Python又はPyenv(Pythonのバージョンは3.9系)
     - Pipenv
     - Visual Studio Code
         - 開発しない場合(APIを動作させるのみの場合)は必要ありません
@@ -61,7 +62,7 @@ $ pipenv shell
 $ pipenv run dev                # サーバの起動
 $ pipenv run dev --port 8081    # ポート指定する場合
 $ open localhost:8080           # API
-$ open localhost:8080/docs      # OpenAPI
+$ open localhost:8080/docs      # Swagger
 $ open localhost:8080/redoc     # Redoc
 ```
 
