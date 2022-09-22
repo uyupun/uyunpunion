@@ -2,13 +2,11 @@
     level = "DEBUG"
 
 [api]
-    insecure = true
-
-[providers.docker]
-#     exposedByDefault = false
+    dashboard = true
 
 [providers.file]
-    filename = "/etc/traefik/external.toml"
+    filename = "/etc/traefik/api.toml"
+    watch = true
 
 [entryPoints]
     [entryPoints.web]
