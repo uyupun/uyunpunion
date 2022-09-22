@@ -85,11 +85,6 @@ $ kill `cat gunicorn.pid`       # サーバの停止
     - Ansibleのテスト
     - より本番環境に近い環境での動作確認
 
-- 以下のソフトウェアが必要です
-    - Homebrew
-    - VirtualBox
-    - Vagrant
-
 ```bash
 $ cd test
 $ vagrant up
@@ -98,6 +93,23 @@ $ vagrant status
 $ vagrant halt
 $ vagrant reload
 $ vagrant destroy
+```
+
+## Ansibleによる設定の流し込み
+
+- 以下の用途で使用します
+    - 本番環境で使用するラズパイに設定を流し込む
+    - その前段階として検証サーバに設定を流し込む
+
+- 以下のソフトウェアが必要です
+    - Python又はPyenv(Pythonのバージョンは3.9系)
+    - Pipenv
+
+```bash
+$ cd ansible
+$ pipenv install
+$ pipenv shell
+$ ansible all -i hosts/test -m ping
 ```
 
 <img src="images/omedetou.jpg" width="500px">
