@@ -26,8 +26,9 @@
 
 ```
 ├ .vscode               Visual Studio Codeの設定
-├ ansible               Ansibleの設定(TLS終端、リバプロ、WSGI、ASGI等)
+├ ansible               Ansibleの設定
 ├ images
+├ proxy                 リバースプロキシ(Traefik)の設定
 ├ src
 │ ├ manipulators        ウユンプニオン・コアの制御スクリプト
 │ ├ middlewares         カスタムミドルウェア
@@ -77,6 +78,24 @@ $ pipenv run prod               # サーバの起動
 $ pipenv run prod --bind :8081  # ポート指定する場合
 $ ps aux | grep gunicorn        # サーバのステータスの確認
 $ kill `cat gunicorn.pid`       # サーバの停止
+```
+
+## リバースプロキシの環境構築
+
+- 以下の用途で使用します
+    - リバースプロキシ
+    - TLS終端
+    - ※ 主に本番環境で使用するものです
+
+- 以下のソフトウェアが必要です
+    - Docker
+    - Docker Compose
+
+```bash
+$ cd proxy
+$ docker compose up -d
+$ docker compose status
+$ docker compose down
 ```
 
 ## 検証サーバの環境構築
