@@ -14,5 +14,4 @@ async def verify_token_middleware(request: Request):
     if not secrets.compare_digest(
         settings.UYUNPUNION_TOKEN, request.headers["UYUNPUNION-TOKEN"]
     ):
-        print("aaaaa")
         raise HTTPException(detail={}, status_code=HTTP_401_UNAUTHORIZED)
