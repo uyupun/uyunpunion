@@ -62,6 +62,7 @@ $ pipenv install --dev
 $ pipenv shell
 $ pipenv run dev                         # サーバの起動
 $ pipenv run dev --port 8081             # ポート指定する場合
+$ pipenv run dev --host 0.0.0.0          # ホスト指定する場合(0.0.0.0の場合、プライベートIPでのアクセスが可能となる)
 $ open localhost:8080                    # API
 $ open localhost:8080/docs               # Swagger
 $ open localhost:8080/redoc              # Redoc

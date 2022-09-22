@@ -5,8 +5,11 @@
     insecure = true
 
 [providers.docker]
-    exposedByDefault = false
+#     exposedByDefault = false
+
+[providers.file]
+    filename = "/etc/traefik/external.toml"
 
 [entryPoints]
-  [entryPoints.web]
-    address = ":80"
+    [entryPoints.web]
+        address = ":80"

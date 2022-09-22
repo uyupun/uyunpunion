@@ -1,0 +1,10 @@
+[http.routers]
+    [http.routers.my-router]
+        rule = "Host(`whoami.localhost`)"
+        entryPoints = "web"
+        service = "my-service"
+
+[http.services]
+    [http.services.my-service.loadBalancer]
+        [[http.services.my-service.loadBalancer.servers]]
+            url = "http://192.168.0.4:8081"
