@@ -1,0 +1,10 @@
+[http.routers]
+    [http.routers.api-router]
+        rule = "Host(`uyunpunion.uyupun.tech`)"
+        entryPoints = "web"
+        service = "api-service"
+
+[http.services]
+    [http.services.api-service.loadBalancer]
+        [[http.services.api-service.loadBalancer.servers]]
+            url = "http://192.168.0.4:8081"
