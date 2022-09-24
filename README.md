@@ -107,9 +107,12 @@ $ vagrant destroy
 
 ```bash
 $ cd ansible
+$ touch VAULT_PASSWORD  # Ansible Vaultのパスワードを設定する
 $ pipenv install
 $ pipenv shell
 $ ansible all -i hosts/test -m ping
+$ ansible-playbook -i hosts/test infra.yml --list-tasks --vault-password-file=VAULT_PASSWORD
+$ ansible-playbook -i hosts/test infra.yml --ask-vault-pass
 ```
 
 <img src="images/omedetou.jpg" width="500px">

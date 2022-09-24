@@ -1,0 +1,37 @@
+- name: ufwの基本設定
+  become: yes
+  ufw:
+    direction: "{{ item.direction }}"
+    policy: "{{ item.policy }}"
+  loop:
+    - direction: incoming
+      policy: deny
+    - direction: outgoing
+      policy: allow
+
+- name: ufwの開放ポートの設定
+  become: yes
+  ufw:
+    rule: "{{ item.rule }}"
+    port: "{{ item.port }}"
+    proto: "{{ item.proto }}"
+  loop:
+    - rule: limit
+      port: 22
+      proto: tcp
+    - rule: allow
+      port: 80
+      proto: tcp
+    - rule: allow
+      port: 443
+      proto: tcp
+
+- name: ufwのログを有効化
+  become: yes
+  ufw:
+    logging: on
+
+- name: ufwを有効化
+  become: yes
+  ufw:
+    state: enabled

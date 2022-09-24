@@ -1,0 +1,27 @@
+- name: uyunpunionグループの追加
+  become: yes
+  group:
+    name: uyunpunion
+
+- name: takashiユーザの追加
+  become: yes
+  # vars_files:
+  #   - ../vars/main.yml
+  user:
+    name: takashi
+    password: "{{ password }}"
+    group: uyunpunion
+    groups:
+      - uyunpunion
+      - sudo
+    shell: /bin/bash
+    createhome: yes
+    generate_ssh_key: yes
+
+- name: 公開鍵の登録
+  become: yes
+  authorized_key:
+    user: takashi
+    state: present
+    key: "{{ lookup('file', '../files/id_ed25519.pub') }}"
+  # when: not ansible_check_mode

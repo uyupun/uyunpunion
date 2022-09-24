@@ -1,0 +1,5 @@
+- name: APTのupdate/upgrade
+  become: yes
+  apt:
+    update_cache: yes
+    upgrade: "yes"

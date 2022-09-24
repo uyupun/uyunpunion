@@ -1,0 +1,15 @@
+- name: インフラの構築
+  hosts: all
+  roles:
+    - ssh
+    - user
+    - terminal
+    - apt
+    # - make
+    # - vim
+    # - git
+    - docker
+    # - ipv6
+    - port
+    # - reverse_proxy
+    # - github
