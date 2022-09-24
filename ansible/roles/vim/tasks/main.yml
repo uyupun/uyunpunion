@@ -1,0 +1,13 @@
+- name: Vimのインストール
+  become: yes
+  apt:
+    name: vim
+
+- name: .vimrcのコピー
+  become: yes
+  copy:
+    src: files/.vimrc
+    dest: /home/takashi/.vimrc
+    owner: takashi
+    group: uyunpunion
+    mode: 0755

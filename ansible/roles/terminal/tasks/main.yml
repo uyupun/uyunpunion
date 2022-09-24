@@ -6,7 +6,7 @@
 - name: プロンプトの変更
   become: yes
   lineinfile:
-    dest: /home/uyunpunion/.bashrc
+    dest: /home/takashi/.bashrc
     line: "export PS1='{{ prompt }}'"
   when: not ansible_check_mode
 

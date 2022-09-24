@@ -1,0 +1,24 @@
+- name: Gitのインストール
+  become: yes
+  apt:
+    name: git
+
+- name: Gitの設定
+  become: yes
+  become_user: takashi
+  git_config:
+    scope: global
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+  loop:
+    - name: pull.rebase
+      value: "false"
+    - name: user.name
+      value: uyunpunion
+    - name: user.email
+      value: uyupun@gmail.com
+    - name: color.ui
+      value: "true"
+    - name: core.editor
+      value: vim
+  when: not ansible_check_mode

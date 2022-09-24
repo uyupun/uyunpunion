@@ -5,8 +5,6 @@
 
 - name: takashiユーザの追加
   become: yes
-  # vars_files:
-  #   - ../vars/main.yml
   user:
     name: takashi
     password: "{{ password }}"

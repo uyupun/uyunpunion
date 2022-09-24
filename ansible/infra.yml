@@ -5,11 +5,7 @@
     - user
     - terminal
     - apt
-    # - make
-    # - vim
-    # - git
+    - vim
+    - git
     - docker
-    # - ipv6
     - port
-    # - reverse_proxy
-    # - github
