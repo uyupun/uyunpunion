@@ -24,4 +24,4 @@
     user: takashi
     state: present
     key: "{{ lookup('file', '../files/id_ed25519.pub') }}"
-  # when: not ansible_check_mode
+  when: not ansible_check_mode

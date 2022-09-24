@@ -46,15 +46,9 @@
     groups: docker
     append: yes
 
-- name: BuildKitをオンにする設定を追加
-  become: yes
-  copy:
-    src: files/daemon.json
-    dest: /etc/docker/daemon.json
-    mode: 0644
-
 - name: dockerdの再起動
   become: yes
   systemd:
     name: docker
-    state: restarted
+    state: started
+  when: not ansible_check_mode

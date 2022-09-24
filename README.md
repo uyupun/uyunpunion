@@ -112,7 +112,9 @@ $ pipenv install
 $ pipenv shell
 $ ansible all -i hosts/test -m ping
 $ ansible-playbook -i hosts/test infra.yml --list-tasks --vault-password-file=VAULT_PASSWORD
-$ ansible-playbook -i hosts/test infra.yml --ask-vault-pass
+$ ansible-playbook -i hosts/test infra.yml --syntax-check --vault-password-file=VAULT_PASSWORD
+$ ansible-playbook -i hosts/test infra.yml --check --diff --vault-password-file=VAULT_PASSWORD
+$ ansible-playbook -i hosts/test infra.yml --vault-password-file=VAULT_PASSWORD
 ```
 
 <img src="images/omedetou.jpg" width="500px">
