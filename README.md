@@ -96,7 +96,7 @@ $ kill `cat gunicorn.pid`               # サーバの停止
 ```bash
 $ cd proxy
 $ docker compose up -d
-$ docker compose status
+$ docker compose ps
 $ docker compose down
 ```
 
