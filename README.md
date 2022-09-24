@@ -73,12 +73,13 @@ $ python manipulators/blower.py start    # マニピュレータ単体で実行�
 
 ```bash
 $ cd src
-$ cp .env.example .env          # UYUNPUNION_TOKENの設定が必須
+$ cp .env.example .env                  # UYUNPUNION_TOKENの設定が必須
 $ pipenv install
-$ pipenv run prod               # サーバの起動
-$ pipenv run prod --bind :8081  # ポート指定する場合
-$ ps aux | grep gunicorn        # サーバのステータスの確認
-$ kill `cat gunicorn.pid`       # サーバの停止
+$ pipenv run prod                       # サーバの起動
+$ pipenv run prod --bind :8081          # ポート指定する場合
+$ pipenv run prod --bind 0.0.0.0:8081   # ホスト指定する場合(0.0.0.0の場合、プライベートIPでのアクセスが可能となる)
+$ ps aux | grep gunicorn                # サーバのステータスの確認
+$ kill `cat gunicorn.pid`               # サーバの停止
 ```
 
 ## リバースプロキシの環境構築
