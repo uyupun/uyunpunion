@@ -12,6 +12,7 @@ class Settings(BaseSettings):
     VERSION: str = "0.0.0"
 
     UYUNPUNION_TOKEN: str
+    ENV: str
 
     class Config:
         env_file: str = ".env"

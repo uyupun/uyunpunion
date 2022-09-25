@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 from manipulators.humidifier import HumidifierManipulator
 from middlewares.verify_token import verify_token_middleware
+from settings import get_settings
 from shemas.humidifier import StartHumidifierResponse, StopHumidifierResponse
 from shemas.token import TokenRequestHeader
 
@@ -19,7 +20,8 @@ def start_humidifier(
     """
     加湿器を作動させる
     """
-    manipulator.start()
+    if get_settings().ENV == "prod":
+        manipulator.start()
     return {"message": "pong"}
 
 
@@ -31,5 +33,6 @@ def stop_humidifier(
     """
     加湿器を停止する
     """
-    manipulator.stop()
+    if get_settings().ENV == "prod":
+        manipulator.stop()
     return {"message": "pong"}

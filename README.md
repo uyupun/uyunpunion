@@ -73,7 +73,7 @@ $ python manipulators/blower.py start    # マニピュレータ単体で実行�
 
 ```bash
 $ cd src
-$ cp .env.example .env                  # UYUNPUNION_TOKENの設定が必須
+$ cp .env.example .env                  # UYUNPUNION_TOKEN、ENV=prodの設定が必須
 $ pipenv install
 $ pipenv run prod                       # サーバの起動
 $ pipenv run prod --bind :8081          # ポート指定する場合
