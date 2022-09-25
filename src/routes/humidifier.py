@@ -12,7 +12,7 @@ router = APIRouter(
 
 
 @router.post("/start", response_model=StartHumidifierResponse)
-def start_blower(
+def start_humidifier(
     UYUNPUNION_TOKEN: str = TokenRequestHeader(),
     manipulator: HumidifierManipulator = Depends(),
 ):
@@ -24,7 +24,7 @@ def start_blower(
 
 
 @router.post("/stop", response_model=StopHumidifierResponse)
-def stop_blower(
+def stop_humidifier(
     UYUNPUNION_TOKEN: str = TokenRequestHeader(),
     manipulator: HumidifierManipulator = Depends(),
 ):
