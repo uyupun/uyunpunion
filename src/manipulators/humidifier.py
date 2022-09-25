@@ -1,5 +1,5 @@
 import sys
-from time import time
+import time
 
 import pigpio
 
