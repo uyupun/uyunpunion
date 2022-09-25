@@ -17,6 +17,7 @@ def start_blower(
     """
     ブロワーを作動させる
     """
+    manipulator.start()
     return {"message": "pong"}
 
 
@@ -28,4 +29,5 @@ def stop_blower(
     """
     ブロワーを停止する
     """
+    manipulator.stop()
     return {"message": "pong"}
