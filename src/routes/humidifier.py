@@ -19,6 +19,7 @@ def start_blower(
     """
     加湿器を作動させる
     """
+    manipulator.start()
     return {"message": "pong"}
 
 
@@ -30,4 +31,5 @@ def stop_blower(
     """
     加湿器を停止する
     """
+    manipulator.stop()
     return {"message": "pong"}
