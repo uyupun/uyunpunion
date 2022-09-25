@@ -1,4 +1,5 @@
 import sys
+import time
 
 import pigpio
 
@@ -18,6 +19,7 @@ class BlowerManipulator(Manipulator):
         self.pi.set_mode(self.pin, pigpio.OUTPUT)
 
         self.pi.write(self.pin, 1)
+        time.sleep(0.5)
 
         print("blower start")
 
@@ -25,6 +27,7 @@ class BlowerManipulator(Manipulator):
         self.pi.set_mode(self.pin, pigpio.OUTPUT)
 
         self.pi.write(self.pin, 0)
+        time.sleep(0.5)
 
         print("blower stop")
 
