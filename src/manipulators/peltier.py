@@ -50,16 +50,16 @@ class PeltierManipulator(Manipulator):
 
     def _cold(self):
         self.pi.hardware_PWM(self.apwm, 1000, (100 * 10000))
-        self.pi.write(self.ain1, 1)
-        self.pi.write(self.ain2, 0)
+        self.pi.write(self.ain1, 0)
+        self.pi.write(self.ain2, 1)
         time.sleep(0.5)
 
         print("peltier cold")
 
     def _warm(self):
         self.pi.hardware_PWM(self.apwm, 1000, (100 * 10000))
-        self.pi.write(self.ain1, 0)
-        self.pi.write(self.ain2, 1)
+        self.pi.write(self.ain1, 1)
+        self.pi.write(self.ain2, 0)
         time.sleep(0.5)
 
         print("peltier warm")
