@@ -1,2 +1,0 @@
-hostname: uyunpunion
-prompt: '\[\e[1;32m\]\u\[\e[0m\]@\[\e[1;30;42m\]\h\[\e[0m\]:\w\$ '

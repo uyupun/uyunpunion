@@ -3,9 +3,10 @@
   roles:
     - ssh
     - user
-    - terminal
+    - host
     - apt
+    - make
     - vim
     - git
     - docker
-    - port
+    - ufw

@@ -133,16 +133,19 @@ $ vagrant destroy
     - Python又はPyenv(Pythonのバージョンは3.9系)
     - Pipenv
 
+- 以下のファイルが必要です
+    - `ansible/roles/user/files/id_ed25519`
+
 ```bash
 $ cd ansible
 $ touch VAULT_PASSWORD  # Ansible Vaultのパスワードを設定する
 $ pipenv install
 $ pipenv shell
 $ ansible all -i hosts/test -m ping
-$ ansible-playbook -i hosts/test infra.yml --list-tasks --vault-password-file=VAULT_PASSWORD
-$ ansible-playbook -i hosts/test infra.yml --syntax-check --vault-password-file=VAULT_PASSWORD
-$ ansible-playbook -i hosts/test infra.yml --check --diff --vault-password-file=VAULT_PASSWORD
-$ ansible-playbook -i hosts/test infra.yml --vault-password-file=VAULT_PASSWORD
+$ ansible-playbook -i hosts/test infra.yml --list-tasks --vault-password-file=ANSIBLE_VAULT_PASSWORD    # タスク一覧
+$ ansible-playbook -i hosts/test infra.yml --syntax-check --vault-password-file=ANSIBLE_VAULT_PASSWORD  # 構文エラーのチェック
+$ ansible-playbook -i hosts/test infra.yml --check --diff --vault-password-file=ANSIBLE_VAULT_PASSWORD  # ドライラン
+$ ansible-playbook -i hosts/test infra.yml --vault-password-file=ANSIBLE_VAULT_PASSWORD                 # 実行
 ```
 
 <img src="images/omedetou.jpg" width="500px">

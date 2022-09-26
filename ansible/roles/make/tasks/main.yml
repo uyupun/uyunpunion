@@ -1,0 +1,4 @@
+- name: Makeのインストール
+  become: yes
+  apt:
+    name: make
