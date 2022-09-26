@@ -35,7 +35,8 @@
 │ ├ routes              APIの各エンドポイント
 │ ├ schemas             レスポンスのスキーマ
 │ ├ app.py              アプリケーションのエントリーポイント
-│ ├ gunicorn.conf.py    Gunicornの設定
+│ ├ gunicorn.conf.py    本番環境で使用するGunicornの設定
+│ ├ Makefile            本番環境で使用するコマンド群の定義
 │ └ settings.py         環境変数、グローバル変数
 ├ test                  検証サーバ(Vagrant)の設定
 └ README.md
