@@ -102,6 +102,9 @@ $ cd proxy
 $ docker compose up -d
 $ docker compose ps
 $ docker compose down
+$ open localhost:8080                                                   # ダッシュボード
+$ curl -H "Host: uyunpunion.uyupun.tech" -L "localhost:80/ping"         # 疎通確認
+$ curl -H "Host: uyunpunion.uyupun.tech" -L "<private ip address>/ping" # 疎通確認
 ```
 
 ## 検証サーバの環境構築

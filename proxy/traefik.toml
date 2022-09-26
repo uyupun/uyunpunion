@@ -2,7 +2,7 @@
     level = "DEBUG"
 
 [api]
-    dashboard = true
+    insecure = true
 
 [providers.file]
     filename = "/etc/traefik/api.toml"
