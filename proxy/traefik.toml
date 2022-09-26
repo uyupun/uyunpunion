@@ -1,0 +1,13 @@
+[log]
+    level = "DEBUG"
+
+[api]
+    insecure = true
+
+[providers.file]
+    filename = "/etc/traefik/api.toml"
+    watch = true
+
+[entryPoints]
+    [entryPoints.web]
+        address = ":80"

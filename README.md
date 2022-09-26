@@ -26,15 +26,17 @@
 
 ```
 ├ .vscode               Visual Studio Codeの設定
-├ ansible               Ansibleの設定(TLS終端、リバプロ、WSGI、ASGI等)
+├ ansible               Ansibleの設定
 ├ images
+├ proxy                 リバースプロキシ(Traefik)の設定
 ├ src
 │ ├ manipulators        ウユンプニオン・コアの制御スクリプト
 │ ├ middlewares         カスタムミドルウェア
 │ ├ routes              APIの各エンドポイント
 │ ├ schemas             レスポンスのスキーマ
 │ ├ app.py              アプリケーションのエントリーポイント
-│ ├ gunicorn.conf.py    Gunicornの設定
+│ ├ gunicorn.conf.py    本番環境で使用するGunicornの設定
+│ ├ Makefile            本番環境で使用するコマンド群の定義
 │ └ settings.py         環境変数、グローバル変数
 ├ test                  検証サーバ(Vagrant)の設定
 └ README.md
@@ -61,6 +63,7 @@ $ pipenv install --dev
 $ pipenv shell
 $ pipenv run dev                         # サーバの起動
 $ pipenv run dev --port 8081             # ポート指定する場合
+$ pipenv run dev --host 0.0.0.0          # ホスト指定する場合(0.0.0.0の場合、プライベートIPでのアクセスが可能となる)
 $ open localhost:8080                    # API
 $ open localhost:8080/docs               # Swagger
 $ open localhost:8080/redoc              # Redoc
@@ -69,14 +72,39 @@ $ python manipulators/blower.py start    # マニピュレータ単体で実行�
 
 ## APIの環境構築(本番環境)
 
+- 以下の用途で使用する場合にこの手順が必要です
+    - 本番環境にAPIをデプロイする場合
+    - ※ 主にMakefile経由で操作します
+
 ```bash
 $ cd src
-$ cp .env.example .env          # UYUNPUNION_TOKENの設定が必須
+$ cp .env.example .env  # UYUNPUNION_TOKEN、ENV=prodの設定が必須
 $ pipenv install
-$ pipenv run prod               # サーバの起動
-$ pipenv run prod --bind :8081  # ポート指定する場合
-$ ps aux | grep gunicorn        # サーバのステータスの確認
-$ kill `cat gunicorn.pid`       # サーバの停止
+$ make up               # サーバの起動
+$ make reload           # サーバの再起動(graceful)
+$ make down             # サーバの停止
+$ make ps               # サーバのプロセスの確認
+```
+
+## リバースプロキシの環境構築
+
+- 以下の用途で使用します
+    - リバースプロキシ
+    - TLS終端
+    - ※ 主に本番環境で使用するものです
+
+- 以下のソフトウェアが必要です
+    - Docker
+    - Docker Compose
+
+```bash
+$ cd proxy
+$ docker compose up -d
+$ docker compose ps
+$ docker compose down
+$ open localhost:8080                                                   # ダッシュボード
+$ curl -H "Host: uyunpunion.uyupun.tech" -L "localhost:80/ping"         # 疎通確認
+$ curl -H "Host: uyunpunion.uyupun.tech" -L "<private ip address>/ping" # 疎通確認
 ```
 
 ## 検証サーバの環境構築
