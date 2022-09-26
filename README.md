@@ -79,6 +79,7 @@ $ pipenv run prod                       # サーバの起動
 $ pipenv run prod --bind :8081          # ポート指定する場合
 $ pipenv run prod --bind 0.0.0.0:8081   # ホスト指定する場合(0.0.0.0の場合、プライベートIPでのアクセスが可能となる)
 $ ps aux | grep gunicorn                # サーバのステータスの確認
+$ kill -HUP `cat gunicorn.pid`          # サーバの再起動(graceful)
 $ kill `cat gunicorn.pid`               # サーバの停止
 ```
 
