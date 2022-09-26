@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
-from manipulators.peltier import PeltierManipulator
+from manipulators.peltier import PeltierManipulator, PeltierMode
 from middlewares.verify_token import verify_token_middleware
+from settings import get_settings
 from shemas.peltier import ColdPeltierResponse, StopPeltierResponse, WarmPeltierResponse
 from shemas.token import TokenRequestHeader
 
@@ -17,6 +18,8 @@ def cold_peltier(
     """
     ペルチェ素子を冷却する
     """
+    if get_settings().ENV == "prod":
+        manipulator.start(mode=PeltierMode.Cold)
     return {"message": "pong"}
 
 
@@ -28,6 +31,8 @@ def warm_peltier(
     """
     ペルチェ素子を加熱する
     """
+    if get_settings().ENV == "prod":
+        manipulator.start(mode=PeltierMode.Warm)
     return {"message": "pong"}
 
 
@@ -39,4 +44,6 @@ def stop_peltier(
     """
     ペルチェ素子を停止する
     """
+    if get_settings().ENV == "prod":
+        manipulator.stop()
     return {"message": "pong"}

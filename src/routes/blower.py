@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 from manipulators.blower import BlowerManipulator
 from middlewares.verify_token import verify_token_middleware
+from settings import get_settings
 from shemas.blower import StartBlowerResponse, StopBlowerResponse
 from shemas.token import TokenRequestHeader
 
@@ -17,6 +18,8 @@ def start_blower(
     """
     ブロワーを作動させる
     """
+    if get_settings().ENV == "prod":
+        manipulator.start()
     return {"message": "pong"}
 
 
@@ -28,4 +31,6 @@ def stop_blower(
     """
     ブロワーを停止する
     """
+    if get_settings().ENV == "prod":
+        manipulator.stop()
     return {"message": "pong"}

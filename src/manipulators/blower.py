@@ -1,4 +1,7 @@
 import sys
+import time
+
+import pigpio
 
 try:
     from manipulators.manipulator import Manipulator
@@ -7,10 +10,25 @@ except ImportError:
 
 
 class BlowerManipulator(Manipulator):
+    def __init__(self) -> None:
+        super().__init__()
+        self.pi = pigpio.pi()
+        self.pin = 25
+
     def start(self):
+        self.pi.set_mode(self.pin, pigpio.OUTPUT)
+
+        self.pi.write(self.pin, 1)
+        time.sleep(0.5)
+
         print("blower start")
 
     def stop(self):
+        self.pi.set_mode(self.pin, pigpio.OUTPUT)
+
+        self.pi.write(self.pin, 0)
+        time.sleep(0.5)
+
         print("blower stop")
 
 
