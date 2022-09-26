@@ -1,3 +1,9 @@
+- name: ufwのインストール
+  become: yes
+  apt:
+    name: ufw
+  when: not ansible_check_mode
+
 - name: ufwの基本設定
   become: yes
   ufw:
@@ -8,6 +14,7 @@
       policy: deny
     - direction: outgoing
       policy: allow
+  when: not ansible_check_mode
 
 - name: ufwの開放ポートの設定
   become: yes
@@ -25,13 +32,16 @@
     - rule: allow
       port: 443
       proto: tcp
+  when: not ansible_check_mode
 
 - name: ufwのログを有効化
   become: yes
   ufw:
     logging: on
+  when: not ansible_check_mode
 
 - name: ufwを有効化
   become: yes
   ufw:
     state: enabled
+  when: not ansible_check_mode

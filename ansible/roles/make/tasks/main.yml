@@ -2,3 +2,4 @@
   become: yes
   apt:
     name: make
+  when: not ansible_check_mode

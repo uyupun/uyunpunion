@@ -2,6 +2,7 @@
   become: yes
   apt:
     name: vim
+  when: not ansible_check_mode
 
 - name: .vimrcのコピー
   become: yes

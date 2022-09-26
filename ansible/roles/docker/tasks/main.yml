@@ -1,8 +1,3 @@
-- name: APTのupdate
-  become: yes
-  apt:
-    update_cache: yes
-
 - name: Dockerのインストールに必要なパッケージをインストール
   become: yes
   apt:
@@ -11,21 +6,18 @@
       - curl
       - gnupg
       - lsb-release
+  when: not ansible_check_mode
 
 - name: DockerのGPGキーを追加
   become: yes
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
+  when: not ansible_check_mode
 
 - name: APTにリポジトリを追加
   become: yes
   apt_repository:
     repo: "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
-
-- name: APTのupdate
-  become: yes
-  apt:
-    update_cache: yes
 
 - name: Dockerのインストール
   become: yes
