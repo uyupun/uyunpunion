@@ -71,15 +71,18 @@ $ python manipulators/blower.py start    # マニピュレータ単体で実行�
 
 ## APIの環境構築(本番環境)
 
+- 以下の用途で使用する場合にこの手順が必要です
+    - 本番環境にAPIをデプロイする場合
+    - ※ 主にMakefile経由で操作します
+
 ```bash
 $ cd src
-$ cp .env.example .env                  # UYUNPUNION_TOKEN、ENV=prodの設定が必須
+$ cp .env.example .env  # UYUNPUNION_TOKEN、ENV=prodの設定が必須
 $ pipenv install
-$ pipenv run prod                       # サーバの起動
-$ pipenv run prod --bind :8081          # ポート指定する場合
-$ pipenv run prod --bind 0.0.0.0:8081   # ホスト指定する場合(0.0.0.0の場合、プライベートIPでのアクセスが可能となる)
-$ ps aux | grep gunicorn                # サーバのステータスの確認
-$ kill `cat gunicorn.pid`               # サーバの停止
+$ make up               # サーバの起動
+$ make reload           # サーバの再起動(graceful)
+$ make down             # サーバの停止
+$ make ps               # サーバのプロセスの確認
 ```
 
 ## リバースプロキシの環境構築
