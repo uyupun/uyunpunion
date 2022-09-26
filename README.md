@@ -77,7 +77,7 @@ $ python manipulators/blower.py start    # マニピュレータ単体で実行�
 
 ```bash
 $ cd src
-$ cp .env.example .env  # UYUNPUNION_TOKENの設定が必須
+$ cp .env.example .env  # UYUNPUNION_TOKEN、ENV=prodの設定が必須
 $ pipenv install
 $ make up               # サーバの起動
 $ make reload           # サーバの再起動(graceful)
