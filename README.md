@@ -26,9 +26,16 @@
 
 ```
 ├ .vscode               Visual Studio Codeの設定
-├ ansible               Ansibleの設定
+├ ansible
+│ ├ hosts               Ansibleの接続先の設定
+│ ├ roles               Ansibleの各タスク
+│ ├ ansible.cfg         Ansible自体の挙動の設定
+│ ├ infra.yml           Ansibleで設定を流すためのエントリーポイント
 ├ images
-├ proxy                 リバースプロキシ(Traefik)の設定
+├ proxy
+│ ├ api.toml            リバースプロキシ(Traefik)の動的設定
+│ ├ docker-compose.yml  リバースプロキシ(Traefik)のDocker周りの設定
+│ ├ traefik.toml        リバースプロキシ(Traefik)の静的設定
 ├ src
 │ ├ manipulators        ウユンプニオン・コアの制御スクリプト
 │ ├ middlewares         カスタムミドルウェア
