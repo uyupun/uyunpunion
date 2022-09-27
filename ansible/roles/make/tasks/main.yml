@@ -1,5 +1,5 @@
-- name: Makeのインストール
-  become: yes
-  apt:
+- name: Install make
+  become: true
+  ansible.builtin.apt:
     name: make
   when: not ansible_check_mode

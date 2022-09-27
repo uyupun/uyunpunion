@@ -1,12 +1,12 @@
-- name: Vimのインストール
-  become: yes
-  apt:
+- name: Install Vim
+  become: true
+  ansible.builtin.apt:
     name: vim
   when: not ansible_check_mode
 
-- name: .vimrcのコピー
-  become: yes
-  copy:
+- name: Copy .vimrc
+  become: true
+  ansible.builtin.copy:
     src: files/.vimrc
     dest: /home/takashi/.vimrc
     owner: takashi

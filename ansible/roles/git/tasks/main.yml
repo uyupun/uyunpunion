@@ -1,11 +1,11 @@
-- name: Gitのインストール
-  become: yes
-  apt:
+- name: Install Git
+  become: true
+  ansible.builtin.apt:
     name: git
   when: not ansible_check_mode
 
-- name: Gitの設定
-  become: yes
+- name: Setting Git
+  become: true
   become_user: takashi
   git_config:
     scope: global

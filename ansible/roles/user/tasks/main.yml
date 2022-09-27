@@ -1,11 +1,11 @@
-- name: uyunpunionグループの追加
-  become: yes
-  group:
+- name: Add uyunpunion group
+  become: true
+  ansible.builtin.group:
     name: uyunpunion
 
-- name: takashiユーザの追加
-  become: yes
-  user:
+- name: Add takashi user
+  become: true
+  ansible.builtin.user:
     name: takashi
     password: "{{ password }}"
     group: uyunpunion
@@ -13,12 +13,12 @@
       - uyunpunion
       - sudo
     shell: /bin/bash
-    createhome: yes
-    generate_ssh_key: yes
+    createhome: true
+    generate_ssh_key: true
 
-- name: 公開鍵の登録
-  become: yes
-  authorized_key:
+- name: Regist public key
+  become: true
+  ansible.builtin.authorized_key:
     user: takashi
     state: present
     key: "{{ lookup('file', '../files/id_ed25519.pub') }}"

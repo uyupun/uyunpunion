@@ -1,18 +1,18 @@
-- name: ホスト名の変更
-  become: yes
-  hostname:
+- name: Change hostname
+  become: true
+  ansible.builtin.hostname:
     name: "{{ hostname }}"
 
-- name: プロンプトの変更
-  become: yes
-  lineinfile:
+- name: Change prompt
+  become: true
+  ansible.builtin.lineinfile:
     dest: /home/takashi/.bashrc
     line: "export PS1='{{ prompt }} '"
   when: not ansible_check_mode
 
-- name: ログインメッセージの変更
-  become: yes
-  lineinfile:
+- name: Change login message
+  become: true
+  ansible.builtin.lineinfile:
     dest: /etc/motd
     line: "{{ item }}"
   loop:

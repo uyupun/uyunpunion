@@ -1,6 +1,6 @@
-- name: Dockerのインストールに必要なパッケージをインストール
-  become: yes
-  apt:
+- name: Install required packages for Docker
+  become: true
+  ansible.builtin.apt:
     name:
       - ca-certificates
       - curl
@@ -8,20 +8,20 @@
       - lsb-release
   when: not ansible_check_mode
 
-- name: DockerのGPGキーを追加
-  become: yes
-  apt_key:
+- name: Add Docker GPG key
+  become: true
+  ansible.builtin.apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
   when: not ansible_check_mode
 
-- name: APTにリポジトリを追加
-  become: yes
-  apt_repository:
+- name: Add repository to APT
+  become: true
+  ansible.builtin.apt_repository:
     repo: "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 
-- name: Dockerのインストール
-  become: yes
-  apt:
+- name: Install Docker
+  become: true
+  ansible.builtin.apt:
     name:
       - docker-ce
       - docker-ce-cli
@@ -29,16 +29,16 @@
       - docker-compose-plugin
   when: not ansible_check_mode
 
-- name: takashiユーザをdockerグループに追加
-  become: yes
-  user:
+- name: Add takashi user to docker group
+  become: true
+  ansible.builtin.user:
     name: takashi
     groups: docker
-    append: yes
+    append: true
 
-- name: dockerdの起動
-  become: yes
-  systemd:
+- name: Start docker
+  become: true
+  ansible.builtin.systemd:
     name: docker
     state: started
   when: not ansible_check_mode

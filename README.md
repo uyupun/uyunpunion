@@ -151,10 +151,11 @@ $ touch VAULT_PASSWORD  # Ansible Vaultのパスワードを設定する
 $ pipenv install
 $ pipenv shell
 $ ansible all -i hosts/test -m ping
-$ ansible-playbook -i hosts/test infra.yml --list-tasks --vault-password-file=ANSIBLE_VAULT_PASSWORD    # タスク一覧
-$ ansible-playbook -i hosts/test infra.yml --syntax-check --vault-password-file=ANSIBLE_VAULT_PASSWORD  # 構文エラーのチェック
-$ ansible-playbook -i hosts/test infra.yml --check --diff --vault-password-file=ANSIBLE_VAULT_PASSWORD  # ドライラン
-$ ansible-playbook -i hosts/test infra.yml --vault-password-file=ANSIBLE_VAULT_PASSWORD                 # 実行
+$ ansible-playbook -i hosts/test infra.yml --list-tasks     # タスク一覧
+$ ansible-playbook -i hosts/test infra.yml --syntax-check   # 構文エラーのチェック
+$ ansible-lint infra.yml                                    # リンターの実行
+$ ansible-playbook -i hosts/test infra.yml --check --diff   # ドライラン
+$ ansible-playbook -i hosts/test infra.yml                  # 実行
 ```
 
 <img src="images/omedetou.jpg" width="500px">

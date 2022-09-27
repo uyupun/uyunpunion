@@ -1,11 +1,11 @@
-- name: ufwのインストール
-  become: yes
-  apt:
+- name: Install ufw
+  become: true
+  ansible.builtin.apt:
     name: ufw
   when: not ansible_check_mode
 
-- name: ufwの基本設定
-  become: yes
+- name: Setting ufw basic packet filtering
+  become: true
   ufw:
     direction: "{{ item.direction }}"
     policy: "{{ item.policy }}"
@@ -16,8 +16,8 @@
       policy: allow
   when: not ansible_check_mode
 
-- name: ufwの開放ポートの設定
-  become: yes
+- name: Setting ufw advance packet filtering
+  become: true
   ufw:
     rule: "{{ item.rule }}"
     port: "{{ item.port }}"
@@ -34,14 +34,14 @@
       proto: tcp
   when: not ansible_check_mode
 
-- name: ufwのログを有効化
-  become: yes
+- name: Enable ufw logs
+  become: true
   ufw:
-    logging: on
+    logging: true
   when: not ansible_check_mode
 
-- name: ufwを有効化
-  become: yes
+- name: Enabled ufw
+  become: true
   ufw:
     state: enabled
   when: not ansible_check_mode
