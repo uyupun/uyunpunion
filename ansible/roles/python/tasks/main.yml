@@ -1,0 +1,8 @@
+- name: pipのインストール
+  become: yes
+  apt:
+    name: python3-pip
+  when: not ansible_check_mode
+
+- name: Pipenvのインストール
+  shell: pip3 install pipenv

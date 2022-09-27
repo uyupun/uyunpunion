@@ -10,3 +10,4 @@
     - git
     - docker
     - ufw
+    - python
