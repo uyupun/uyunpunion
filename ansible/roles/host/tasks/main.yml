@@ -2,12 +2,19 @@
   become: true
   ansible.builtin.hostname:
     name: "{{ hostname }}"
+    use: debian
+
+- name: Add uyunpunion to /etc/hosts
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/hosts
+    line: "127.0.0.3       uyunpunion"
 
 - name: Change prompt
   become: true
   ansible.builtin.lineinfile:
     dest: /home/takashi/.bashrc
-    line: "export PS1='{{ prompt }} '"
+    line: "export PS1='{{ prompt }}'"
   when: not ansible_check_mode
 
 - name: Change login message
@@ -16,6 +23,7 @@
     dest: /etc/motd
     line: "{{ item }}"
   loop:
+    - ------------------------------------------------------------------------------------------
     - 第三次冷却終了。
     - フライホイール回転停止。接続を解除。
     - 補助電圧に問題なし。
@@ -30,3 +38,4 @@
     - 思考形態は日本語を基礎原則としてフィックス、初期コンタクト、全て問題なし。
     - コミュニケーション回線、開きます。リスト1405までオールクリア。シナプス計測、シンクロ率41.3％
     - ハーモニクス、全て正常値。暴走、ありません。
+    - ------------------------------------------------------------------------------------------
