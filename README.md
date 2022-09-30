@@ -26,7 +26,7 @@
 
 - Raspberry Pi から各マニピュレータを駆動する際の回路図を以下に示します
 
-<img src="images/architecture_uyunpunion_core.png" width="500px">
+<img src="images/architecture_uyunpunion_core.drawio.png" width="500px">
 
 #### ウェルノウンピン
 
