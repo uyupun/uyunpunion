@@ -1,8 +1,7 @@
-- name: Update & upgrade APT
+- name: Update APT
   become: true
   ansible.builtin.apt:
     update_cache: true
-    upgrade: true
 
 - name: Install required packages for Docker
   become: true
@@ -29,6 +28,12 @@
     url: https://download.docker.com/linux/debian/gpg
     dest: /etc/apt/keyrings/docker.gpg.asc
     mode: 0755
+  when: not ansible_check_mode
+
+- name: Remove Docker GPG key
+  become: true
+  ansible.builtin.command: rm -rf /etc/apt/keyrings/docker.gpg
+  when: not ansible_check_mode
 
 - name: Dearmor Docker GPG key
   become: true
@@ -37,7 +42,7 @@
   when: not ansible_check_mode
 
 - name: Print dpkg architecture
-  become: true
+  # become: true
   ansible.builtin.command: dpkg --print-architecture
   register: dpkg_architecture
   when: not ansible_check_mode
@@ -47,6 +52,7 @@
   ansible.builtin.apt_repository:
     repo: "deb [arch={{ dpkg_architecture.stdout }} signed-by=/etc/apt/keyrings/docker.gpg] \
           https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
+  when: not ansible_check_mode
 
 - name: Update APT
   become: true
