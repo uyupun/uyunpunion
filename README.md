@@ -147,7 +147,8 @@ $ ssh-keygen -R 192.168.56.10   # 検証サーバを作り直した場合に実�
 
 ```bash
 $ cd ansible
-$ touch VAULT_PASSWORD  # Ansible Vaultのパスワードを設定する
+$ chmod 600 roles/user/files/id_ed25519                     # 秘密鍵のパーミッションを変更しないとSSH接続できないため
+$ touch VAULT_PASSWORD                                      # Ansible Vaultのパスワードを設定する
 $ pipenv install
 $ pipenv shell
 $ ansible all -i hosts/test -m ping                         # 疎通確認
@@ -156,6 +157,7 @@ $ ansible-playbook -i hosts/test infra.yml --syntax-check   # 構文エラーの
 $ ansible-lint infra.yml                                    # リンターの実行
 $ ansible-playbook -i hosts/test infra.yml --check --diff   # ドライラン
 $ ansible-playbook -i hosts/test infra.yml                  # 実行
+$ ssh -i roles/user/files/id_ed25519 takashi@192.168.56.10  # SSH接続
 ```
 
 <img src="images/omedetou.jpg" width="500px">

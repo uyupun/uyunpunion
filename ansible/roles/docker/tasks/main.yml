@@ -30,10 +30,12 @@
     mode: 0755
   when: not ansible_check_mode
 
+# 2回目以降の実行時にすでにファイルが存在する場合にエラーが出るため削除する
 - name: Remove Docker GPG key
   become: true
-  ansible.builtin.command: rm -rf /etc/apt/keyrings/docker.gpg
-  when: not ansible_check_mode
+  ansible.builtin.file:
+    path: /etc/apt/keyrings/docker.gpg
+    state: absent
 
 - name: Dearmor Docker GPG key
   become: true
@@ -42,7 +44,6 @@
   when: not ansible_check_mode
 
 - name: Print dpkg architecture
-  # become: true
   ansible.builtin.command: dpkg --print-architecture
   register: dpkg_architecture
   when: not ansible_check_mode

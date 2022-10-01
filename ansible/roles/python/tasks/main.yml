@@ -5,7 +5,32 @@
   when: not ansible_check_mode
 
 - name: Install Pipenv
+  become: true
+  become_user: takashi
   ansible.builtin.pip:
     name:
       - pipenv
+  when: not ansible_check_mode
+
+- name: Create .bash_profile
+  become: true
+  ansible.builtin.file:
+    path: /home/takashi/.bash_profile
+    state: touch
+    owner: takashi
+    group: uyunpunion
+    mode: 0644
+
+- name: Add path to .bash_profile
+  become: true
+  ansible.builtin.lineinfile:
+    path: /home/takashi/.bash_profile
+    line: export PATH="$HOME/.local/bin:$PATH"
+
+- name: Apply .bash_profile
+  become: true
+  become_user: takashi
+  ansible.builtin.shell: source /home/takashi/.bash_profile
+  args:
+    executable: /bin/bash
   when: not ansible_check_mode
