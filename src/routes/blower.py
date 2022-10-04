@@ -1,5 +1,5 @@
+from drivers.blower import BlowerDriver
 from fastapi import APIRouter, Depends
-from manipulators.blower import BlowerManipulator
 from middlewares.verify_token import verify_token_middleware
 from settings import get_settings
 from shemas.blower import StartBlowerResponse, StopBlowerResponse
@@ -13,24 +13,24 @@ router = APIRouter(
 @router.post("/start", response_model=StartBlowerResponse)
 def start_blower(
     UYUNPUNION_TOKEN: str = TokenRequestHeader(),
-    manipulator: BlowerManipulator = Depends(),
+    driver: BlowerDriver = Depends(),
 ):
     """
     ブロワーを作動させる
     """
     if get_settings().ENV == "prod":
-        manipulator.start()
+        driver.start()
     return {"message": "pong"}
 
 
 @router.post("/stop", response_model=StopBlowerResponse)
 def stop_blower(
     UYUNPUNION_TOKEN: str = TokenRequestHeader(),
-    manipulator: BlowerManipulator = Depends(),
+    driver: BlowerDriver = Depends(),
 ):
     """
     ブロワーを停止する
     """
     if get_settings().ENV == "prod":
-        manipulator.stop()
+        driver.stop()
     return {"message": "pong"}

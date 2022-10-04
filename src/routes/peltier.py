@@ -1,5 +1,5 @@
+from drivers.peltier import PeltierDriver, PeltierMode
 from fastapi import APIRouter, Depends
-from manipulators.peltier import PeltierManipulator, PeltierMode
 from middlewares.verify_token import verify_token_middleware
 from settings import get_settings
 from shemas.peltier import ColdPeltierResponse, StopPeltierResponse, WarmPeltierResponse
@@ -13,37 +13,37 @@ router = APIRouter(
 @router.post("/cold", response_model=ColdPeltierResponse)
 def cold_peltier(
     UYUNPUNION_TOKEN: str = TokenRequestHeader(),
-    manipulator: PeltierManipulator = Depends(),
+    driver: PeltierDriver = Depends(),
 ):
     """
     ペルチェ素子を冷却する
     """
     if get_settings().ENV == "prod":
-        manipulator.start(mode=PeltierMode.Cold)
+        driver.start(mode=PeltierMode.Cold)
     return {"message": "pong"}
 
 
 @router.post("/warm", response_model=WarmPeltierResponse)
 def warm_peltier(
     UYUNPUNION_TOKEN: str = TokenRequestHeader(),
-    manipulator: PeltierManipulator = Depends(),
+    driver: PeltierDriver = Depends(),
 ):
     """
     ペルチェ素子を加熱する
     """
     if get_settings().ENV == "prod":
-        manipulator.start(mode=PeltierMode.Warm)
+        driver.start(mode=PeltierMode.Warm)
     return {"message": "pong"}
 
 
 @router.post("/stop", response_model=StopPeltierResponse)
 def stop_peltier(
     UYUNPUNION_TOKEN: str = TokenRequestHeader(),
-    manipulator: PeltierManipulator = Depends(),
+    driver: PeltierDriver = Depends(),
 ):
     """
     ペルチェ素子を停止する
     """
     if get_settings().ENV == "prod":
-        manipulator.stop()
+        driver.stop()
     return {"message": "pong"}

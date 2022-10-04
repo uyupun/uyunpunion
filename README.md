@@ -34,7 +34,7 @@
 ├ images
 ├ proxy                 リバースプロキシ(Traefik)の設定
 ├ src
-│ ├ manipulators        ウユンプニオン・コアの制御スクリプト
+│ ├ drivers             ウユンプニオン・ドライバの制御スクリプト
 │ ├ middlewares         カスタムミドルウェア
 │ ├ routes              APIの各エンドポイント
 │ ├ schemas             レスポンスのスキーマ
@@ -62,16 +62,16 @@
 
 ```bash
 $ cd src
-$ cp .env.example .env                   # UYUNPUNION_TOKENの設定が必須
+$ cp .env.example .env              # UYUNPUNION_TOKENの設定が必須
 $ pipenv install --dev
 $ pipenv shell
-$ pipenv run dev                         # サーバの起動
-$ pipenv run dev --port 8081             # ポート指定する場合
-$ pipenv run dev --host 0.0.0.0          # ホスト指定する場合(0.0.0.0の場合、プライベートIPでのアクセスが可能となる)
-$ open localhost:8080                    # API
-$ open localhost:8080/docs               # Swagger
-$ open localhost:8080/redoc              # Redoc
-$ python manipulators/blower.py start    # マニピュレータ単体で実行させる場合
+$ pipenv run dev                    # サーバの起動
+$ pipenv run dev --port 8081        # ポート指定する場合
+$ pipenv run dev --host 0.0.0.0     # ホスト指定する場合(0.0.0.0の場合、プライベートIPでのアクセスが可能となる)
+$ open localhost:8080               # API
+$ open localhost:8080/docs          # Swagger
+$ open localhost:8080/redoc         # Redoc
+$ python drivers/blower.py start    # ドライバ単体で実行させる場合
 ```
 
 ## APIの環境構築(本番環境)
@@ -116,6 +116,7 @@ $ curl -H "Host: uyunpunion.uyupun.tech" -L "<private ip address>/ping" # 疎通
 - 以下の用途で使用します
     - Ansibleのテスト
     - より本番環境に近い環境での動作確認
+        - ※ Debian 11(bullseye)が動作します
 
 - 以下のソフトウェアが必要です
     - Homebrew

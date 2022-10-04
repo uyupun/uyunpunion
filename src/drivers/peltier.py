@@ -5,9 +5,9 @@ from enum import Enum
 import pigpio
 
 try:
-    from manipulators.manipulator import Manipulator
+    from drivers.driver import Driver
 except ImportError:
-    from manipulator import Manipulator
+    from driver import Driver
 
 
 class PeltierMode(Enum):
@@ -19,7 +19,7 @@ class PeltierModeNotExistsError(Exception):
     pass
 
 
-class PeltierManipulator(Manipulator):
+class PeltierDriver(Driver):
     def __init__(self) -> None:
         super().__init__()
 
@@ -67,11 +67,11 @@ class PeltierManipulator(Manipulator):
 
 if __name__ == "__main__":
     action = sys.argv[1]
-    manipulator = PeltierManipulator()
+    driver = PeltierDriver()
 
     if action == "cold":
-        manipulator.start(mode=PeltierMode.Cold)
+        driver.start(mode=PeltierMode.Cold)
     if action == "warm":
-        manipulator.start(mode=PeltierMode.Warm)
+        driver.start(mode=PeltierMode.Warm)
     elif action == "stop":
-        manipulator.stop()
+        driver.stop()

@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class Manipulator(ABC):
+class Driver(ABC):
     @abstractmethod
     def start():
         pass
