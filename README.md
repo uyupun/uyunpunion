@@ -47,9 +47,16 @@
 
 ```
 ├ .vscode               Visual Studio Codeの設定
-├ ansible               Ansibleの設定
+├ ansible
+│ ├ hosts               Ansibleの接続先の設定
+│ ├ roles               Ansibleの各タスク
+│ ├ ansible.cfg         Ansible自体の挙動の設定
+│ ├ infra.yml           Ansibleで設定を流すためのエントリーポイント
 ├ images
-├ proxy                 リバースプロキシ(Traefik)の設定
+├ proxy
+│ ├ api.toml            リバースプロキシ(Traefik)の動的設定
+│ ├ docker-compose.yml  リバースプロキシ(Traefik)のDocker周りの設定
+│ ├ traefik.toml        リバースプロキシ(Traefik)の静的設定
 ├ src
 │ ├ manipulators        ウユンプニオン・コアの制御スクリプト
 │ ├ middlewares         カスタムミドルウェア
@@ -133,11 +140,7 @@ $ curl -H "Host: uyunpunion.uyupun.tech" -L "<private ip address>/ping" # 疎通
 - 以下の用途で使用します
     - Ansibleのテスト
     - より本番環境に近い環境での動作確認
-
-- 以下のソフトウェアが必要です
-    - Homebrew
-    - VirtualBox
-    - Vagrant
+    - ※ Debian　11(bullseye)が動作します
 
 ```bash
 $ cd test
@@ -147,6 +150,35 @@ $ vagrant status
 $ vagrant halt
 $ vagrant reload
 $ vagrant destroy
+$ ssh-keygen -R 192.168.56.10   # 検証サーバを作り直した場合に実行が必要
+```
+
+## Ansibleによる設定の流し込み
+
+- 以下の用途で使用します
+    - 本番環境で使用するラズパイに設定を流し込む
+    - その前段階として検証サーバに設定を流し込む
+
+- 以下のソフトウェアが必要です
+    - Python又はPyenv(Pythonのバージョンは3.9系)
+    - Pipenv
+
+- 以下のファイルが必要です
+    - `ansible/roles/user/files/id_ed25519`
+
+```bash
+$ cd ansible
+$ chmod 600 roles/user/files/id_ed25519                     # 秘密鍵のパーミッションを変更しないとSSH接続できないため
+$ touch VAULT_PASSWORD                                      # Ansible Vaultのパスワードを設定する
+$ pipenv install
+$ pipenv shell
+$ ansible all -i hosts/test -m ping                         # 疎通確認
+$ ansible-playbook -i hosts/test infra.yml --list-tasks     # タスク一覧
+$ ansible-playbook -i hosts/test infra.yml --syntax-check   # 構文エラーのチェック
+$ ansible-lint infra.yml                                    # リンターの実行
+$ ansible-playbook -i hosts/test infra.yml --check --diff   # ドライラン
+$ ansible-playbook -i hosts/test infra.yml                  # 実行
+$ ssh -i roles/user/files/id_ed25519 takashi@192.168.56.10  # SSH接続
 ```
 
 <img src="images/omedetou.jpg" width="500px">

@@ -1,0 +1,25 @@
+- name: Install Git
+  become: true
+  ansible.builtin.apt:
+    name: git
+  when: not ansible_check_mode
+
+- name: Setting Git
+  become: true
+  become_user: takashi
+  git_config:
+    scope: global
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+  loop:
+    - name: pull.rebase
+      value: "false"
+    - name: user.name
+      value: uyunpunion
+    - name: user.email
+      value: uyupun@gmail.com
+    - name: color.ui
+      value: "true"
+    - name: core.editor
+      value: vim
+  when: not ansible_check_mode

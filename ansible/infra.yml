@@ -1,0 +1,13 @@
+- name: インフラの構築
+  hosts: all
+  roles:
+    - ssh
+    - user
+    - host
+    - apt
+    - make
+    - vim
+    - git
+    - docker
+    - ufw
+    - python
