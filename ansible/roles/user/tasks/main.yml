@@ -1,0 +1,25 @@
+- name: Add uyunpunion group
+  become: true
+  ansible.builtin.group:
+    name: uyunpunion
+
+- name: Add takashi user
+  become: true
+  ansible.builtin.user:
+    name: takashi
+    password: "{{ password }}"
+    group: uyunpunion
+    groups:
+      - uyunpunion
+      - sudo
+    shell: /bin/bash
+    createhome: true
+    generate_ssh_key: true
+
+- name: Regist public key
+  become: true
+  ansible.builtin.authorized_key:
+    user: takashi
+    state: present
+    key: "{{ lookup('file', '../files/id_ed25519.pub') }}"
+  when: not ansible_check_mode

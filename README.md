@@ -24,15 +24,39 @@
 
 ### ウユンプニオン・コア
 
-<img src="images/architecture_uyunpunion_core.png" width="500px">
+- Raspberry Pi から各マニピュレータを駆動する際の回路図を以下に示します
+
+<img src="images/architecture_uyunpunion_core.drawio.png" width="500px">
+
+#### ウェルノウンピン
+
+- 各マニピュレータを制御するGPIOピンはマニピュレータごとに固定とし、新たなマニピュレータを接続する際は以下に示すピン番号以外を用いてください
+
+|ピン番号|目的|
+|:--|:--|
+|19|ペルチェ素子の強さ(PWM)|
+|20|ペルチェ素子の発熱(冷却とは排他)|
+|21|ペルチェ素子の冷却(発熱とは排他)|
+|23|加湿器の噴霧 ※1|
+|25|ブロワーの駆動|
+
+- ※1 加湿器のスイッチングは本来モーメンタリスイッチのため、0.5秒を目安に信号をオフにしてください
+  - なお、加湿器はスイッチをオンにするごとに 電源オフ → 常時噴霧 → 3秒間隔で噴霧 → 電源オフ を繰り返します
 
 ### ディレクトリ構造
 
 ```
 ├ .vscode               Visual Studio Codeの設定
-├ ansible               Ansibleの設定
+├ ansible
+│ ├ hosts               Ansibleの接続先の設定
+│ ├ roles               Ansibleの各タスク
+│ ├ ansible.cfg         Ansible自体の挙動の設定
+│ ├ infra.yml           Ansibleで設定を流すためのエントリーポイント
 ├ images
-├ proxy                 リバースプロキシ(Traefik)の設定
+├ proxy
+│ ├ api.toml            リバースプロキシ(Traefik)の動的設定
+│ ├ docker-compose.yml  リバースプロキシ(Traefik)のDocker周りの設定
+│ ├ traefik.toml        リバースプロキシ(Traefik)の静的設定
 ├ src
 │ ├ drivers             ウユンプニオン・ドライバの制御スクリプト
 │ ├ middlewares         カスタムミドルウェア
@@ -131,6 +155,35 @@ $ vagrant status
 $ vagrant halt
 $ vagrant reload
 $ vagrant destroy
+$ ssh-keygen -R 192.168.56.10   # 検証サーバを作り直した場合に実行が必要
+```
+
+## Ansibleによる設定の流し込み
+
+- 以下の用途で使用します
+    - 本番環境で使用するラズパイに設定を流し込む
+    - その前段階として検証サーバに設定を流し込む
+
+- 以下のソフトウェアが必要です
+    - Python又はPyenv(Pythonのバージョンは3.9系)
+    - Pipenv
+
+- 以下のファイルが必要です
+    - `ansible/roles/user/files/id_ed25519`
+
+```bash
+$ cd ansible
+$ chmod 600 roles/user/files/id_ed25519                     # 秘密鍵のパーミッションを変更しないとSSH接続できないため
+$ touch VAULT_PASSWORD                                      # Ansible Vaultのパスワードを設定する
+$ pipenv install
+$ pipenv shell
+$ ansible all -i hosts/test -m ping                         # 疎通確認
+$ ansible-playbook -i hosts/test infra.yml --list-tasks     # タスク一覧
+$ ansible-playbook -i hosts/test infra.yml --syntax-check   # 構文エラーのチェック
+$ ansible-lint infra.yml                                    # リンターの実行
+$ ansible-playbook -i hosts/test infra.yml --check --diff   # ドライラン
+$ ansible-playbook -i hosts/test infra.yml                  # 実行
+$ ssh -i roles/user/files/id_ed25519 takashi@192.168.56.10  # SSH接続
 ```
 
 <img src="images/omedetou.jpg" width="500px">

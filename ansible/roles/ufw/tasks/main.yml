@@ -1,0 +1,54 @@
+- name: Install ufw
+  become: true
+  ansible.builtin.apt:
+    name: ufw
+  when: not ansible_check_mode
+
+- name: Start ufw
+  become: true
+  ansible.builtin.systemd:
+    name: ufw
+    state: started
+  when: not ansible_check_mode
+
+- name: Enable ufw
+  become: true
+  ufw:
+    state: enabled
+  when: not ansible_check_mode
+
+- name: Setting ufw basic packet filtering
+  become: true
+  ufw:
+    direction: "{{ item.direction }}"
+    policy: "{{ item.policy }}"
+  loop:
+    - direction: incoming
+      policy: deny
+    - direction: outgoing
+      policy: allow
+  when: not ansible_check_mode
+
+- name: Setting ufw advance packet filtering
+  become: true
+  ufw:
+    rule: "{{ item.rule }}"
+    port: "{{ item.port }}"
+    proto: "{{ item.proto }}"
+  loop:
+    - rule: limit
+      port: 22
+      proto: tcp
+    - rule: allow
+      port: 80
+      proto: tcp
+    - rule: allow
+      port: 443
+      proto: tcp
+  when: not ansible_check_mode
+
+- name: Enable ufw logs
+  become: true
+  ufw:
+    logging: true
+  when: not ansible_check_mode
