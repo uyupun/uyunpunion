@@ -12,15 +12,6 @@
       - pipenv
   when: not ansible_check_mode
 
-- name: Create .bash_profile
-  become: true
-  ansible.builtin.file:
-    path: /home/takashi/.bash_profile
-    state: touch
-    owner: takashi
-    group: uyunpunion
-    mode: 0644
-
 - name: Add path to .bash_profile
   become: true
   ansible.builtin.lineinfile:

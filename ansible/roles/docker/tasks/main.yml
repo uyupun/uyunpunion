@@ -43,6 +43,8 @@
     gpg --dearmor -o /etc/apt/keyrings/docker.gpg /etc/apt/keyrings/docker.gpg.asc
   when: not ansible_check_mode
 
+# ansible_architectureとdpkg --print-architectureで何故か差異があるため、
+# ここで一旦dpkg --print-architectureの出力結果を変数として登録する
 - name: Print dpkg architecture
   ansible.builtin.command: dpkg --print-architecture
   register: dpkg_architecture
