@@ -50,6 +50,7 @@
 │ ├ roles               Ansibleの各タスク
 │ ├ ansible.cfg         Ansible自体の挙動の設定
 │ ├ infra.yml           Ansibleで設定を流すためのエントリーポイント
+├ deploy                デプロイスクリプト関連
 ├ images
 ├ proxy
 │ ├ api.toml            リバースプロキシ(Traefik)の動的設定
@@ -82,6 +83,7 @@
 - [リバースプロキシの環境構築](./proxy/README.md)
 - [検証サーバの環境構築](./test/README.md)
 - [Ansibleによる設定の流し込み](./ansible/README.md)
+- [デプロイ](./deploy/README.md)
 
 ---
 
