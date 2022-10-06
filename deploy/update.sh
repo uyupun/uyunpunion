@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 ssh -i ../ansible/roles/user/files/id_ed25519 takashi@192.168.56.10 << EOF
     cd uyunpunion
     git pull origin master
@@ -14,8 +16,7 @@ ssh -i ../ansible/roles/user/files/id_ed25519 takashi@192.168.56.10 << EOF
     echo "****************************************************************************************************"
     echo ""
     cd ../proxy
-    docker compose down
-    docker compose up -d
+    docker compose restart
     echo ""
     echo Docker processes
     echo "****************************************************************************************************"
