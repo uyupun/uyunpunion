@@ -21,9 +21,8 @@ if [[ $CURRENT_VERSION > $NEXT_VERSION ]]; then
 fi
 
 # .envと.env.exampleのバージョンの書き換え
-CURRENT_VERSION=`cat ../src/.env | grep VERSION`
-sed -i -e "s/$CURRENT_VERSION/VERSION=$NEXT_VERSION/" ../src/.env
-sed -i -e "s/$CURRENT_VERSION/VERSION=$NEXT_VERSION/" ../src/.env.example
+sed -i -e "s/VERSION=$CURRENT_VERSION/VERSION=$NEXT_VERSION/" ../src/.env
+sed -i -e "s/VERSION=$CURRENT_VERSION/VERSION=$NEXT_VERSION/" ../src/.env.example
 git add .env.example
 git commit -m "Add version ($CURRENT_VERSION to $NEXT_VERSION)"
 git push origin master

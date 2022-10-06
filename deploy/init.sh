@@ -14,16 +14,23 @@ fi
 
 HOST=$1
 
+# GitHubからリポジトリをクローン
 ssh -i ../ansible/roles/user/files/id_ed25519 takashi@$HOST << EOF
+    ssh-keyscan -t rsa github.com >> .ssh/known_hosts
     git clone git@github.com:uyupun/uyunpunion.git
+EOF
 
+# .envの作成
+read -p "UYUNPUNION_TOKENを入力してください: " UYUNPUNION_TOKEN
+cp ../src/.env.example .env.tmp
+sed -i -e "s/UYUNPUNION_TOKEN=/UYUNPUNION_TOKEN=$UYUNPUNION_TOKEN/" ./.env.tmp
+sed -i -e "s/ENV=dev/ENV=prod/" ./.env.tmp
+scp -i ../ansible/roles/user/files/id_ed25519 ./.env.tmp takashi@$HOST:~/uyunpunion/src/.env
+rm -rf .env.tmp .env.tmp-e
+
+# APIとリバプロの起動
+ssh -i ../ansible/roles/user/files/id_ed25519 takashi@$HOST << EOF
     cd uyunpunion/src
-    cp .env.example .env
-    read -p "UYUNPUNION_TOKENを入力してください" UYUNPUNION_TOKEN
-    EMPTY_UYUNPUNION_TOKEN=`cat ../src/.env | grep EMPTY_UYUNPUNION_TOKEN`
-    sed -i -e "s/$EMPTY_UYUNPUNION_TOKEN/UYUNPUNION_TOKEN=$UYUNPUNION_TOKEN/" ../src/.env
-    ENV=`cat ../src/.env | grep ENV`
-    sed -i -e "s/$ENV/ENV=prod/" ../src/.env
     pipenv install
     make up
     sleep 5
