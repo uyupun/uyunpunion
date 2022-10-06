@@ -2,6 +2,8 @@
 
 set -e
 
+# バージョンの取得
+CURRENT_VERSION=`cat ../src/.env.example | grep VERSION | sed -e "s/VERSION=//g"`
 NEXT_VERSION=$1
 
 # masterブランチの最新状態に移動する
@@ -11,6 +13,10 @@ git pull origin master
 # バリデーション
 if [[ ! $NEXT_VERSION  =~ v[0-9]{1}.[0-9]{1}.[0-9]{1} ]]; then
     printf "\e[31m%s\e[m\n" "タグの形式に誤りがあります。v0.1.0のような形式で指定してください。"
+    exit 1
+fi
+if [[ $CURRENT_VERSION > $NEXT_VERSION ]]; then
+    printf "\e[31m%s\e[m\n" "現在のバージョンよりも低いバージョンは指定できません。"
     exit 1
 fi
 

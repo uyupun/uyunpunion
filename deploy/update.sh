@@ -14,7 +14,7 @@ fi
 
 HOST=$1
 
-ssh -i ../ansible/roles/user/files/id_ed25519 takashi@192.168.56.10 << EOF
+ssh -i ../ansible/roles/user/files/id_ed25519 takashi@$HOST << EOF
     cd uyunpunion
     git pull origin master
     cd src
