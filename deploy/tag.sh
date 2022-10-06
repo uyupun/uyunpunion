@@ -2,15 +2,15 @@
 
 set -e
 
+NEXT_VERSION=$1
+
 # masterブランチの最新状態に移動する
 git checkout master
 git pull origin master
 
-read -p "タグ打ちするバージョンを入力してください(例: v1.0.0): " NEXT_VERSION
-
 # バリデーション
-if [[ ! $VERSION  =~ v[0-9]{1}.[0-9]{1}.[0-9]{1} ]]; then
-    printf "\e[31m%s\e[m\n" "タグの形式に誤りがあります。タグ打ちに失敗しました。"
+if [[ ! $NEXT_VERSION  =~ v[0-9]{1}.[0-9]{1}.[0-9]{1} ]]; then
+    printf "\e[31m%s\e[m\n" "タグの形式に誤りがあります。v0.1.0のような形式で指定してください。"
     exit 1
 fi
 
