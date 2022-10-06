@@ -37,13 +37,10 @@
     port: "{{ item.port }}"
     proto: "{{ item.proto }}"
   loop:
+    # tcp port 80, 8080に関してはproxy/docker-compose.ymlから開けているため、ここには記載していない
     - rule: limit
       src: any
       port: 22
-      proto: tcp
-    - rule: allow
-      src: any
-      port: 80
       proto: tcp
     - rule: allow
       src: any
