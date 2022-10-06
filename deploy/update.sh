@@ -17,6 +17,7 @@ HOST=$1
 ssh -i ../ansible/roles/user/files/id_ed25519 takashi@$HOST << EOF
     cd uyunpunion
     git pull origin master
+
     cd src
     pipenv install
     make reload
@@ -27,6 +28,7 @@ ssh -i ../ansible/roles/user/files/id_ed25519 takashi@$HOST << EOF
     make ps
     echo "****************************************************************************************************"
     echo ""
+
     cd ../proxy
     docker compose restart
     echo ""

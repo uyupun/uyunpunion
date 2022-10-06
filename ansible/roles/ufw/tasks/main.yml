@@ -13,13 +13,13 @@
 
 - name: Enable ufw
   become: true
-  ufw:
+  community.general.ufw:
     state: enabled
   when: not ansible_check_mode
 
 - name: Setting ufw basic packet filtering
   become: true
-  ufw:
+  community.general.ufw:
     direction: "{{ item.direction }}"
     policy: "{{ item.policy }}"
   loop:
@@ -31,24 +31,36 @@
 
 - name: Setting ufw advance packet filtering
   become: true
-  ufw:
+  community.general.ufw:
     rule: "{{ item.rule }}"
+    src: "{{ item.src }}"
     port: "{{ item.port }}"
     proto: "{{ item.proto }}"
   loop:
     - rule: limit
+      src: any
       port: 22
       proto: tcp
     - rule: allow
+      src: any
       port: 80
       proto: tcp
     - rule: allow
+      src: any
       port: 443
+      proto: tcp
+    - rule: allow
+      src: "{{ traefik_src_ip }}"
+      port: 8081
+      proto: tcp
+    - rule: allow
+      src: ::1
+      port: 8081
       proto: tcp
   when: not ansible_check_mode
 
 - name: Enable ufw logs
   become: true
-  ufw:
+  community.general.ufw:
     logging: true
   when: not ansible_check_mode
