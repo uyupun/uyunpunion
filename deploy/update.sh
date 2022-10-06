@@ -2,6 +2,18 @@
 
 set -e
 
+# バリデーション
+if [ $# -eq 0 ]; then
+    printf "\e[31m%s\e[m\n" "接続先が指定されていません。"
+    exit 1
+fi
+if [ $# -gt 1 ]; then
+    printf "\e[31m%s\e[m\n" "引数の数が不正です。"
+    exit 1
+fi
+
+HOST=$1
+
 ssh -i ../ansible/roles/user/files/id_ed25519 takashi@192.168.56.10 << EOF
     cd uyunpunion
     git pull origin master
