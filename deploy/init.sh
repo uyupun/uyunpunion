@@ -42,6 +42,7 @@ ssh -i ../ansible/roles/user/files/id_ed25519 takashi@$HOST << EOF
     echo ""
 
     cd ../proxy
+    docker network create --driver bridge --subnet 172.20.0.0/16 uyunpunion-network
     docker compose up -d
     echo ""
     echo Docker processes
