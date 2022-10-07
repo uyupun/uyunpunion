@@ -1,7 +1,6 @@
 version: "3.3"
 
 services:
-
   traefik:
     image: "traefik:v2.8"
     container_name: reverse-proxy
@@ -12,3 +11,8 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "./traefik.toml:/etc/traefik/traefik.toml"
       - "./api.toml:/etc/traefik/api.toml"
+
+networks:
+  default:
+    name: uyunpunion-network
+    external: true

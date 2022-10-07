@@ -10,11 +10,12 @@
 
 - 以下のファイルが必要です
     - `ansible/roles/user/files/id_ed25519`
+    - `ansible/ANSIBLE_VAULT_PASSWORD`
 
 ```bash
 $ cd ansible
 $ chmod 600 roles/user/files/id_ed25519                     # 秘密鍵のパーミッションを変更しないとSSH接続できないため
-$ touch VAULT_PASSWORD                                      # Ansible Vaultのパスワードを設定する
+$ touch ANSIBLE_VAULT_PASSWORD                              # Ansible Vaultのパスワードを設定する
 $ pipenv install
 $ pipenv shell
 $ ansible all -i hosts/test -m ping                         # 疎通確認

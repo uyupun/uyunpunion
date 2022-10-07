@@ -9,8 +9,8 @@ load_dotenv()
 class Settings(BaseSettings):
     PROJECT_NAME: str = "汎用五感伝達機構 ウユンプニオン 零号機"
     DESCRIPTION: str = "五感に多彩な刺激を与えるためのインタフェースを提供します"
-    VERSION: str = "0.0.0"
 
+    VERSION: str
     UYUNPUNION_TOKEN: str
     ENV: str
 
