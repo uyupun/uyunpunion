@@ -21,7 +21,9 @@ ssh -i ../ansible/roles/user/files/id_ed25519 takashi@$HOST << EOF
 EOF
 
 # .envの作成
-read -p "UYUNPUNION_TOKENを入力してください: " UYUNPUNION_TOKEN
+cd ../src
+pipenv shell
+UYUNPUNION_TOKEN=`python generate_uyunpunion_token.py`
 cp ../src/.env.example .env.tmp
 sed -i -e "s/UYUNPUNION_TOKEN=/UYUNPUNION_TOKEN=$UYUNPUNION_TOKEN/" ./.env.tmp
 sed -i -e "s/ENV=dev/ENV=prod/" ./.env.tmp

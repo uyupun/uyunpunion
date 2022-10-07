@@ -14,6 +14,7 @@ fi
 
 HOST=$1
 
+# APIとリバプロの起動
 ssh -i ../ansible/roles/user/files/id_ed25519 takashi@$HOST << EOF
     cd uyunpunion
     git pull origin master
@@ -30,7 +31,8 @@ ssh -i ../ansible/roles/user/files/id_ed25519 takashi@$HOST << EOF
     echo ""
 
     cd ../proxy
-    docker compose restart
+    docker compose down
+    docker compose up -d
     echo ""
     echo Docker processes
     echo "****************************************************************************************************"

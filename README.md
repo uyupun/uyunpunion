@@ -44,32 +44,33 @@
 ## ディレクトリ構造
 
 ```
-├ .vscode                 Visual Studio Codeの設定
+├ .vscode                         Visual Studio Codeの設定
 ├ ansible
-│ ├ hosts                 Ansibleの接続先の設定
-│ ├ roles                 Ansibleの各タスク
-│ ├ ansible.cfg           Ansible自体の挙動の設定
-│ └ infra.yml             Ansibleで設定を流すためのエントリーポイント
-├ deploy                  デプロイスクリプト関連
-│ ├ get_server_ssh_key.sh デプロイ対象のサーバから公開鍵を取得するスクリプト
-│ ├ init.sh               初回デプロイ時に使用するスクリプト
-│ ├ tag.sh                タグ打ちに使用するスクリプト
-│ └ update.sh             2回目以降のデプロイ時に使用するスクリプト
+│ ├ hosts                         Ansibleの接続先の設定
+│ ├ roles                         Ansibleの各タスク
+│ ├ ansible.cfg                   Ansible自体の挙動の設定
+│ └ infra.yml                     Ansibleで設定を流すためのエントリーポイント
+├ deploy                          デプロイスクリプト関連
+│ ├ get_server_ssh_key.sh         デプロイ対象のサーバから公開鍵を取得するスクリプト
+│ ├ init.sh                       初回デプロイ時に使用するスクリプト
+│ ├ tag.sh                        タグ打ちに使用するスクリプト
+│ └ update.sh                     2回目以降のデプロイ時に使用するスクリプト
 ├ images
 ├ proxy
-│ ├ api.toml              リバースプロキシ(Traefik)の動的設定
-│ ├ docker-compose.yml    リバースプロキシ(Traefik)のDocker周りの設定
-│ └ traefik.toml          リバースプロキシ(Traefik)の静的設定
+│ ├ api.toml                      リバースプロキシ(Traefik)の動的設定
+│ ├ docker-compose.yml            リバースプロキシ(Traefik)のDocker周りの設定
+│ └ traefik.toml                  リバースプロキシ(Traefik)の静的設定
 ├ src
-│ ├ drivers               ウユンプニオン・ドライバの制御スクリプト
-│ ├ middlewares           カスタムミドルウェア
-│ ├ routes                APIの各エンドポイント
-│ ├ schemas               レスポンスのスキーマ
-│ ├ app.py                アプリケーションのエントリーポイント
-│ ├ gunicorn.conf.py      本番環境で使用するGunicornの設定
-│ ├ Makefile              本番環境で使用するコマンド群の定義
-│ └ settings.py           環境変数、グローバル変数
-├ test                    検証サーバ(Vagrant)の設定
+│ ├ drivers                       ウユンプニオン・ドライバの制御スクリプト
+│ ├ middlewares                   カスタムミドルウェア
+│ ├ routes                        APIの各エンドポイント
+│ ├ schemas                       レスポンスのスキーマ
+│ ├ app.py                        アプリケーションのエントリーポイント
+│ ├ generate_uyunpunion_token.py  UYUNPUNION_TOKENの生成スクリプト
+│ ├ gunicorn.conf.py              本番環境で使用するGunicornの設定
+│ ├ Makefile                      本番環境で使用するコマンド群の定義
+│ └ settings.py                   環境変数、グローバル変数
+├ test                            検証サーバ(Vagrant)の設定
 └ README.md
 ```
 
