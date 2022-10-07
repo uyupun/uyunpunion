@@ -11,6 +11,7 @@
 
 ```bash
 $ cd proxy
+$ cp api.toml.example api.toml                                          # urlにAPIのIPとポートの指定が必須
 $ docker compose up -d
 $ docker compose ps
 $ docker compose down
