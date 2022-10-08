@@ -6,6 +6,7 @@
 
 ## 概要
 
+<img src="images/logo.png" width="500px">
 <img src="images/key_visual.png" width="500px">
 
 - **汎用五感伝達機構 ウユンプニオン 零号機**(通称: **UYU 零号機**)
