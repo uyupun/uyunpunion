@@ -11,6 +11,7 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "./traefik.toml:/etc/traefik/traefik.toml"
       - "./api.toml:/etc/traefik/api.toml"
+    restart: always
 
 networks:
   default:
