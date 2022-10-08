@@ -1,0 +1,19 @@
+[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+Type=notify
+User=takashi
+Group=uyunpunion
+RuntimeDirectory=gunicorn
+WorkingDirectory=/home/takashi/uyunpunion/src
+ExecStart=/home/takashi/uyunpunion/src/.venv/bin/gunicorn uyunpunion.wsgi
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

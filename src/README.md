@@ -35,6 +35,7 @@ $ python drivers/blower.py start    # ドライバ単体で実行させる場合
 ```bash
 $ cd src
 $ cp .env.example .env                  # UYUNPUNION_TOKEN、ENV=prodの設定が必須
+$ export PIPENV_VENV_IN_PROJECT=1
 $ pipenv install
 $ make up                               # サーバの起動
 $ make reload                           # サーバの再起動(graceful)
