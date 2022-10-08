@@ -41,7 +41,7 @@ rm -rf api.toml.tmp api.toml.tmp-e
 ssh -i ../ansible/roles/user/files/id_ed25519 takashi@$HOST << EOF
     cd uyunpunion/src
     pipenv install
-    make up
+    sudo systemctl enable --now gunicorn.service
     sleep 5
     echo ""
     echo Gunicorn processes

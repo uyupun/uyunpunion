@@ -1,0 +1,8 @@
+- name: Copy gunicorn.service
+  become: true
+  ansible.builtin.copy:
+    src: files/gunicorn.service
+    dest: /etc/systemd/system/gunicorn.service
+    owner: root
+    group: root
+    mode: 0644
