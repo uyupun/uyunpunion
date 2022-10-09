@@ -31,9 +31,9 @@ scp -i ../ansible/roles/user/files/id_ed25519 ./.env.tmp takashi@$HOST:~/uyunpun
 rm -rf .env.tmp .env.tmp-e
 
 # api.tomlの作成
-cp ../proxy/api.toml.example api.toml.tmp
+cp ../proxy/config/api.toml.example api.toml.tmp
 sed -i -e "s#http://192.168.0.4:8081#http://$HOST:8081#" ./api.toml.tmp
-scp -i ../ansible/roles/user/files/id_ed25519 ./api.toml.tmp takashi@$HOST:~/uyunpunion/proxy/api.toml
+scp -i ../ansible/roles/user/files/id_ed25519 ./api.toml.tmp takashi@$HOST:~/uyunpunion/proxy/config/api.toml
 rm -rf api.toml.tmp api.toml.tmp-e
 
 # APIとリバプロの起動

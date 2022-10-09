@@ -10,7 +10,8 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "./traefik.toml:/etc/traefik/traefik.toml"
-      - "./api.toml:/etc/traefik/api.toml"
+      - "./config/api.toml:/etc/traefik/config/api.toml"
+      - "./config/dashboard.toml:/etc/traefik/config/dashboard.toml"
     restart: always
 
 networks:

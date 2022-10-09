@@ -9,6 +9,7 @@
     - Homebrew
     - VirtualBox
     - Vagrant
+    - ssh-agent
 
 ```bash
 $ cd test

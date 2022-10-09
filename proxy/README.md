@@ -8,10 +8,12 @@
 - 以下のソフトウェアが必要です
     - Docker
     - Docker Compose
+    - htpasswd
 
 ```bash
 $ cd proxy
-$ cp api.toml.example api.toml                                          # urlにAPIのIPとポートの指定が必須
+$ cp config/api.toml.example config/api.toml                            # urlにAPIのIPとポートの指定が必須
+$ htpasswd -n takashi                                                   # ユーザを作成する場合
 $ docker compose up -d
 $ docker compose ps
 $ docker compose down

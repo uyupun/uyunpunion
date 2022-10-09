@@ -7,6 +7,7 @@
 - 以下のソフトウェアが必要です
     - Python又はPyenv(Pythonのバージョンは3.9系)
     - Pipenv
+    - ssh-agent
 
 - 以下のファイルが必要です
     - `ansible/roles/user/files/id_ed25519`

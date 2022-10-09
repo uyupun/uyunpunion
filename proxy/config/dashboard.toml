@@ -1,0 +1,11 @@
+[http.routers]
+    [http.routers.dashboard-router]
+        rule = "Path(`/dashboard`)"
+        service = "api@internal"
+
+[http.middlewares]
+    [http.middlewares.dashboard-middleware]
+        [http.middlewares.dashboard-middleware.basicAuth]
+            users = [
+                "takashi:$apr1$qB6zabxX$X4wHwBAFnwJZnYfD2O/Ob1"
+            ]
