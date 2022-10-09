@@ -37,7 +37,7 @@ scp -i ../ansible/roles/user/files/id_ed25519 ./api.toml.tmp takashi@$HOST:~/uyu
 rm -rf api.toml.tmp api.toml.tmp-e
 
 # APIとリバプロの起動
-read -p "takashiユーザのパスワードを入力してください: " PASSWORD
+read -sp "takashiユーザのパスワードを入力してください: " PASSWORD
 ssh -i ../ansible/roles/user/files/id_ed25519 takashi@$HOST << EOF
     cd uyunpunion/src
     pipenv install
