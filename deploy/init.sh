@@ -22,8 +22,7 @@ EOF
 
 # .envの作成
 cd ../src
-pipenv shell
-UYUNPUNION_TOKEN=`python generate_uyunpunion_token.py`
+UYUNPUNION_TOKEN=`pipenv run python generate_uyunpunion_token.py`
 cd ../deploy
 cp ../src/.env.example .env.tmp
 sed -i -e "s/UYUNPUNION_TOKEN=/UYUNPUNION_TOKEN=$UYUNPUNION_TOKEN/" ./.env.tmp
@@ -38,10 +37,11 @@ scp -i ../ansible/roles/user/files/id_ed25519 ./api.toml.tmp takashi@$HOST:~/uyu
 rm -rf api.toml.tmp api.toml.tmp-e
 
 # APIとリバプロの起動
+read -p "takashiユーザのパスワードを入力してください: " PASSWORD
 ssh -i ../ansible/roles/user/files/id_ed25519 takashi@$HOST << EOF
     cd uyunpunion/src
     pipenv install
-    sudo systemctl enable --now gunicorn.service
+    echo $PASSWORD | sudo -S systemctl enable --now gunicorn.service
     sleep 5
     echo ""
     echo Gunicorn processes

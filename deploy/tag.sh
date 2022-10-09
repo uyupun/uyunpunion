@@ -34,4 +34,5 @@ git push origin $NEXT_VERSION
 echo ""
 echo バージョン $NEXT_VERSION でタグ打ちしました。
 echo GitHub上でReleaseを作成してください。
+echo "-> https://github.com/uyupun/uyunpunion/releases"
 open https://github.com/uyupun/uyunpunion/releases

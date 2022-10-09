@@ -14,7 +14,11 @@ fi
 
 HOST=$1
 
+# 公開鍵の取得
 rm -f id_rsa.pub
 scp -i ../ansible/roles/user/files/id_ed25519 takashi@$HOST:~/.ssh/id_rsa.pub ./
 
+echo ""
+echo GitHub上でDeploy keyを登録してください。
+echo "-> https://github.com/uyupun/uyunpunion/settings/keys"
 open https://github.com/uyupun/uyunpunion/settings/keys
