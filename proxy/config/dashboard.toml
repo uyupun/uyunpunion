@@ -1,6 +1,6 @@
 [http.routers]
     [http.routers.dashboard-router]
-        rule = "Path(`/dashboard`)"
+        rule = "PathPrefix(`/api`) || PathPrefix(`/dashboard`)"
         service = "api@internal"
         middlewares = ["dashboard-middleware"]
 
