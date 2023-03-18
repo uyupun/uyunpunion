@@ -59,7 +59,7 @@
 ├ images
 ├ proxy
 │ ├ api.toml                      リバースプロキシ(Traefik)の動的設定
-│ ├ docker-compose.yml            リバースプロキシ(Traefik)のDocker周りの設定
+│ ├ compose.yml                   リバースプロキシ(Traefik)のDocker周りの設定
 │ └ traefik.toml                  リバースプロキシ(Traefik)の静的設定
 ├ src
 │ ├ drivers                       ウユンプニオン・ドライバの制御スクリプト
