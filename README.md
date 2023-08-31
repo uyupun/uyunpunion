@@ -46,11 +46,6 @@
 
 ```
 ├ .vscode                         Visual Studio Codeの設定
-├ ansible
-│ ├ roles                         Ansibleの各タスク
-│ ├ ansible.cfg                   Ansible自体の挙動の設定
-│ ├ develop                       Ansibleの接続先の設定(開発環境)
-│ └ infra.yml                     Ansibleで設定を流すためのエントリーポイント
 ├ deploy                          デプロイスクリプト関連
 │ ├ get_server_ssh_key.sh         デプロイ対象のサーバから公開鍵を取得するスクリプト
 │ ├ init.sh                       初回デプロイ時に使用するスクリプト
@@ -58,6 +53,11 @@
 │ └ update.sh                     2回目以降のデプロイ時に使用するスクリプト
 ├ develop                         検証サーバ(Vagrant)の設定
 ├ images
+├ playbook
+│ ├ roles                         Ansibleの各タスク
+│ ├ ansible.cfg                   Ansible自体の挙動の設定
+│ ├ develop                       Ansibleの接続先の設定(開発環境)
+│ └ site.yml                      Ansibleで設定を流すためのエントリーポイント
 ├ proxy
 │ ├ api.toml                      リバースプロキシ(Traefik)の動的設定
 │ ├ compose.yml                   リバースプロキシ(Traefik)のDocker周りの設定
@@ -88,7 +88,7 @@
 - [APIの環境構築](./src/README.md)
 - [リバースプロキシの環境構築](./proxy/README.md)
 - [検証サーバの環境構築](./develop/README.md)
-- [Ansibleによる設定の流し込み](./ansible/README.md)
+- [Ansibleによる設定の流し込み](./playbook/README.md)
 - [デプロイ](./deploy/README.md)
 
 ---

@@ -15,7 +15,7 @@ fi
 HOST=$1
 
 # APIとリバプロの起動
-ssh -i ../ansible/roles/user/files/id_ed25519 takashi@$HOST << EOF
+ssh -i ../playbook/roles/user/files/id_ed25519 takashi@$HOST << EOF
     cd uyunpunion
     git pull origin master
 

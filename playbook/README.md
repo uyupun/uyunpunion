@@ -9,11 +9,11 @@
     - Pipenv
 
 - 以下のファイルが必要です
-    - `ansible/roles/user/files/id_ed25519`
-    - `ansible/ANSIBLE_VAULT_PASSWORD`
+    - `playbook/roles/user/files/id_ed25519`
+    - `playbook/ANSIBLE_VAULT_PASSWORD`
 
 ```bash
-$ cd ansible
+$ cd playbook
 $ chmod 600 roles/user/files/id_ed25519                     # 秘密鍵のパーミッションを変更しないとSSH接続できないため
 $ ssh-add roles/user/files/id_ed25519                       # パスフレーズの入力を省略させるための設定(オプション)
 $ touch ANSIBLE_VAULT_PASSWORD                              # Ansible Vaultのパスワードを設定する
@@ -21,11 +21,11 @@ $ pipenv install
 $ pipenv shell
 $ ansible-vault encrypt roles/user/vars/main.yml
 $ ansible-vault decrypt roles/user/vars/main.yml
-$ ansible all -i hosts/test -m ping                         # 疎通確認
-$ ansible-playbook -i hosts/test infra.yml --list-tasks     # タスク一覧
-$ ansible-playbook -i hosts/test infra.yml --syntax-check   # 構文エラーのチェック
-$ ansible-lint infra.yml                                    # リンターの実行
-$ ansible-playbook -i hosts/test infra.yml --check --diff   # ドライラン
-$ ansible-playbook -i hosts/test infra.yml                  # 実行
+$ ansible all -i develop -m ping                            # 疎通確認
+$ ansible-playbook -i develop site.yml --list-tasks         # タスク一覧
+$ ansible-playbook -i develop site.yml --syntax-check       # 構文エラーのチェック
+$ ansible-lint site.yml                                     # リンターの実行
+$ ansible-playbook -i develop site.yml --check --diff       # ドライラン
+$ ansible-playbook -i develop site.yml                      # 実行
 $ ssh -i roles/user/files/id_ed25519 takashi@192.168.56.10  # SSH接続
 ```
