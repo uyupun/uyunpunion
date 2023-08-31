@@ -21,13 +21,13 @@ ssh -i ../playbook/roles/user/files/id_ed25519 takashi@$HOST << EOF
 EOF
 
 # .envの作成
-cd ../src
+cd ../api
 UYUNPUNION_TOKEN=`pipenv run python generate_uyunpunion_token.py`
 cd ../deploy
-cp ../src/.env.example .env.tmp
+cp ../api/.env.example .env.tmp
 sed -i -e "s/UYUNPUNION_TOKEN=/UYUNPUNION_TOKEN=$UYUNPUNION_TOKEN/" ./.env.tmp
 sed -i -e "s/ENV=dev/ENV=prod/" ./.env.tmp
-scp -i ../playbook/roles/user/files/id_ed25519 ./.env.tmp takashi@$HOST:~/uyunpunion/src/.env
+scp -i ../playbook/roles/user/files/id_ed25519 ./.env.tmp takashi@$HOST:~/uyunpunion/api/.env
 rm -rf .env.tmp .env.tmp-e
 
 # api.tomlの作成
@@ -39,7 +39,7 @@ rm -rf api.toml.tmp api.toml.tmp-e
 # APIとリバプロの起動
 read -sp "takashiユーザのパスワードを入力してください: " PASSWORD
 ssh -i ../playbook/roles/user/files/id_ed25519 takashi@$HOST << EOF
-    cd uyunpunion/src
+    cd uyunpunion/api
     pipenv install
     echo $PASSWORD | sudo -S systemctl enable --now gunicorn.service
     sleep 5

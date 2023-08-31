@@ -46,6 +46,16 @@
 
 ```
 ├ .vscode                         Visual Studio Codeの設定
+├ api
+│ ├ drivers                       ウユンプニオン・ドライバの制御スクリプト
+│ ├ middlewares                   カスタムミドルウェア
+│ ├ routes                        APIの各エンドポイント
+│ ├ schemas                       レスポンスのスキーマ
+│ ├ app.py                        アプリケーションのエントリーポイント
+│ ├ generate_uyunpunion_token.py  UYUNPUNION_TOKENの生成スクリプト
+│ ├ gunicorn.conf.py              本番環境で使用するGunicornの設定
+│ ├ Makefile                      本番環境で使用するコマンド群の定義
+│ └ settings.py                   環境変数、グローバル変数
 ├ deploy                          デプロイスクリプト関連
 │ ├ get_server_ssh_key.sh         デプロイ対象のサーバから公開鍵を取得するスクリプト
 │ ├ init.sh                       初回デプロイ時に使用するスクリプト
@@ -62,16 +72,6 @@
 │ ├ api.toml                      リバースプロキシ(Traefik)の動的設定
 │ ├ compose.yml                   リバースプロキシ(Traefik)のDocker周りの設定
 │ └ traefik.toml                  リバースプロキシ(Traefik)の静的設定
-├ src
-│ ├ drivers                       ウユンプニオン・ドライバの制御スクリプト
-│ ├ middlewares                   カスタムミドルウェア
-│ ├ routes                        APIの各エンドポイント
-│ ├ schemas                       レスポンスのスキーマ
-│ ├ app.py                        アプリケーションのエントリーポイント
-│ ├ generate_uyunpunion_token.py  UYUNPUNION_TOKENの生成スクリプト
-│ ├ gunicorn.conf.py              本番環境で使用するGunicornの設定
-│ ├ Makefile                      本番環境で使用するコマンド群の定義
-│ └ settings.py                   環境変数、グローバル変数
 └ README.md
 ```
 

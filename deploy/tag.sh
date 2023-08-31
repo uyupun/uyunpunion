@@ -3,7 +3,7 @@
 set -e
 
 # バージョンの取得
-CURRENT_VERSION=`cat ../src/.env.example | grep VERSION | sed -e "s/VERSION=//g"`
+CURRENT_VERSION=`cat ../api/.env.example | grep VERSION | sed -e "s/VERSION=//g"`
 NEXT_VERSION=$1
 
 # masterブランチの最新状態に移動する
@@ -21,8 +21,8 @@ if [[ $CURRENT_VERSION > $NEXT_VERSION ]]; then
 fi
 
 # .envと.env.exampleのバージョンの書き換え
-sed -i -e "s/VERSION=$CURRENT_VERSION/VERSION=$NEXT_VERSION/" ../src/.env
-sed -i -e "s/VERSION=$CURRENT_VERSION/VERSION=$NEXT_VERSION/" ../src/.env.example
+sed -i -e "s/VERSION=$CURRENT_VERSION/VERSION=$NEXT_VERSION/" ../api/.env
+sed -i -e "s/VERSION=$CURRENT_VERSION/VERSION=$NEXT_VERSION/" ../api/.env.example
 git add .env.example
 git commit -m "Add version ($CURRENT_VERSION to $NEXT_VERSION)"
 git push origin master

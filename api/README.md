@@ -13,7 +13,7 @@
         - 本リポジトリには[VSCode上でFlake8(リンター)とBlack(フォーマッター)を動作させるための設定](./.vscode/settings.json)が含まれています
 
 ```bash
-$ cd src
+$ cd api
 $ cp .env.example .env              # UYUNPUNION_TOKENの設定が必須
 $ pipenv install --dev
 $ pipenv shell
@@ -33,7 +33,7 @@ $ python drivers/blower.py start    # ドライバ単体で実行させる場合
     - ※ 主にMakefile経由で操作します
 
 ```bash
-$ cd src
+$ cd api
 $ cp .env.example .env                  # UYUNPUNION_TOKEN、ENV=prodの設定が必須
 $ pipenv sync --dev
 $ make up                               # サーバの起動

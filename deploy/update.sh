@@ -19,7 +19,7 @@ ssh -i ../playbook/roles/user/files/id_ed25519 takashi@$HOST << EOF
     cd uyunpunion
     git pull origin master
 
-    cd src
+    cd api
     pipenv install
     make reload
     sleep 5
