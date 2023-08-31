@@ -2,8 +2,8 @@ from drivers.humidifier import HumidifierDriver
 from fastapi import APIRouter, Depends
 from middlewares.verify_token import verify_token_middleware
 from settings import get_settings
-from shemas.humidifier import StartHumidifierResponse, StopHumidifierResponse
-from shemas.token import TokenRequestHeader
+from schemas.humidifier import StartHumidifierResponse, StopHumidifierResponse
+from schemas.token import TokenRequestHeader
 
 router = APIRouter(
     prefix="/humidifier",

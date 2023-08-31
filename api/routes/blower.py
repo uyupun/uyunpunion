@@ -2,8 +2,8 @@ from drivers.blower import BlowerDriver
 from fastapi import APIRouter, Depends
 from middlewares.verify_token import verify_token_middleware
 from settings import get_settings
-from shemas.blower import StartBlowerResponse, StopBlowerResponse
-from shemas.token import TokenRequestHeader
+from schemas.blower import StartBlowerResponse, StopBlowerResponse
+from schemas.token import TokenRequestHeader
 
 router = APIRouter(
     prefix="/blower", tags=["blower"], dependencies=[Depends(verify_token_middleware)]
