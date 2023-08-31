@@ -19,6 +19,8 @@ $ ssh-add roles/user/files/id_ed25519                       # パスフレーズ
 $ touch ANSIBLE_VAULT_PASSWORD                              # Ansible Vaultのパスワードを設定する
 $ pipenv install
 $ pipenv shell
+$ ansible-vault encrypt roles/user/vars/main.yml
+$ ansible-vault decrypt roles/user/vars/main.yml
 $ ansible all -i hosts/test -m ping                         # 疎通確認
 $ ansible-playbook -i hosts/test infra.yml --list-tasks     # タスク一覧
 $ ansible-playbook -i hosts/test infra.yml --syntax-check   # 構文エラーのチェック
