@@ -1,13 +1,6 @@
-- name: Install pip
-  become: true
-  ansible.builtin.apt:
-    name: python3-pip
-  when: not ansible_check_mode
-
 - name: Install Pipenv
   become: true
-  become_user: takashi
-  ansible.builtin.pip:
+  ansible.builtin.apt:
     name:
       - pipenv
   when: not ansible_check_mode

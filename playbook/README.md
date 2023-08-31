@@ -17,7 +17,7 @@ $ cd playbook
 $ chmod 600 roles/user/files/id_ed25519                     # 秘密鍵のパーミッションを変更しないとSSH接続できないため
 $ ssh-add roles/user/files/id_ed25519                       # パスフレーズの入力を省略させるための設定(オプション)
 $ touch ANSIBLE_VAULT_PASSWORD                              # Ansible Vaultのパスワードを設定する
-$ pipenv install
+$ pipenv sync --dev
 $ pipenv shell
 $ ansible-vault encrypt roles/user/vars/main.yml
 $ ansible-vault decrypt roles/user/vars/main.yml
