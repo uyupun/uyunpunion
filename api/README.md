@@ -14,31 +14,34 @@
 
 ```bash
 $ cd api
-$ cp .env.example .env              # UYUNPUNION_TOKENの設定が必須
-$ pipenv install --dev
+$ pipenv sync --dev
 $ pipenv shell
-$ pipenv run dev                    # サーバの起動
-$ pipenv run dev --port 8081        # ポート指定する場合
-$ pipenv run dev --host 0.0.0.0     # ホスト指定する場合(0.0.0.0の場合、プライベートIPでのアクセスが可能となる)
-$ open localhost:8080               # API
-$ open localhost:8080/docs          # Swagger
-$ open localhost:8080/redoc         # Redoc
-$ python drivers/blower.py start    # ドライバ単体で実行させる場合
+$ python generate_uyunpunion_token.py   # UYUNPUNION_TOKENの生成
+$ cp .env.example .env                  # UYUNPUNION_TOKENの設定が必須
+$ pipenv run dev                        # サーバの起動
+$ pipenv run dev --port 8081            # ポート指定する場合
+$ pipenv run dev --host 0.0.0.0         # ホスト指定する場合(0.0.0.0の場合、プライベートIPでのアクセスが可能となる)
+$ open localhost:8080                   # API
+$ open localhost:8080/docs              # Swagger
+$ open localhost:8080/redoc             # Redoc
+$ python drivers/blower.py start        # ドライバ単体で実行させる場合
 ```
 
-# APIの環境構築(本番環境)
+# APIの環境構築(統合開発環境/本番環境)
 
 - 以下の用途で使用する場合にこの手順が必要です
+    - 統合開発環境にAPIをデプロイする場合
     - 本番環境にAPIをデプロイする場合
     - ※ 主にMakefile経由で操作します
 
 ```bash
 $ cd api
-$ cp .env.example .env                  # UYUNPUNION_TOKEN、ENV=prodの設定が必須
 $ pipenv sync --dev
+$ pipenv shell
+$ python generate_uyunpunion_token.py   # UYUNPUNION_TOKENの生成
+$ cp .env.example .env                  # UYUNPUNION_TOKEN、ENV=prodの設定が必須
 $ make up                               # サーバの起動
 $ make reload                           # サーバの再起動(graceful)
 $ make down                             # サーバの停止
 $ make ps                               # サーバのプロセスの確認
-$ python generate_uyunpunion_token.py   # UYUNPUNION_TOKENの生成
 ```
