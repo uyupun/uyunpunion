@@ -98,16 +98,12 @@
 - ※ 統合開発環境は本番環境とほぼ同等の環境を開発環境で再現した環境を指します
 - [検証サーバの環境構築](./develop/README.md)
 - [Ansibleによる設定の流し込み](./playbook/README.md)
-- [リバースプロキシの環境構築](./proxy/README.md)
-- [APIの環境構築](./api/README.md#apiの環境構築統合開発環境本番環境)
-- [デプロイ](./deploy/README.md)
+- [デプロイスクリプト](./deploy/README.md)
 
 ### 本番環境の環境構築
 
 - [Ansibleによる設定の流し込み](./playbook/README.md)
-- [リバースプロキシの環境構築](./proxy/README.md)
-- [APIの環境構築](./api/README.md#apiの環境構築統合開発環境本番環境)
-- [デプロイ](./deploy/README.md)
+- [デプロイスクリプト](./deploy/README.md)
 
 ---
 

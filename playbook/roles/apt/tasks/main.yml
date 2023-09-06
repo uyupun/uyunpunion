@@ -3,3 +3,4 @@
   ansible.builtin.apt:
     update_cache: true
     upgrade: true
+  tags: apt

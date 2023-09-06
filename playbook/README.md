@@ -27,5 +27,6 @@ $ ansible-playbook -i develop site.yml --syntax-check       # 構文エラーの
 $ ansible-lint site.yml                                     # リンターの実行
 $ ansible-playbook -i develop site.yml --check --diff       # ドライラン
 $ ansible-playbook -i develop site.yml                      # 実行
+$ ansible-playbook -i develop site.yml --tags ssh           # タグを指定して実行
 $ ssh -i roles/user/files/id_ed25519 takashi@192.168.56.10  # SSH接続
 ```

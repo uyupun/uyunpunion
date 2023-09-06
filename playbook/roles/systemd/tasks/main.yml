@@ -5,4 +5,5 @@
     dest: /etc/systemd/system/gunicorn.service
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
+  tags: systemd

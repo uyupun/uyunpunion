@@ -3,6 +3,7 @@
   ansible.builtin.apt:
     name: ufw
   when: not ansible_check_mode
+  tags: ufw
 
 - name: Start ufw
   become: true
@@ -10,12 +11,14 @@
     name: ufw
     state: started
   when: not ansible_check_mode
+  tags: ufw
 
 - name: Enable ufw
   become: true
   community.general.ufw:
     state: enabled
   when: not ansible_check_mode
+  tags: ufw
 
 - name: Setting ufw basic packet filtering
   become: true
@@ -28,6 +31,7 @@
     - direction: outgoing
       policy: allow
   when: not ansible_check_mode
+  tags: ufw
 
 - name: Setting ufw advance packet filtering
   become: true
@@ -55,9 +59,11 @@
       port: 8081
       proto: tcp
   when: not ansible_check_mode
+  tags: ufw
 
 - name: Enable ufw logs
   become: true
   community.general.ufw:
     logging: true
   when: not ansible_check_mode
+  tags: ufw

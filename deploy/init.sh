@@ -14,11 +14,7 @@ fi
 
 HOST=$1
 
-# GitHubからリポジトリをクローン
-ssh -i ../playbook/roles/user/files/id_ed25519 takashi@$HOST << EOF
-    ssh-keyscan -t rsa github.com >> .ssh/known_hosts
-    git clone git@github.com:uyupun/uyunpunion.git
-EOF
+ssh-add ../playbook/roles/user/files/id_ed25519
 
 # .envの作成
 cd ../api
