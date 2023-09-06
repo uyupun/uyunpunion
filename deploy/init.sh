@@ -32,7 +32,7 @@ rm -rf .env.tmp .env.tmp-e
 
 # api.tomlの作成
 cp ../proxy/api.toml.example api.toml.tmp
-sed -i -e "s#http://192.168.0.4:8081#http://$HOST:8081#" ./api.toml.tmp
+sed -i -e "s#http://192.168.0.10:8081#http://$HOST:8081#" ./api.toml.tmp
 scp -i ../playbook/roles/user/files/id_ed25519 ./api.toml.tmp takashi@$HOST:~/uyunpunion/proxy/api.toml
 rm -rf api.toml.tmp api.toml.tmp-e
 
