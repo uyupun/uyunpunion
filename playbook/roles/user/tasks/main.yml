@@ -16,7 +16,7 @@
     createhome: true
     generate_ssh_key: true
 
-- name: Regist public key
+- name: Register public key
   become: true
   ansible.builtin.authorized_key:
     user: takashi
