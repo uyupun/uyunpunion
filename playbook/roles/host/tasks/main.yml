@@ -3,12 +3,14 @@
   ansible.builtin.hostname:
     name: uyunpunion
     use: debian
+  tags: host
 
 - name: Add uyunpunion to /etc/hosts
   become: true
   ansible.builtin.lineinfile:
     path: /etc/hosts
     line: "127.0.0.3       uyunpunion"
+  tags: host
 
 - name: Change prompt
   become: true
@@ -16,6 +18,7 @@
     dest: /home/takashi/.bashrc
     line: export PS1="\[\e[1;31m\]\u\[\e[0m\]@\[\e[1;30;41m\]\h\[\e[0m\]:\w\$ "
   when: not ansible_check_mode
+  tags: host
 
 - name: Change login message
   become: true
@@ -25,3 +28,4 @@
     owner: root
     group: root
     mode: 0644
+  tags: host

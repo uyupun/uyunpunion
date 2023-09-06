@@ -3,6 +3,7 @@
   ansible.builtin.apt:
     name: python3-pip
   when: not ansible_check_mode
+  tags: python
 
 - name: Install Pipenv
   become: true
@@ -11,6 +12,7 @@
     name:
       - pipenv
   when: not ansible_check_mode
+  tags: python
 
 - name: Create .bash_profile
   become: true
@@ -20,6 +22,7 @@
     owner: takashi
     group: uyunpunion
     mode: 0644
+  tags: python
 
 - name: Add ~/.local/bin path to .bash_profile
   become: true
@@ -27,6 +30,7 @@
     path: /home/takashi/.bash_profile
     line: export PATH="$HOME/.local/bin:$PATH"
   when: not ansible_check_mode
+  tags: python
 
 # SSH経由で接続した場合に.bash_profileが存在すると.bashrcが読み込まれないようなので、
 # .bash_profile内でロードしてやる
@@ -40,6 +44,7 @@
     - "  source ~/.bashrc"
     - "fi"
   when: not ansible_check_mode
+  tags: python
 
 - name: Apply .bash_profile
   become: true
@@ -48,6 +53,7 @@
   args:
     executable: /bin/bash
   when: not ansible_check_mode
+  tags: python
 
 - name: Link python3 to python
   become: true
@@ -55,3 +61,4 @@
     src: /usr/bin/python3
     dest: /usr/bin/python
     state: link
+  tags: python

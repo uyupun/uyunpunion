@@ -3,6 +3,7 @@
   ansible.builtin.apt:
     name: git
   when: not ansible_check_mode
+  tags: git
 
 - name: Setting Git
   become: true
@@ -23,3 +24,4 @@
     - name: core.editor
       value: vim
   when: not ansible_check_mode
+  tags: git

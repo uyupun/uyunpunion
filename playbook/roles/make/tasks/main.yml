@@ -3,3 +3,4 @@
   ansible.builtin.apt:
     name: make
   when: not ansible_check_mode
+  tags: make
