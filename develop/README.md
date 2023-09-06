@@ -3,7 +3,7 @@
 - 以下の用途で使用します
     - Ansibleのテスト
     - より本番環境に近い環境での動作確認
-        - ※ Debian 12(bookworm)が動作します
+        - ※ Debian 11(bullseye)が動作します
 
 - 以下のソフトウェアが必要です
     - Homebrew
