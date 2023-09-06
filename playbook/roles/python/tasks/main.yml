@@ -28,16 +28,6 @@
     line: export PATH="$HOME/.local/bin:$PATH"
   when: not ansible_check_mode
 
-# pip install時にプロジェクト直下にインストールするための設定
-# この設定を入れないと、gunicorn.serviceのExecStartからgunicornコマンドを叩こうと思った際にパスがランダムになるため難しくなる
-# e.g. /home/takashi/.local/share/virtualenvs/src-XXXXXXXX
-- name: Add Pipenv setting to .bash_profile
-  become: true
-  ansible.builtin.lineinfile:
-    path: /home/takashi/.bash_profile
-    line: export PIPENV_VENV_IN_PROJECT=1
-  when: not ansible_check_mode
-
 # SSH経由で接続した場合に.bash_profileが存在すると.bashrcが読み込まれないようなので、
 # .bash_profile内でロードしてやる
 - name: Load .bashrc

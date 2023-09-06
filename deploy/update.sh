@@ -20,7 +20,7 @@ ssh -i ../playbook/roles/user/files/id_ed25519 takashi@$HOST << EOF
     git pull origin master
 
     cd api
-    pipenv install
+    pipenv sync --system
     make reload
     sleep 5
     echo ""

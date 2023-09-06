@@ -40,7 +40,7 @@ rm -rf api.toml.tmp api.toml.tmp-e
 read -sp "takashiユーザのパスワードを入力してください: " PASSWORD
 ssh -i ../playbook/roles/user/files/id_ed25519 takashi@$HOST << EOF
     cd uyunpunion/api
-    pipenv install
+    pipenv sync --system
     echo $PASSWORD | sudo -S systemctl enable --now gunicorn.service
     sleep 5
     echo ""
