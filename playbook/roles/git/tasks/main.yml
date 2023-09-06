@@ -8,7 +8,7 @@
 - name: Setting Git
   become: true
   become_user: takashi
-  git_config:
+  community.general.git_config:
     scope: global
     name: "{{ item.name }}"
     value: "{{ item.value }}"

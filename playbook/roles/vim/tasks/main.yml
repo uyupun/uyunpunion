@@ -12,5 +12,5 @@
     dest: /home/takashi/.vimrc
     owner: takashi
     group: uyunpunion
-    mode: 0755
-    tags: vim
+    mode: "0755"
+  tags: vim

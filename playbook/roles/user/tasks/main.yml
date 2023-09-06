@@ -20,7 +20,7 @@
 
 - name: Register public key
   become: true
-  ansible.builtin.authorized_key:
+  ansible.posix.authorized_key:
     user: takashi
     state: present
     key: "{{ lookup('file', '../files/id_ed25519.pub') }}"

@@ -21,7 +21,7 @@
     state: touch
     owner: takashi
     group: uyunpunion
-    mode: 0644
+    mode: "0644"
   tags: python
 
 - name: Add ~/.local/bin path to .bash_profile
@@ -53,6 +53,7 @@
   args:
     executable: /bin/bash
   when: not ansible_check_mode
+  changed_when: false
   tags: python
 
 - name: Link python3 to python
