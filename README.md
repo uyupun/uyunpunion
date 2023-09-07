@@ -21,13 +21,13 @@
 
 ### 全体像
 
-<img src="images/architecture_uyunpunion.png" width="800px">
+<img src="images/uyunpunion_arch.png" width="800px">
 
 ### ウユンプニオン・コア
 
 - Raspberry Piから各マニピュレータを駆動させる際の回路図を以下に示します
 
-<img src="images/architecture_uyunpunion_core.drawio.png" width="500px">
+<img src="images/uyunpunion_core_arch.drawio.png" width="500px">
 
 - 各マニピュレータを制御するGPIOピンはマニピュレータごとに固定とし(ウェルノウンピン)、新たなマニピュレータを接続する際は以下に示すピン番号以外を用いてください
 

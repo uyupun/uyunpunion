@@ -2,10 +2,10 @@
     level = "DEBUG"
 
 [api]
-    insecure = true
+    dashboard = true
 
 [providers.file]
-    filename = "/etc/traefik/api.toml"
+    directory = "/etc/traefik/config"
     watch = true
 
 [entryPoints]
