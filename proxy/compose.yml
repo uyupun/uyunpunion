@@ -1,6 +1,6 @@
 services:
   traefik:
-    image: "traefik:v2.8"
+    image: "traefik:v2.10"
     container_name: reverse-proxy
     ports:
       - "80:80"
