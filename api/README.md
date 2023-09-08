@@ -17,10 +17,8 @@ $ cd api
 $ pipenv sync --dev
 $ pipenv shell
 $ python generate_uyunpunion_token.py   # UYUNPUNION_TOKENの生成
-$ cp .env.example .env                  # UYUNPUNION_TOKENの設定が必須
+$ cp .env.example .env                  # UYUNPUNION_TOKENの設定が必須、起動アドレスや起動ポートの設定も可能
 $ pipenv run dev                        # サーバの起動
-$ pipenv run dev --port 8081            # ポート指定する場合
-$ pipenv run dev --host 0.0.0.0         # ホスト指定する場合(0.0.0.0の場合、プライベートIPでのアクセスが可能となる)
 $ open localhost:8080                   # API
 $ open localhost:8080/docs              # Swagger
 $ open localhost:8080/redoc             # Redoc

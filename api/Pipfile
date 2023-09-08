@@ -22,5 +22,5 @@ black = "*"
 python_version = "3.11"
 
 [scripts]
-dev = "uvicorn --reload app:app --port 8080"
+dev = "python app.py"
 prod = "gunicorn app:app"
