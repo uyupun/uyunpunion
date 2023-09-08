@@ -9,5 +9,7 @@ reload:
 down:
 	kill `cat gunicorn.pid`
 
+ps: port ?= 8080
 ps:
 	ps u -p `pgrep -d, gunicorn`
+	lsof -i :$(port)
