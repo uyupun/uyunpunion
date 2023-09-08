@@ -7,8 +7,7 @@
         [http.routers.dashboard-router.tls]
 
 [http.middlewares]
-    [http.middlewares.dashboard-middleware]
-        [http.middlewares.dashboard-middleware.basicAuth]
-            users = [
-                "takashi:$apr1$wch59Qfy$.bhvUqWXsBTl8Qulpi0.7."
-            ]
+    [http.middlewares.dashboard-middleware.basicAuth]
+        users = [
+            "takashi:$apr1$wch59Qfy$.bhvUqWXsBTl8Qulpi0.7."
+        ]

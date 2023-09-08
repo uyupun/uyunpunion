@@ -4,9 +4,10 @@
 [api]
     dashboard = true
 
-[providers.file]
-    directory = "/etc/traefik/config"
-    watch = true
+[providers]
+    [providers.file]
+        directory = "/etc/traefik/config"
+        watch = true
 
 [entryPoints]
     [entryPoints.web]
@@ -16,8 +17,6 @@
         address = ":443"
 
 [tls]
-    [tls.stores]
-        [tls.stores.default]
-            [tls.stores.default.defaultCertificate]
-                certFile = "/etc/traefik/certs/selfsigned.crt"
-                keyFile = "/etc/traefik/certs/selfsigned.key"
+    [tls.stores.default.defaultCertificate]
+        certFile = "/etc/traefik/certs/selfsigned.crt"
+        keyFile = "/etc/traefik/certs/selfsigned.key"
