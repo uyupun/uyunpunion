@@ -61,12 +61,12 @@
 │ ├ init.sh                       初回デプロイ時に使用するスクリプト
 │ ├ tag.sh                        タグ打ちに使用するスクリプト
 │ └ update.sh                     2回目以降のデプロイ時に使用するスクリプト
-├ develop                         検証サーバ(Vagrant)の設定
+├ devel                           検証サーバ(Vagrant)の設定
 ├ images
 ├ playbook
 │ ├ roles                         Ansibleの各タスク
 │ ├ ansible.cfg                   Ansible自体の挙動の設定
-│ ├ develop                       Ansibleの接続先の設定(開発環境)
+│ ├ devel                         Ansibleの接続先の設定(開発環境)
 │ └ site.yml                      Ansibleで設定を流すためのエントリーポイント
 ├ proxy
 │ ├ certs                         TLS終端に使用する証明書と秘密鍵
@@ -100,7 +100,7 @@
 ### 統合開発環境の環境構築
 
 - ※ 統合開発環境は本番環境とほぼ同等の環境を開発環境で再現した環境を指します
-- [検証サーバの環境構築](./develop/README.md)
+- [検証サーバの環境構築](./devel/README.md)
 - [Ansibleによる設定の流し込み](./playbook/README.md)
 - [デプロイスクリプト](./deploy/README.md)
 
