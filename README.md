@@ -69,9 +69,13 @@
 │ ├ develop                       Ansibleの接続先の設定(開発環境)
 │ └ site.yml                      Ansibleで設定を流すためのエントリーポイント
 ├ proxy
-│ ├ api.toml                      リバースプロキシ(Traefik)の動的設定
-│ ├ compose.yml                   リバースプロキシ(Traefik)のDocker周りの設定
-│ └ traefik.toml                  リバースプロキシ(Traefik)の静的設定
+│ ├ certs                         TLS終端に使用する証明書と秘密鍵
+│ ├ config
+│ │ ├ api.toml                    API関連の動的設定
+│ │ ├ dashboard.toml              ダッシュボード関連の動的設定
+│ │ └ http.toml                   HTTPからHTTPSへのリダイレクトの動的設定
+│ ├ compose.yml                   Docker周りの設定
+│ └ traefik.toml                  リバースプロキシ(Traefik)全体の静的設定
 └ README.md
 ```
 
