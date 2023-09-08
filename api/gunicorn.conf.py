@@ -1,4 +1,13 @@
-bind = "0.0.0.0:8081"
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+address = os.getenv("ADDRESS", "0.0.0.0")
+port = os.getenv("PORT", "8080")
+
+bind = f"{address}:{port}"
 worker_class = "uvicorn.workers.UvicornWorker"
 workers = 2
 loglevel = "info"

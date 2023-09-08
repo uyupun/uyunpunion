@@ -23,13 +23,12 @@ cd ../deploy
 cp ../api/.env.example .env.tmp
 sed -i -e "s/ENV=dev/ENV=prod/" ./.env.tmp
 sed -i -e "s/UYUNPUNION_TOKEN=/UYUNPUNION_TOKEN=$UYUNPUNION_TOKEN/" ./.env.tmp
-sed -i -e "s/PORT=8080/PORT=8081/" ./.env.tmp
 scp -i ../playbook/roles/user/files/id_ed25519 ./.env.tmp takashi@$HOST:~/uyunpunion/api/.env
 rm -rf .env.tmp .env.tmp-e
 
 # api.tomlの作成
 cp ../proxy/config/api.toml.example api.toml.tmp
-sed -i -e "s#http://192.168.0.10:8081#http://$HOST:8081#" ./api.toml.tmp
+sed -i -e "s#http://192.168.0.10:8080#http://$HOST:8080#" ./api.toml.tmp
 scp -i ../ansible/roles/user/files/id_ed25519 ./api.toml.tmp takashi@$HOST:~/uyunpunion/proxy/config/api.toml
 rm -rf api.toml.tmp api.toml.tmp-e
 
