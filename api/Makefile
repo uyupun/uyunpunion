@@ -10,4 +10,4 @@ down:
 	kill `cat gunicorn.pid`
 
 ps:
-	ps aux | grep gunicorn
+	ps u -p `pgrep -d, gunicorn`
