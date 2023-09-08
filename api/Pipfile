@@ -12,6 +12,7 @@ starlette = "*"
 gunicorn = "*"
 setproctitle = "*"
 pigpio = "*"
+pydantic-settings = "*"
 
 [dev-packages]
 flake8 = "*"
