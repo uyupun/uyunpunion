@@ -8,6 +8,9 @@
     - Docker
     - Docker Compose
 
+- 以下のファイルが必要です
+    - `proxy/certs/selfsigned.key`
+
 ```bash
 $ cd proxy
 $ cp config/api.toml.example config/api.toml                                                                    # urlにAPIのIPとポートの指定が必須
