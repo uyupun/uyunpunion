@@ -16,7 +16,7 @@ $ htpasswd -n takashi                                                           
 $ docker compose up -d
 $ docker compose ps
 $ docker compose down
-$ open localhost/dashboard/                                                                                     # ダッシュボード
-$ curl -H "Host: uyunpunion.uyupun.tech" -L "localhost/ping"                                                    # 疎通確認
-$ curl -H "Host: uyunpunion.uyupun.tech" -L "<private ip address>/ping"                                         # 疎通確認
+$ open https://localhost/dashboard/                                                                             # ダッシュボード
+$ curl -k -H "Host: uyunpunion.uyupun.tech" -L "https://localhost/ping"                                         # 疎通確認
+$ curl -k -H "Host: uyunpunion.uyupun.tech" -L "https://<private ip address>/ping"                              # 疎通確認
 ```

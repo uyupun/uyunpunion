@@ -11,3 +11,13 @@
 [entryPoints]
     [entryPoints.web]
         address = ":80"
+
+    [entryPoints.websecure]
+        address = ":443"
+
+[tls]
+    [tls.stores]
+        [tls.stores.default]
+            [tls.stores.default.defaultCertificate]
+                certFile = "/etc/traefik/certs/selfsigned.crt"
+                keyFile = "/etc/traefik/certs/selfsigned.key"

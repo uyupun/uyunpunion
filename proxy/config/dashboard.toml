@@ -1,8 +1,10 @@
 [http.routers]
     [http.routers.dashboard-router]
         rule = "PathPrefix(`/api`) || PathPrefix(`/dashboard`)"
-        service = "api@internal"
+        entryPoints = ["websecure"]
         middlewares = ["dashboard-middleware"]
+        service = "api@internal"
+        [http.routers.dashboard-router.tls]
 
 [http.middlewares]
     [http.middlewares.dashboard-middleware]

@@ -1,8 +1,9 @@
 [http.routers]
     [http.routers.api-router]
         rule = "Host(`uyunpunion.uyupun.tech`)"
-        entryPoints = "web"
+        entryPoints = ["websecure"]
         service = "api-service"
+        [http.routers.api-router.tls]
 
 [http.services]
     [http.services.api-service.loadBalancer]
