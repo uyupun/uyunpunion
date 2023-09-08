@@ -19,4 +19,5 @@ $ docker compose down
 $ open https://localhost/dashboard/                                                                             # ダッシュボード
 $ curl -k -L "https://localhost/ping"                                                                           # 疎通確認
 $ curl -k -L "https://<private ip address>/ping"                                                                # 疎通確認
+$ curl -i -k -L "http://localhost/ping"                                                                         # 疎通確認(HTTPSにリダイレクトされる)
 ```
