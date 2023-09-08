@@ -1,5 +1,3 @@
-# 本番環境用のコマンド集
-
 .PHONY: up reload down ps
 
 up:
