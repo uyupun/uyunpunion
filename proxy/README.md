@@ -17,6 +17,6 @@ $ docker compose up -d
 $ docker compose ps
 $ docker compose down
 $ open https://localhost/dashboard/                                                                             # ダッシュボード
-$ curl -k -H "Host: uyunpunion.uyupun.tech" -L "https://localhost/ping"                                         # 疎通確認
-$ curl -k -H "Host: uyunpunion.uyupun.tech" -L "https://<private ip address>/ping"                              # 疎通確認
+$ curl -k -L "https://localhost/ping"                                                                           # 疎通確認
+$ curl -k -L "https://<private ip address>/ping"                                                                # 疎通確認
 ```

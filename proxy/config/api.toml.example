@@ -1,6 +1,6 @@
 [http.routers]
     [http.routers.api-router]
-        rule = "Host(`uyunpunion.uyupun.tech`)"
+        rule = "HostRegexp(`{any:.+}`)"
         entryPoints = ["websecure"]
         service = "api-service"
         [http.routers.api-router.tls]
