@@ -1,0 +1,15 @@
+[http.routers]
+    [http.routers.redirect-router]
+        rule = "HostRegexp(`{any:.+}`)"
+        entryPoints = ["web"]
+        middlewares = ["http-middleware"]
+        service = "dummy-service"
+
+[http.middlewares]
+    [http.middlewares.http-middleware.redirectScheme]
+        scheme = "https"
+
+# ダミーのサービスのため実際には使用されないが、Traefikの仕様上、サービスの定義が必要
+[http.services]
+    [[http.services.dummy-service.loadBalancer.servers]]
+        url = "http://1.2.3.4"

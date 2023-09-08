@@ -1,12 +1,13 @@
 [http.routers]
     [http.routers.dashboard-router]
         rule = "PathPrefix(`/api`) || PathPrefix(`/dashboard`)"
-        service = "api@internal"
+        entryPoints = ["websecure"]
         middlewares = ["dashboard-middleware"]
+        service = "api@internal"
+        [http.routers.dashboard-router.tls]
 
 [http.middlewares]
-    [http.middlewares.dashboard-middleware]
-        [http.middlewares.dashboard-middleware.basicAuth]
-            users = [
-                "takashi:$apr1$wch59Qfy$.bhvUqWXsBTl8Qulpi0.7."
-            ]
+    [http.middlewares.dashboard-middleware.basicAuth]
+        users = [
+            "takashi:$apr1$wch59Qfy$.bhvUqWXsBTl8Qulpi0.7."
+        ]

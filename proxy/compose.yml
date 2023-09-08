@@ -4,11 +4,14 @@ services:
     container_name: reverse-proxy
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "./traefik.toml:/etc/traefik/traefik.toml"
+      - "./config/http.toml:/etc/traefik/config/http.toml"
       - "./config/api.toml:/etc/traefik/config/api.toml"
       - "./config/dashboard.toml:/etc/traefik/config/dashboard.toml"
+      - "./certs:/etc/traefik/certs"
     restart: always
 
 networks:
