@@ -24,7 +24,7 @@ stop:
 	sudo systemctl stop $(SERVICE_NAME)
 
 status:
-	sudo systemctl status $(SERVICE_NAME)
+	sudo systemctl status $(SERVICE_NAME) --no-pager
 
 ps: port ?= 8080
 ps:
