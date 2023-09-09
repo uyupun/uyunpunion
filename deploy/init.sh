@@ -43,7 +43,8 @@ read -sp "takashiユーザのパスワードを入力してください: " PASSW
 ssh -i ../playbook/roles/user/files/id_ed25519 takashi@$HOST << EOF
     cd uyunpunion/api
     pipenv sync --system
-    echo $PASSWORD | sudo -S systemctl enable --now gunicorn.service
+    cd ../deploy
+    make start password=$PASSWORD
     sleep 5
     echo ""
     echo Gunicorn processes

@@ -15,13 +15,16 @@ fi
 HOST=$1
 
 # APIとリバプロの起動
+read -sp "takashiユーザのパスワードを入力してください: " PASSWORD
 ssh -i ../playbook/roles/user/files/id_ed25519 takashi@$HOST << EOF
     cd uyunpunion
     git pull origin master
 
     cd api
     pipenv sync --system
-    make reload
+    cd ../deploy
+    make reload password=$PASSWORD
+    make restart password=$PASSWORD
     sleep 5
     echo ""
     echo Gunicorn processes
