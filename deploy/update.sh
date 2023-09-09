@@ -22,7 +22,7 @@ ssh -i ../playbook/roles/user/files/id_ed25519 takashi@$HOST << EOF
 
     cd api
     pipenv sync --system
-    cd ../deploy
+    cd ../prod
     make reload password=$PASSWORD
     make restart password=$PASSWORD
     sleep 5

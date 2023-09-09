@@ -43,7 +43,7 @@ read -sp "takashiユーザのパスワードを入力してください: " PASSW
 ssh -i ../playbook/roles/user/files/id_ed25519 takashi@$HOST << EOF
     cd uyunpunion/api
     pipenv sync --system
-    cd ../deploy
+    cd ../prod
     make start password=$PASSWORD
     sleep 5
     echo ""
