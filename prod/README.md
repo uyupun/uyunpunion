@@ -15,8 +15,10 @@ $ make restart
 $ make stop
 # Gunicornの状態確認
 $ make status
-# Gunicornのプロセスの確認
+# Gunicornのプロセスの確認(8080番ポート)
 $ make ps
+# Gunicornのプロセスの確認(ポート番号を指定)
+$ make ps port=8081
 # Gunicornのログの確認
 $ make log
 ```
