@@ -6,7 +6,7 @@ from starlette.status import HTTP_400_BAD_REQUEST, HTTP_401_UNAUTHORIZED
 from settings import get_settings
 
 
-async def verify_token_middleware(request: Request):
+async def verify_token_middleware(request: Request) -> None:
     settings = get_settings()
 
     if "UYUNPUNION-TOKEN" not in request.headers:
