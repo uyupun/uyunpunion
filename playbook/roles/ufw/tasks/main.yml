@@ -41,22 +41,18 @@
     port: "{{ item.port }}"
     proto: "{{ item.proto }}"
   loop:
-    # tcp port 80, 8080に関してはproxy/docker-compose.ymlから開けているため、ここには記載していない
+    # tcp port 80, 443に関してはproxy/docker-compose.ymlから開けているため、ここには記載していない
     - rule: limit
       src: any
       port: 22
       proto: tcp
     - rule: allow
-      src: any
-      port: 443
-      proto: tcp
-    - rule: allow
       src: "{{ traefik_src_ip }}"
-      port: 8081
+      port: 8080
       proto: tcp
     - rule: allow
       src: ::1
-      port: 8081
+      port: 8080
       proto: tcp
   when: not ansible_check_mode
   tags: ufw

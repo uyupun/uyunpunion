@@ -12,14 +12,15 @@ starlette = "*"
 gunicorn = "*"
 setproctitle = "*"
 pigpio = "*"
+pydantic-settings = "*"
 
 [dev-packages]
 flake8 = "*"
 black = "*"
 
 [requires]
-python_version = "3.11"
+python_version = "3.9"
 
 [scripts]
-dev = "uvicorn --reload app:app --port 8080"
+dev = "python app.py"
 prod = "gunicorn app:app"
