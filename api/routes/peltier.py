@@ -1,13 +1,14 @@
-from drivers.peltier import PeltierDriver, PeltierMode
 from fastapi import APIRouter, Depends
+
+from drivers.peltier import PeltierDriver, PeltierMode
 from middlewares.verify_token import verify_token_middleware
-from settings import get_settings
 from schemas.peltier import (
     ColdPeltierResponse,
     StopPeltierResponse,
     WarmPeltierResponse,
 )
 from schemas.token import TokenRequestHeader
+from settings import get_settings
 
 router = APIRouter(
     prefix="/peltier", tags=["peltier"], dependencies=[Depends(verify_token_middleware)]
