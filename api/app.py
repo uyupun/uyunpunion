@@ -17,10 +17,10 @@ def init_app() -> FastAPI:
 
 
 def register_routes(app: FastAPI) -> None:
-    app.include_router(ping.router)
-    app.include_router(peltier.router)
-    app.include_router(blower.router)
-    app.include_router(humidifier.router)
+    app.include_router(router=ping.router)
+    app.include_router(router=peltier.router)
+    app.include_router(router=blower.router)
+    app.include_router(router=humidifier.router)
 
 
 def run_app(app: FastAPI) -> None:

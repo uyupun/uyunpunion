@@ -4,6 +4,9 @@ import time
 import pigpio
 
 from drivers.driver import Driver
+from settings import get_settings
+
+settings = get_settings()
 
 
 class BlowerDriver(Driver):
@@ -13,20 +16,24 @@ class BlowerDriver(Driver):
         self.pin = 25
 
     def start(self) -> None:
-        self.pi.set_mode(self.pin, pigpio.OUTPUT)
+        if settings.ENV == "dev":
+            print("blower started")
+            return
 
+        self.pi.set_mode(self.pin, pigpio.OUTPUT)
         self.pi.write(self.pin, 1)
         time.sleep(0.5)
-
-        print("blower start")
+        print("blower started")
 
     def stop(self) -> None:
-        self.pi.set_mode(self.pin, pigpio.OUTPUT)
+        if settings.ENV == "dev":
+            print("blower stopped")
+            return
 
+        self.pi.set_mode(self.pin, pigpio.OUTPUT)
         self.pi.write(self.pin, 0)
         time.sleep(0.5)
-
-        print("blower stop")
+        print("blower stopped")
 
 
 if __name__ == "__main__":

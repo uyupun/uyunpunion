@@ -4,6 +4,9 @@ import time
 import pigpio
 
 from drivers.driver import Driver
+from settings import get_settings
+
+settings = get_settings()
 
 
 class HumidifierDriver(Driver):
@@ -13,17 +16,22 @@ class HumidifierDriver(Driver):
         self.pin = 23
 
     def start(self) -> None:
-        self.pi.set_mode(self.pin, pigpio.OUTPUT)
+        if settings.ENV == "dev":
+            print("humidifier started")
+            return
 
+        self.pi.set_mode(self.pin, pigpio.OUTPUT)
         self.pi.write(self.pin, 1)
         time.sleep(0.5)
         self.pi.write(self.pin, 0)
-
-        print("humidifier start")
+        print("humidifier started")
 
     def stop(self) -> None:
+        if settings.ENV == "dev":
+            print("humidifier stopped")
+            return
+
         self.pi.set_mode(self.pin, pigpio.OUTPUT)
-
         self.pi.write(self.pin, 0)
         time.sleep(0.5)
         self.pi.write(self.pin, 1)
@@ -33,8 +41,7 @@ class HumidifierDriver(Driver):
         self.pi.write(self.pin, 1)
         time.sleep(0.5)
         self.pi.write(self.pin, 0)
-
-        print("humidifier stop")
+        print("humidifier stopped")
 
 
 if __name__ == "__main__":

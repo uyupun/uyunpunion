@@ -27,6 +27,7 @@ cd ../api
 UYUNPUNION_TOKEN=`pipenv run python generate_uyunpunion_token.py`
 cd ../deploy
 cp ../api/.env.example .env.tmp
+sed -i -e "s/PIPENV_VENV_IN_PROJECT=true/PIPENV_VENV_IN_PROJECT=false/" ./.env.tmp
 sed -i -e "s/ENV=dev/ENV=prod/" ./.env.tmp
 sed -i -e "s/UYUNPUNION_TOKEN=/UYUNPUNION_TOKEN=$UYUNPUNION_TOKEN/" ./.env.tmp
 scp -i ../playbook/roles/user/files/id_ed25519 ./.env.tmp takashi@$HOST:~/uyunpunion/api/.env
