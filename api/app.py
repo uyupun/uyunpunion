@@ -6,6 +6,7 @@ from settings import get_settings
 
 settings = get_settings()
 
+
 def init_app() -> FastAPI:
     app = FastAPI(
         title=settings.PROJECT_NAME,
