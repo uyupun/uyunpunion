@@ -21,12 +21,12 @@ $ pipenv sync --dev
 $ pipenv shell
 $ ansible-vault encrypt roles/user/vars/main.yml
 $ ansible-vault decrypt roles/user/vars/main.yml
-$ ansible all -i devel -m ping                            # 疎通確認
-$ ansible-playbook -i devel site.yml --list-tasks         # タスク一覧
-$ ansible-playbook -i devel site.yml --syntax-check       # 構文エラーのチェック
+$ ansible all -i devel -m ping                              # 疎通確認
+$ ansible-playbook -i devel site.yml --list-tasks           # タスク一覧
+$ ansible-playbook -i devel site.yml --syntax-check         # 構文エラーのチェック
 $ ansible-lint site.yml                                     # リンターの実行
-$ ansible-playbook -i devel site.yml --check --diff       # ドライラン
-$ ansible-playbook -i devel site.yml                      # 実行
-$ ansible-playbook -i devel site.yml --tags ssh           # タグを指定して実行
+$ ansible-playbook -i devel site.yml --check --diff         # ドライラン
+$ ansible-playbook -i devel site.yml                        # 実行
+$ ansible-playbook -i devel site.yml --tags ssh             # タグを指定して実行
 $ ssh -i roles/user/files/id_ed25519 takashi@192.168.56.10  # SSH接続
 ```
