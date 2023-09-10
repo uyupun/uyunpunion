@@ -1,9 +1,9 @@
 from pydantic import BaseModel
 
 
-class StartHumidifierResponse(BaseModel):
+class HumidifierStartResponse(BaseModel):
     message: str
 
 
-class StopHumidifierResponse(BaseModel):
+class HumidifierStopResponse(BaseModel):
     message: str

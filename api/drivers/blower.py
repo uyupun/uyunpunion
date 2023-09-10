@@ -3,10 +3,7 @@ import time
 
 import pigpio
 
-try:
-    from drivers.driver import Driver
-except ImportError:
-    from drivers import Driver
+from drivers.driver import Driver
 
 
 class BlowerDriver(Driver):
@@ -15,7 +12,7 @@ class BlowerDriver(Driver):
         self.pi = pigpio.pi()
         self.pin = 25
 
-    def start(self):
+    def start(self) -> None:
         self.pi.set_mode(self.pin, pigpio.OUTPUT)
 
         self.pi.write(self.pin, 1)
@@ -23,7 +20,7 @@ class BlowerDriver(Driver):
 
         print("blower start")
 
-    def stop(self):
+    def stop(self) -> None:
         self.pi.set_mode(self.pin, pigpio.OUTPUT)
 
         self.pi.write(self.pin, 0)

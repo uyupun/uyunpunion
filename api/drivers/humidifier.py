@@ -3,10 +3,7 @@ import time
 
 import pigpio
 
-try:
-    from drivers.driver import Driver
-except ImportError:
-    from driver import Driver
+from drivers.driver import Driver
 
 
 class HumidifierDriver(Driver):
@@ -15,7 +12,7 @@ class HumidifierDriver(Driver):
         self.pi = pigpio.pi()
         self.pin = 23
 
-    def start(self):
+    def start(self) -> None:
         self.pi.set_mode(self.pin, pigpio.OUTPUT)
 
         self.pi.write(self.pin, 1)
@@ -24,7 +21,7 @@ class HumidifierDriver(Driver):
 
         print("humidifier start")
 
-    def stop(self):
+    def stop(self) -> None:
         self.pi.set_mode(self.pin, pigpio.OUTPUT)
 
         self.pi.write(self.pin, 0)

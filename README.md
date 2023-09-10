@@ -45,12 +45,13 @@
 ## ディレクトリ構造
 
 ```
-├ .vscode                         Visual Studio Codeの設定
 ├ api
 │ ├ drivers                       ウユンプニオン・ドライバの制御スクリプト
 │ ├ middlewares                   カスタムミドルウェア
 │ ├ routes                        APIの各エンドポイント
 │ ├ schemas                       レスポンスのスキーマ
+│ ├ .flake8                       リンター(Flake8)の設定
+│ ├ .isort.cfg                    ソートツール(isort)の設定
 │ ├ app.py                        アプリケーションのエントリーポイント
 │ ├ generate_uyunpunion_token.py  UYUNPUNION_TOKENの生成スクリプト
 │ ├ gunicorn.conf.py              本番環境で使用するGunicornの設定
@@ -78,6 +79,7 @@
 │ │ └ http.toml                   HTTPからHTTPSへのリダイレクトの動的設定
 │ ├ compose.yml                   Docker周りの設定
 │ └ traefik.toml                  リバースプロキシ(Traefik)全体の静的設定
+├ .pre-commit-config.yaml         pre-commitの設定
 └ README.md
 ```
 

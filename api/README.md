@@ -24,9 +24,10 @@ $ open localhost:8080                   # API
 $ open localhost:8080/docs              # Swagger
 $ open localhost:8080/redoc             # Redoc
 $ python drivers/blower.py start        # ドライバ単体で実行させる場合
-$ pipenv run flake8 .                   # リンターの実行
-$ pipenv run black .                    # フォーマッタの実行(自動修正)
-$ pipenv run isort .                    # インポートのソート(自動修正)
+$ pipenv run flake8 .                   # リンター(Flake8)の実行
+$ pipenv run black .                    # フォーマッタ(Black)の実行(自動修正)
+$ pipenv run isort .                    # インポートのソート(isort)の実行(自動修正)
+$ pipenv run pyright .                  # 型チェッカー(Pyright)の実行
 ```
 
 # APIの環境構築(統合開発環境/本番環境)

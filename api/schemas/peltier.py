@@ -1,13 +1,13 @@
 from pydantic import BaseModel
 
 
-class ColdPeltierResponse(BaseModel):
+class PeltierColdResponse(BaseModel):
     message: str
 
 
-class WarmPeltierResponse(BaseModel):
+class PeltierWarmResponse(BaseModel):
     message: str
 
 
-class StopPeltierResponse(BaseModel):
+class PeltierStopResponse(BaseModel):
     message: str

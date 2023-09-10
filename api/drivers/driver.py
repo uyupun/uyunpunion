@@ -3,9 +3,9 @@ from abc import ABC, abstractmethod
 
 class Driver(ABC):
     @abstractmethod
-    def start():
+    def start(self) -> None:
         pass
 
     @abstractmethod
-    def stop():
+    def stop(self) -> None:
         pass
