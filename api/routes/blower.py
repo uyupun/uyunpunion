@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 
 from drivers.blower import BlowerDriver
 from middlewares.verify_token import verify_token_middleware
-from schemas.blower import StartBlowerResponse, StopBlowerResponse
+from schemas.blower import BlowerStartResponse, BlowerStopResponse
 from schemas.token import TokenRequestHeader
 from settings import get_settings
 
@@ -11,27 +11,27 @@ router = APIRouter(
 )
 
 
-@router.post("/start", response_model=StartBlowerResponse)
+@router.post("/start", response_model=BlowerStartResponse)
 def start_blower(
     UYUNPUNION_TOKEN: str = TokenRequestHeader(),
     driver: BlowerDriver = Depends(),
-):
+) -> BlowerStartResponse:
     """
     ブロワーを作動させる
     """
     if get_settings().ENV == "prod":
         driver.start()
-    return {"message": "pong"}
+    return BlowerStartResponse(message="pong")
 
 
-@router.post("/stop", response_model=StopBlowerResponse)
+@router.post("/stop", response_model=BlowerStopResponse)
 def stop_blower(
     UYUNPUNION_TOKEN: str = TokenRequestHeader(),
     driver: BlowerDriver = Depends(),
-):
+) -> BlowerStopResponse:
     """
     ブロワーを停止する
     """
     if get_settings().ENV == "prod":
         driver.stop()
-    return {"message": "pong"}
+    return BlowerStopResponse(message="pong")
