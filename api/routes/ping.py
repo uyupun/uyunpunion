@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+
 from schemas.ping import PingResponse
 
 router = APIRouter(prefix="/ping", tags=["other"])

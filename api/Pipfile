@@ -17,6 +17,8 @@ pydantic-settings = "*"
 [dev-packages]
 flake8 = "*"
 black = "*"
+isort = "*"
+pre-commit = "*"
 
 [requires]
 python_version = "3.9"

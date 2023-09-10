@@ -15,6 +15,7 @@
 ```bash
 $ cd api
 $ pipenv sync --dev
+$ pipenv run pre-commit install         # pre-commitの設定
 $ pipenv shell
 $ python generate_uyunpunion_token.py   # UYUNPUNION_TOKENの生成
 $ cp .env.example .env                  # UYUNPUNION_TOKENの設定が必須、起動アドレスや起動ポートの設定も可能
@@ -23,6 +24,9 @@ $ open localhost:8080                   # API
 $ open localhost:8080/docs              # Swagger
 $ open localhost:8080/redoc             # Redoc
 $ python drivers/blower.py start        # ドライバ単体で実行させる場合
+$ pipenv run flake8 .                   # リンターの実行
+$ pipenv run black .                    # フォーマッタの実行(自動修正)
+$ pipenv run isort .                    # インポートのソート(自動修正)
 ```
 
 # APIの環境構築(統合開発環境/本番環境)
