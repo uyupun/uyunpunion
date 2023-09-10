@@ -22,3 +22,6 @@ repos:
     rev: v1.1.326
     hooks:
       - id: pyright
+        args:
+          - --pythonpath
+          - api/.venv/bin/python
