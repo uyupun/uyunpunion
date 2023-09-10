@@ -14,4 +14,4 @@ loglevel = "info"
 accesslog = "-"
 pidfile = "gunicorn.pid"
 proc_name = "UYUNPUNION"
-daemon = True
+daemon = os.getenv("DAEMON", "false").lower() == "true"
