@@ -1,0 +1,26 @@
+{
+    "language": "en",
+    "ignorePaths": [],
+    "overrides": [
+      {
+        "filename": "**",
+        "words": [
+          "accesslog",
+          "apwm",
+          "dotenv",
+          "gunicorn",
+          "isort",
+          "middlewares",
+          "peltier",
+          "pidfile",
+          "pigpio",
+          "Pipenv",
+          "Pyenv",
+          "Pyright",
+          "Redoc",
+          "uvicorn",
+          "UYUNPUNION",
+        ]
+      }
+    ]
+  }
