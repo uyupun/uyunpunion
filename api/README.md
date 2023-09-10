@@ -1,4 +1,4 @@
-# APIの環境構築(開発環境)
+# APIの環境構築
 
 - 以下の用途で使用する場合にこの手順が必要です
     - APIを開発する場合
@@ -30,11 +30,11 @@ $ pipenv run isort .                    # インポートのソート(isort)の�
 $ pipenv run pyright .                  # 型チェッカー(Pyright)の実行
 ```
 
-# APIの環境構築(統合開発環境/本番環境)
+# APIの本番ビルド
 
 - 以下の用途で使用する場合にこの手順が必要です
-    - APIの本番ビルドを検証する場合
-    - ※ 実際の統合開発環境/本番環境ではsystemdからGunicornを操作するため、直接は利用しません
+    - APIの本番ビルドを開発環境で検証する場合
+    - ※ 実際の統合開発環境/本番環境ではsystemdからGunicornを操作します
 
 ```bash
 $ cd api
@@ -42,8 +42,9 @@ $ pipenv sync --dev
 $ pipenv shell
 $ python generate_uyunpunion_token.py   # UYUNPUNION_TOKENの生成
 $ cp .env.example .env                  # UYUNPUNION_TOKEN、ENV=prodの設定が必須
-$ make up                               # サーバの起動
-$ make reload                           # サーバの再起動(graceful)
-$ make down                             # サーバの停止
-$ make ps                               # サーバのプロセスの確認
+$ make start                            # デーモン(Gunicorn)の起動
+$ make restart                          # デーモン(Gunicorn)の再起動
+$ make stop                             # デーモン(Gunicorn)の停止
+$ make ps                               # デーモン(Gunicorn)のプロセスの確認(8080番ポート)
+$ make ps port=8081                     # デーモン(Gunicorn)のプロセスの確認(ポート番号を指定)
 ```
