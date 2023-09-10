@@ -8,7 +8,6 @@ from schemas.peltier import (
     PeltierWarmResponse,
 )
 from schemas.token import TokenRequestHeader
-from settings import get_settings
 
 router = APIRouter(
     prefix="/peltier", tags=["peltier"], dependencies=[Depends(verify_token_middleware)]
@@ -23,8 +22,7 @@ def cold_peltier(
     """
     ペルチェ素子を冷却する
     """
-    if get_settings().ENV == "prod":
-        driver.start(mode=PeltierMode.Cold)
+    driver.start(mode=PeltierMode.Cold)
     return PeltierColdResponse(message="pong")
 
 
@@ -36,8 +34,7 @@ def warm_peltier(
     """
     ペルチェ素子を加熱する
     """
-    if get_settings().ENV == "prod":
-        driver.start(mode=PeltierMode.Warm)
+    driver.start(mode=PeltierMode.Warm)
     return PeltierWarmResponse(message="pong")
 
 
@@ -49,6 +46,5 @@ def stop_peltier(
     """
     ペルチェ素子を停止する
     """
-    if get_settings().ENV == "prod":
-        driver.stop()
+    driver.stop()
     return PeltierStopResponse(message="pong")

@@ -4,7 +4,6 @@ from drivers.humidifier import HumidifierDriver
 from middlewares.verify_token import verify_token_middleware
 from schemas.humidifier import HumidifierStartResponse, HumidifierStopResponse
 from schemas.token import TokenRequestHeader
-from settings import get_settings
 
 router = APIRouter(
     prefix="/humidifier",
@@ -21,8 +20,7 @@ def start_humidifier(
     """
     加湿器を作動させる
     """
-    if get_settings().ENV == "prod":
-        driver.start()
+    driver.start()
     return HumidifierStartResponse(message="pong")
 
 
@@ -34,6 +32,5 @@ def stop_humidifier(
     """
     加湿器を停止する
     """
-    if get_settings().ENV == "prod":
-        driver.stop()
+    driver.stop()
     return HumidifierStopResponse(message="pong")

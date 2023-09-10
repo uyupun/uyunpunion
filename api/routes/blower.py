@@ -4,7 +4,6 @@ from drivers.blower import BlowerDriver
 from middlewares.verify_token import verify_token_middleware
 from schemas.blower import BlowerStartResponse, BlowerStopResponse
 from schemas.token import TokenRequestHeader
-from settings import get_settings
 
 router = APIRouter(
     prefix="/blower", tags=["blower"], dependencies=[Depends(verify_token_middleware)]
@@ -19,8 +18,7 @@ def start_blower(
     """
     ブロワーを作動させる
     """
-    if get_settings().ENV == "prod":
-        driver.start()
+    driver.start()
     return BlowerStartResponse(message="pong")
 
 
@@ -32,6 +30,5 @@ def stop_blower(
     """
     ブロワーを停止する
     """
-    if get_settings().ENV == "prod":
-        driver.stop()
+    driver.stop()
     return BlowerStopResponse(message="pong")

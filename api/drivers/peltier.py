@@ -5,6 +5,9 @@ from enum import Enum
 import pigpio
 
 from drivers.driver import Driver
+from settings import get_settings
+
+settings = get_settings()
 
 
 class PeltierMode(Enum):
@@ -26,14 +29,17 @@ class PeltierDriver(Driver):
 
         self.pi = pigpio.pi()
 
-    def init_peltier(self) -> None:
+    def _setup_peltier(self) -> None:
         for pin in [self.apwm, self.ain1, self.ain2]:
             self.pi.set_mode(pin, pigpio.OUTPUT)
             self.pi.write(pin, 0)
 
     def start(self, mode: PeltierMode = PeltierMode.Cold) -> None:
-        self.init_peltier()
+        if settings.ENV == "dev":
+            print("peltier started")
+            return
 
+        self._setup_peltier()
         if mode == PeltierMode.Cold:
             return self._cold()
         if mode == PeltierMode.Warm:
@@ -41,16 +47,18 @@ class PeltierDriver(Driver):
         raise PeltierModeNotExistsError
 
     def stop(self) -> None:
-        self.init_peltier()
+        if settings.ENV == "dev":
+            print("peltier stopped")
+            return
 
-        print("peltier stop")
+        self._setup_peltier()
+        print("peltier stopped")
 
     def _cold(self) -> None:
         self.pi.hardware_PWM(self.apwm, 1000, (100 * 10000))
         self.pi.write(self.ain1, 0)
         self.pi.write(self.ain2, 1)
         time.sleep(0.5)
-
         print("peltier cold")
 
     def _warm(self) -> None:
@@ -58,7 +66,6 @@ class PeltierDriver(Driver):
         self.pi.write(self.ain1, 1)
         self.pi.write(self.ain2, 0)
         time.sleep(0.5)
-
         print("peltier warm")
 
 
