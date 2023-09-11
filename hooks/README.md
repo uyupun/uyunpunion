@@ -3,8 +3,7 @@
 ```bash
 $ cd hooks
 $ pipenv sync --dev
-$ chmod +x install.sh
-$ ./install.sh          # Gitフックを設定
+$ pipenv run pre-commit install
 $ pipenv run pch        # pre-commit-hooksを実行
 $ pipenv run yamllint   # yamllintを実行
 ```
