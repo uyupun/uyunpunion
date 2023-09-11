@@ -28,7 +28,6 @@ UYUNPUNION_TOKEN=`pipenv run python generate_uyunpunion_token.py`
 cd ../deploy
 cp ../api/.env.example .env.tmp
 sed -i -e "s/PIPENV_VENV_IN_PROJECT=true/PIPENV_VENV_IN_PROJECT=false/" ./.env.tmp
-sed -i -e "s/DAEMON=true/DAEMON=false/" ./.env.tmp
 sed -i -e "s/ENV=dev/ENV=prod/" ./.env.tmp
 sed -i -e "s/UYUNPUNION_TOKEN=/UYUNPUNION_TOKEN=$UYUNPUNION_TOKEN/" ./.env.tmp
 scp -i ../playbook/roles/user/files/id_ed25519 ./.env.tmp takashi@$HOST:~/uyunpunion/api/.env
@@ -45,7 +44,7 @@ read -sp "takashiユーザのパスワードを入力してください: " PASSW
 ssh -i ../playbook/roles/user/files/id_ed25519 takashi@$HOST << EOF
     cd uyunpunion/api
     pipenv sync --system
-    cd ../prod
+    cd ../ops
     make start password=$PASSWORD
     sleep 5
     echo ""

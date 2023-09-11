@@ -1,12 +1,12 @@
-.PHONY: up reload down ps
+.PHONY: start restart stop ps
 
-up:
+start:
 	pipenv run prod
 
-reload:
+restart:
 	kill -HUP `cat gunicorn.pid`
 
-down:
+stop:
 	kill `cat gunicorn.pid`
 
 ps: port ?= 8080

@@ -30,7 +30,6 @@ repos:
     hooks:
       - id: ansible-lint
         name: ansible-lint
-        entry: ./pre_commit_ansible_lint.sh
         language: system
-        always_run: true
-        pass_filenames: false
+        entry: hooks/pre_commit_ansible_lint.sh
+        files: ^playbook/
