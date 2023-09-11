@@ -9,9 +9,11 @@ ansible-lint = "*"
 ansible = "*"
 
 [dev-packages]
+yamllint = "*"
 
 [requires]
 python_version = "3.9"
 
 [scripts]
 pch = "bash -c 'pre-commit run trailing-whitespace --all-files && pre-commit run end-of-file-fixer --all-files && pre-commit run check-yaml --all-files && pre-commit run check-json --all-files'"
+yamllint = "yamllint ../ -c .yamllint"

@@ -1,0 +1,6 @@
+---
+
+extends: default
+
+ignore:
+  - ../playbook/roles/user/vars/main.yml
