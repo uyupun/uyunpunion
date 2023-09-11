@@ -4,7 +4,7 @@
     - 統合開発環境/本番環境の運用
 
 ```bash
-$ cd prod       
+$ cd prod
 $ make start        # デーモン(systemd)の起動(通常はデプロイスクリプトから実行されます)
 $ make reload       # デーモン(systemd)の設定の再読み込み(通常はデプロイスクリプトから実行されます)
 $ make restart      # デーモン(systemd)の再起動(通常はデプロイスクリプトから実行されます)
