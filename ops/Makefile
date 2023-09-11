@@ -2,23 +2,14 @@
 
 SERVICE_NAME = gunicorn.service
 
-password ?= ""
-define SUDO_WITH_PASS
-if [ -z "$(password)" ]; then \
-	sudo $1; \
-else \
-	echo $(password) | sudo -S $1; \
-fi
-endef
-
 start:
-	$(call SUDO_WITH_PASS,systemctl enable --now $(SERVICE_NAME))
+	sudo systemctl enable --now $(SERVICE_NAME)
 
 reload:
-	$(call SUDO_WITH_PASS,systemctl daemon-reload)
+	sudo systemctl daemon-reload
 
 restart:
-	$(call SUDO_WITH_PASS,systemctl restart --now $(SERVICE_NAME))
+	sudo systemctl restart --now $(SERVICE_NAME)
 
 stop:
 	sudo systemctl stop $(SERVICE_NAME)

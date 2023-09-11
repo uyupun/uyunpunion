@@ -41,6 +41,7 @@ repos:
           - --pythonpath
           - api/.venv/bin/python
 
+  # playbookに依存しています
   - repo: local
     hooks:
       - id: ansible-lint

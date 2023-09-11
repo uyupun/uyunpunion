@@ -28,3 +28,15 @@
     key: "{{ lookup('file', '../files/id_ed25519.pub') }}"
   when: not ansible_check_mode
   tags: user
+
+- name: Append sudoers
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/takashi
+    line: "takashi ALL=(ALL) NOPASSWD: ALL"
+    create: true
+    owner: root
+    group: root
+    mode: "0440"
+    validate: visudo -cf %s
+  tags: user

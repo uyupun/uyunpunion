@@ -40,12 +40,11 @@ scp -i ../ansible/roles/user/files/id_ed25519 ./api.toml.tmp takashi@$HOST:~/uyu
 rm -rf api.toml.tmp api.toml.tmp-e
 
 # APIとリバプロの起動
-read -sp "takashiユーザのパスワードを入力してください: " PASSWORD
 ssh -i ../playbook/roles/user/files/id_ed25519 takashi@$HOST << EOF
     cd uyunpunion/api
     pipenv sync --system
     cd ../ops
-    make start password=$PASSWORD
+    make start
     sleep 5
     echo ""
     echo Gunicorn processes
