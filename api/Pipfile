@@ -18,7 +18,6 @@ pydantic-settings = "*"
 flake8 = "*"
 black = "*"
 isort = "*"
-pre-commit = "*"
 pyright = "*"
 
 [requires]

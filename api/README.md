@@ -15,7 +15,6 @@
 ```bash
 $ cd api
 $ pipenv sync --dev
-$ pipenv run pre-commit install         # pre-commitの設定
 $ pipenv shell
 $ python generate_uyunpunion_token.py   # UYUNPUNION_TOKENの生成
 $ cp .env.example .env                  # UYUNPUNION_TOKENの設定が必須、起動アドレスや起動ポートの設定も可能
