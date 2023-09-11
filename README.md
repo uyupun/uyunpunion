@@ -64,9 +64,9 @@
 │ └ update.sh                     2回目以降のデプロイ時に使用するスクリプト
 ├ devel                           検証サーバ(Vagrant)の設定
 ├ hooks
-│ ├ .ansible-lint-pre-commit      pre-commitから使用するAnsible-lintの設定
 │ ├ .pre-commit-config.yaml       pre-commitの設定
-│ └ .install.sh                   pre-commitをインストールするスクリプト
+│ └ install.sh                    pre-commitをインストールするスクリプト
+│ └ pre_commit_ansible_lint.sh    pre-commitからAnsible-lintを実行するためのスクリプト
 ├ images
 ├ ops
 │ └ Makefile                      本番環境で使用する運用コマンド群の定義
