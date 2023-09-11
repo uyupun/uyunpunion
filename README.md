@@ -68,13 +68,13 @@
 │ ├ .pre-commit-config.yaml       pre-commitの設定
 │ └ .install.sh                   pre-commitをインストールするスクリプト
 ├ images
+├ ops
+│ └ Makefile                      本番環境で使用する運用コマンド群の定義
 ├ playbook
 │ ├ roles                         Ansibleの各タスク
 │ ├ ansible.cfg                   Ansible自体の挙動の設定
 │ ├ devel                         Ansibleの接続先の設定(開発環境)
 │ └ site.yml                      Ansibleで設定を流すためのエントリーポイント
-├ prod
-│ └ Makefile                      本番環境で使用する運用コマンド群の定義
 ├ proxy
 │ ├ certs                         TLS終端に使用する証明書と秘密鍵
 │ ├ config
@@ -113,13 +113,13 @@
 - [検証サーバの環境構築](./devel/README.md)
 - [Ansibleによる設定の流し込み](./playbook/README.md)
 - [デプロイスクリプト](./deploy/README.md)
-- [本番環境の運用](./prod/README.md)
+- [統合開発環境/本番環境の運用](./ops/README.md)
 
 ### 本番環境の環境構築
 
 - [Ansibleによる設定の流し込み](./playbook/README.md)
 - [デプロイスクリプト](./deploy/README.md)
-- [統合開発環境/本番環境の運用](./prod/README.md)
+- [統合開発環境/本番環境の運用](./ops/README.md)
 
 ---
 
