@@ -13,13 +13,16 @@
 
 ```bash
 $ cd proxy
-$ cp config/api.toml.example config/api.toml                                                                    # urlにAPIのIPとポートの指定が必須
-$ openssl req -x509 -nodes -days 99999 -newkey ed25519 -keyout certs/selfsigned.key -out certs/selfsigned.crt   # 自己署名証明書を作成する場合
-$ htpasswd -n takashi                                                                                           # ユーザを作成する場合
-$ docker compose up -d
-$ docker compose ps
-$ docker compose down
-$ open https://localhost/dashboard/                                                                             # ダッシュボード
+$ cp config/api.toml.example config/api.toml                                                                    # URLにAPIのIPとポートの指定が必須
+$ openssl req -x509 -nodes -days 99999 -newkey ed25519 -keyout certs/selfsigned.key -out certs/selfsigned.crt   # 自己署名証明書を発行する
+$ htpasswd -n takashi                                                                                           # Basic認証のユーザを生成する(生成後、config/dashboard.tomlへの記載が必須)
+$ make start                                                                                                    # プロキシ(Traefik)の起動
+$ make restart                                                                                                  # プロキシ(Traefik)の再起動
+$ make stop                                                                                                     # プロキシ(Traefik)の停止
+$ make ps                                                                                                       # プロキシ(Traefik)の状態確認
+$ make log                                                                                                      # プロキシ(Traefik)のログ確認
+$ make shell                                                                                                    # プロキシ(Traefik)のシェルに入る
+$ open https://localhost/dashboard/                                                                             # ダッシュボードを開く
 $ curl -k -L "https://localhost/ping"                                                                           # 疎通確認
 $ curl -k -L "https://<private ip address>/ping"                                                                # 疎通確認
 $ curl -i -k -L "http://localhost/ping"                                                                         # 疎通確認(HTTPSにリダイレクトされる)
