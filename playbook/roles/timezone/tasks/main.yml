@@ -1,0 +1,7 @@
+---
+
+- name: Set timezone to JST
+  become: true
+  ansible.builtin.timezone:
+    name: Asia/Tokyo
+  tags: timezone
