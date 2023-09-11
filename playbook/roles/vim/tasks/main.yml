@@ -1,3 +1,5 @@
+---
+
 - name: Install Vim
   become: true
   ansible.builtin.apt:

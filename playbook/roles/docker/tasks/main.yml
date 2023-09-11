@@ -1,3 +1,5 @@
+---
+
 - name: Update APT
   become: true
   ansible.builtin.apt:
@@ -44,8 +46,9 @@
 
 - name: Dearmor Docker GPG key
   become: true
-  ansible.builtin.command:
-    gpg --dearmor -o /etc/apt/keyrings/docker.gpg /etc/apt/keyrings/docker.gpg.asc
+  ansible.builtin.command: >
+    gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    /etc/apt/keyrings/docker.gpg.asc
   register: dearmor_result
   when: not ansible_check_mode
   changed_when: "'created as' in dearmor_result.stdout"
@@ -63,8 +66,11 @@
 - name: Add repository to APT
   become: true
   ansible.builtin.apt_repository:
-    repo: "deb [arch={{ dpkg_architecture.stdout }} signed-by=/etc/apt/keyrings/docker.gpg] \
-          https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
+    repo: >
+      deb [arch={{ dpkg_architecture.stdout }}
+      signed-by=/etc/apt/keyrings/docker.gpg]
+      https://download.docker.com/linux/{{ ansible_distribution | lower }}
+      {{ ansible_distribution_release }} stable
   when: not ansible_check_mode
   tags: docker
 
