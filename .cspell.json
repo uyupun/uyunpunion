@@ -23,6 +23,7 @@
           "MAINPID",
           "middlewares",
           "newkey",
+          "NOPASSWD",
           "peltier",
           "pidfile",
           "pigpio",
