@@ -1,3 +1,5 @@
+---
+
 - name: Install make
   become: true
   ansible.builtin.apt:

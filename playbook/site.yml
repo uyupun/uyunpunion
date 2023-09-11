@@ -1,3 +1,5 @@
+---
+
 - name: インフラの構築
   hosts: all
   roles:
