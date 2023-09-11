@@ -41,7 +41,7 @@
     port: "{{ item.port }}"
     proto: "{{ item.proto }}"
   loop:
-    # tcp port 80, 443に関してはproxy/docker-compose.ymlから開けているため、ここには記載していない
+    # tcp port 80, 443に関してはproxy/compose.ymlから開けているため、ここには記載していない
     - rule: limit
       src: any
       port: 22
