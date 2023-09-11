@@ -1,5 +1,7 @@
 #!/bin/sh
 
+chmod +x pre_commit_ansible_lint.sh
+
 cp .pre-commit-config.yaml ../.pre-commit-config.yaml
 pipenv run pre-commit install
 rm -rf ../.pre-commit-config.yaml
