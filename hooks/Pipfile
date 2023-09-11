@@ -5,8 +5,6 @@ name = "pypi"
 
 [packages]
 pre-commit = "*"
-ansible-lint = "*"
-ansible = "*"
 
 [dev-packages]
 yamllint = "*"
