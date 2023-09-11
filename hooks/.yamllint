@@ -2,5 +2,7 @@
 
 extends: default
 
+# pipenv run yamllint の際にansible-vaultで暗号化されたファイルを無視するための設定
+# 何故かpre-commit経由だと問題は発生しない
 ignore:
   - ../playbook/roles/user/vars/main.yml

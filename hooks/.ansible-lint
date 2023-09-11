@@ -1,4 +1,5 @@
 ---
 
+# pre-commitから実行する際にansible-vaultで暗号化されたファイルを無視するための設定
 exclude_paths:
   - playbook/roles/user/vars/main.yml
