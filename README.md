@@ -83,7 +83,7 @@
 │ │ └ http.toml                   HTTPからHTTPSへのリダイレクトの動的設定
 │ ├ compose.yml                   Docker周りの設定
 │ └ traefik.toml                  リバースプロキシ(Traefik)全体の静的設定
-├ .pre-commit-config.yaml         pre-commitの設定
+├ .cspell.json                    スペルチェックツール(CSpell)の設定
 └ README.md
 ```
 
