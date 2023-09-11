@@ -31,12 +31,14 @@
           "proto",
           "Pyenv",
           "Pyright",
+          "pythonpath",
           "Redoc",
           "selfsigned",
           "takashi",
           "traefik",
           "uvicorn",
           "UYUNPUNION",
+          "venv",
           "vimrc"
         ]
       }
