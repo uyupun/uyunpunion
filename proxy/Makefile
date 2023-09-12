@@ -1,4 +1,7 @@
-.PHONY: start restart stop log shell
+.PHONY: nw start restart stop log shell
+
+nw:
+	docker network create --driver bridge --subnet 172.20.0.0/16 uyunpunion-network
 
 start:
 	docker compose up -d
