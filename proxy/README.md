@@ -15,6 +15,8 @@
 $ cd proxy
 $ cp config/api.toml.example config/api.toml                                                                    # URLにAPIのIPとポートの指定が必須
 $ openssl req -x509 -nodes -days 99999 -newkey ed25519 -keyout certs/selfsigned.key -out certs/selfsigned.crt   # 自己署名証明書を発行する
+$ openssl x509 -in certs/selfsigned.crt -text -noout                                                            # 証明書の内容を確認する
+$ openssl pkey -in certs/selfsigned.key -text -noout                                                            # 秘密鍵の内容を確認する
 $ htpasswd -n takashi                                                                                           # Basic認証のユーザを生成する(生成後、config/dashboard.tomlへの記載が必須)
 $ make start                                                                                                    # プロキシ(Traefik)の起動
 $ make restart                                                                                                  # プロキシ(Traefik)の再起動
