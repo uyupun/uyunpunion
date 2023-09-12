@@ -54,12 +54,12 @@ ssh -i ../playbook/roles/user/files/id_ed25519 takashi@$HOST << EOF
     echo ""
 
     cd ../proxy
-    docker network create --driver bridge --subnet 172.20.0.0/16 uyunpunion-network
-    docker compose up -d
+    make nw
+    make start
     echo ""
     echo Docker processes
     echo "****************************************************************************************************"
-    docker compose ps
+    make ps
     echo "****************************************************************************************************"
     echo ""
 EOF
