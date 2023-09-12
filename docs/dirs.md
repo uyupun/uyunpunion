@@ -19,6 +19,7 @@
 │ ├ tag.sh                        タグ打ちに使用するスクリプト
 │ └ update.sh                     2回目以降のデプロイ時に使用するスクリプト
 ├ devel                           検証サーバ(Vagrant)の設定
+├ docs                            ドキュメント
 ├ hooks
 │ ├ .pre-commit-config.yaml       pre-commitの設定
 │ ├ .yamllint                     yamllintの設定
