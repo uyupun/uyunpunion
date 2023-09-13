@@ -33,8 +33,9 @@ Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan)
 192.168.XX.XX    d8:3a:dd:48:96:3f       Raspberry Pi Trading Ltd
 ...
 $ cd prod
-$ ssh -i id_ed25519 pi@192.168.XX.XX    # SSH接続(piユーザ)
-$ ssh -i id_ed25519 pi@uyunpunion.local # SSH接続(piユーザ)
-$ ssh-keygen -R 192.168.XX.XX           # 本番サーバを作り直した場合に実行が必要
-$ ssh-keygen -R uyunpunion.local        # 本番サーバを作り直した場合に実行が必要
+$ ssh -i id_ed25519 pi@192.168.XX.XX                                        # SSH接続(piユーザ)
+$ ssh -i id_ed25519 pi@uyunpunion.local                                     # SSH接続(piユーザ)
+$ ssh -i ../playbook/roles/user/files/id_ed25519 takashi@uyunpunion.local   # SSH接続(takashiユーザ)
+$ ssh-keygen -R 192.168.XX.XX                                               # 本番サーバを作り直した場合に実行が必要
+$ ssh-keygen -R uyunpunion.local                                            # 本番サーバを作り直した場合に実行が必要
 ```
