@@ -18,7 +18,7 @@
 │ ├ init.sh                       初回デプロイ時に使用するスクリプト
 │ ├ tag.sh                        タグ打ちに使用するスクリプト
 │ └ update.sh                     2回目以降のデプロイ時に使用するスクリプト
-├ devel                           検証サーバ(Vagrant)の設定
+├ devel                           開発サーバ(Vagrant)の設定
 ├ docs                            ドキュメント
 ├ hooks
 │ ├ .pre-commit-config.yaml       pre-commitの設定
@@ -28,10 +28,11 @@
 ├ ops
 │ └ Makefile                      本番環境で使用する運用コマンド群の定義
 ├ playbook
+│ ├ inventories                   Ansibleの接続先の設定
 │ ├ roles                         Ansibleの各タスク
 │ ├ ansible.cfg                   Ansible自体の挙動の設定
-│ ├ devel                         Ansibleの接続先の設定(開発環境)
 │ └ site.yml                      Ansibleで設定を流すためのエントリーポイント
+├ prod                            本番サーバ(Raspberry Pi)の設定
 ├ proxy
 │ ├ certs                         TLS終端に使用する証明書と秘密鍵
 │ ├ config

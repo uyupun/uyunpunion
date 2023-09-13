@@ -1,4 +1,4 @@
-# 検証サーバの環境構築
+# 開発サーバの環境構築
 
 - 以下の用途で使用します
     - Ansibleのテスト
@@ -13,10 +13,11 @@
 ```bash
 $ cd develop
 $ vagrant up
-$ vagrant ssh
+$ vagrant ssh                                                           # SSH接続(vagrantユーザ)
 $ vagrant status
 $ vagrant halt
 $ vagrant reload
 $ vagrant destroy
-$ ssh-keygen -R 192.168.56.10   # 検証サーバを作り直した場合に実行が必要
+$ ssh -i ../playbook/roles/user/files/id_ed25519 takashi@192.168.56.10  # SSH接続(takashiユーザ)
+$ ssh-keygen -R 192.168.56.10                                           # 開発サーバを作り直した場合に実行が必要
 ```
