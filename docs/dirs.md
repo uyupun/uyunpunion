@@ -32,6 +32,7 @@
 │ ├ ansible.cfg                   Ansible自体の挙動の設定
 │ ├ devel                         Ansibleの接続先の設定(開発環境)
 │ └ site.yml                      Ansibleで設定を流すためのエントリーポイント
+├ prod                            本番サーバ(Raspberry Pi)の設定
 ├ proxy
 │ ├ certs                         TLS終端に使用する証明書と秘密鍵
 │ ├ config

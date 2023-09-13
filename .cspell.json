@@ -18,6 +18,7 @@
           "gunicorn",
           "htpasswd",
           "insertafter",
+          "Imager",
           "isort",
           "keyout",
           "keyrings",
