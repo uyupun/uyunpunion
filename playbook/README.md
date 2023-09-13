@@ -13,19 +13,19 @@
 
 ```bash
 $ cd playbook
-$ chmod 600 roles/user/files/id_ed25519                     # 秘密鍵のパーミッションを変更しないとSSH接続できないため
-$ ssh-add roles/user/files/id_ed25519                       # パスフレーズの入力を省略させるための設定(オプション)
-$ touch ANSIBLE_VAULT_PASSWORD                              # Ansible Vaultのパスワードを設定する
+$ chmod 600 roles/user/files/id_ed25519                             # 秘密鍵のパーミッションを変更しないとSSH接続できないため
+$ ssh-add roles/user/files/id_ed25519                               # パスフレーズの入力を省略させるための設定(オプション)
+$ touch ANSIBLE_VAULT_PASSWORD                                      # Ansible Vaultのパスワードを設定する
 $ pipenv sync --dev
 $ pipenv shell
 $ ansible-vault encrypt roles/user/vars/main.yml
 $ ansible-vault decrypt roles/user/vars/main.yml
-$ ansible all -i devel -m ping                              # 疎通確認
-$ ansible-playbook -i devel site.yml --list-tasks           # タスク一覧
-$ ansible-playbook -i devel site.yml --syntax-check         # 構文エラーのチェック
-$ ansible-lint site.yml                                     # リンターの実行
-$ ansible-playbook -i devel site.yml --check --diff         # ドライラン
-$ ansible-playbook -i devel site.yml                        # 実行
-$ ansible-playbook -i devel site.yml --tags ssh             # タグを指定して実行
-$ ssh -i roles/user/files/id_ed25519 takashi@192.168.56.10  # SSH接続
+$ ansible all -i inventories/devel -m ping                          # 疎通確認
+$ ansible-playbook -i inventories/devel site.yml --list-tasks       # タスク一覧
+$ ansible-playbook -i inventories/devel site.yml --syntax-check     # 構文エラーのチェック
+$ ansible-lint site.yml                                             # リンターの実行
+$ ansible-playbook -i inventories/devel site.yml --check --diff     # ドライラン
+$ ansible-playbook -i inventories/devel site.yml                    # 実行
+$ ansible-playbook -i inventories/devel site.yml --tags ssh         # タグを指定して実行
+$ ansible-playbook -i inventories/prod site.yml                     # 本番環境の場合
 ```
