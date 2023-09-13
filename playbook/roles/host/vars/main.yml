@@ -1,0 +1,8 @@
+---
+
+prompt: >
+  {% if env == "devel" %}
+    export PS1="\[\e[1;34m\]\u\[\e[0m\]@\[\e[1;30;44m\]\h(devel)\[\e[0m\]:\w\$ "
+  {% elif env == "prod" %}
+    export PS1="\[\e[1;31m\]\u\[\e[0m\]@\[\e[1;30;41m\]\h(prod)\[\e[0m\]:\w\$ "
+  {% endif %}

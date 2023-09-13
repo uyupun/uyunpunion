@@ -18,14 +18,14 @@
   become: true
   ansible.builtin.lineinfile:
     dest: /home/takashi/.bashrc
-    line: export PS1="\[\e[1;31m\]\u\[\e[0m\]@\[\e[1;30;41m\]\h\[\e[0m\]:\w\$ "
+    line: "{{ prompt }}"
   when: not ansible_check_mode
   tags: host
 
 - name: Change login message
   become: true
   ansible.builtin.copy:
-    src: files/motd
+    src: "files/motd_{{ env }}"
     dest: /etc/motd
     owner: root
     group: root

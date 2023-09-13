@@ -14,6 +14,7 @@
           "dotenv",
           "dpkg",
           "drawio",
+          "elif",
           "GPIO",
           "gunicorn",
           "htpasswd",
