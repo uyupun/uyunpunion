@@ -18,7 +18,7 @@
 │ ├ init.sh                       初回デプロイ時に使用するスクリプト
 │ ├ tag.sh                        タグ打ちに使用するスクリプト
 │ └ update.sh                     2回目以降のデプロイ時に使用するスクリプト
-├ devel                           検証サーバ(Vagrant)の設定
+├ devel                           開発サーバ(Vagrant)の設定
 ├ docs                            ドキュメント
 ├ hooks
 │ ├ .pre-commit-config.yaml       pre-commitの設定
