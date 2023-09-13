@@ -38,6 +38,7 @@ ssh -i ../playbook/roles/user/files/id_ed25519 takashi@$HOST << EOF
 
     cd ../proxy
     make stop
+    sed -i "/url = \"http:\/\/\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}:8080\"/s//url = \"http:\/\/$HOST:8080\"/" config/api.toml
     make start
     echo ""
     echo Docker processes
