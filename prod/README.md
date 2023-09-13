@@ -1,7 +1,6 @@
 # 本番サーバ(Raspberry Pi)の環境構築
 
-ハードウェア
-
+1. [Raspberry Pi 4 Model B 8GB RAM](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/?variant=raspberry-pi-4-model-b-8gb) を購入
 1. microSDカードをPCに接続
 1. [Raspberry Pi Imager](https://www.raspberrypi.com/software/) をインストールして起動
 1. OSは「Raspberry Pi OS Lite (64-bit)」を選択
