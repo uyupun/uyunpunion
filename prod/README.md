@@ -10,10 +10,10 @@
 1. ストレージは接続したmicroSDカードを選択
 1. 設定から以下の項目を設定
     - ホスト名: `uyunpunion.local`
-    - SSH: パスワード認証
+    - SSH: 公開鍵認証
     - ユーザ
         - ユーザ名: `pi`
-        - パスワード: `raspberry`
+        - 鍵: `prod/id_ed25519.pub` を参照
     - Wi-Fi
         - SSID: 任意
         - パスワード: 任意
@@ -31,6 +31,9 @@ Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan)
 ...
 192.168.XX.XX    d8:3a:dd:48:96:3f       Raspberry Pi Trading Ltd
 ...
-$ ssh pi@192.168.XX.XX
-$ ssh pi@raspberry.local
+$ cd prod
+$ ssh -i id_ed25519 pi@192.168.XX.XX
+$ ssh -i id_ed25519 pi@raspberry.local
+$ ssh-keygen -R 192.168.XX.XX           # 本番サーバを作り直した場合に実行が必要
+$ ssh-keygen -R uyunpunion.local        # 本番サーバを作り直した場合に実行が必要
 ```
