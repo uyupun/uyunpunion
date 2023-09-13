@@ -19,7 +19,7 @@ def start_blower(
     ブロワーを作動させる
     """
     driver.start()
-    return BlowerStartResponse(message="pong")
+    return BlowerStartResponse(message="blower started")
 
 
 @router.post("/stop", response_model=BlowerStopResponse)
@@ -31,4 +31,4 @@ def stop_blower(
     ブロワーを停止する
     """
     driver.stop()
-    return BlowerStopResponse(message="pong")
+    return BlowerStopResponse(message="blower stopped")

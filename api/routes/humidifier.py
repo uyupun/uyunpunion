@@ -21,7 +21,7 @@ def start_humidifier(
     加湿器を作動させる
     """
     driver.start()
-    return HumidifierStartResponse(message="pong")
+    return HumidifierStartResponse(message="humidifier started")
 
 
 @router.post("/stop", response_model=HumidifierStopResponse)
@@ -33,4 +33,4 @@ def stop_humidifier(
     加湿器を停止する
     """
     driver.stop()
-    return HumidifierStopResponse(message="pong")
+    return HumidifierStopResponse(message="humidifier stopped")
