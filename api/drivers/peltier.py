@@ -59,14 +59,14 @@ class PeltierDriver(Driver):
         self.pi.write(self.ain1, 0)
         self.pi.write(self.ain2, 1)
         time.sleep(0.5)
-        print("peltier cold")
+        print("peltier colded")
 
     def _warm(self) -> None:
         self.pi.hardware_PWM(self.apwm, 1000, (100 * 10000))
         self.pi.write(self.ain1, 1)
         self.pi.write(self.ain2, 0)
         time.sleep(0.5)
-        print("peltier warm")
+        print("peltier warmed")
 
 
 if __name__ == "__main__":

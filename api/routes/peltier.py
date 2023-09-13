@@ -23,7 +23,7 @@ def cold_peltier(
     ペルチェ素子を冷却する
     """
     driver.start(mode=PeltierMode.Cold)
-    return PeltierColdResponse(message="pong")
+    return PeltierColdResponse(message="peltier colded")
 
 
 @router.post("/warm", response_model=PeltierWarmResponse)
@@ -35,7 +35,7 @@ def warm_peltier(
     ペルチェ素子を加熱する
     """
     driver.start(mode=PeltierMode.Warm)
-    return PeltierWarmResponse(message="pong")
+    return PeltierWarmResponse(message="peltier warmed")
 
 
 @router.post("/stop", response_model=PeltierStopResponse)
@@ -47,4 +47,4 @@ def stop_peltier(
     ペルチェ素子を停止する
     """
     driver.stop()
-    return PeltierStopResponse(message="pong")
+    return PeltierStopResponse(message="peltier stopped")
