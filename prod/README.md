@@ -7,6 +7,7 @@
 1. microSDカードをPCに接続
 1. [Raspberry Pi Imager](https://www.raspberrypi.com/software/) をインストールして起動
 1. OSは「Raspberry Pi OS Lite (64-bit)」を選択
+    - 構築時最新の 2023/05/03 のリリースを使用
 1. ストレージは接続したmicroSDカードを選択
 1. 設定から以下の項目を設定
     - ホスト名: `uyunpunion.local`
@@ -33,7 +34,7 @@ Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan)
 ...
 $ cd prod
 $ ssh -i id_ed25519 pi@192.168.XX.XX    # SSH接続(piユーザ)
-$ ssh -i id_ed25519 pi@raspberry.local  # SSH接続(piユーザ)
+$ ssh -i id_ed25519 pi@uyunpunion.local # SSH接続(piユーザ)
 $ ssh-keygen -R 192.168.XX.XX           # 本番サーバを作り直した場合に実行が必要
 $ ssh-keygen -R uyunpunion.local        # 本番サーバを作り直した場合に実行が必要
 ```
