@@ -28,9 +28,9 @@
 ├ ops
 │ └ Makefile                      本番環境で使用する運用コマンド群の定義
 ├ playbook
+│ ├ inventories                   Ansibleの接続先の設定
 │ ├ roles                         Ansibleの各タスク
 │ ├ ansible.cfg                   Ansible自体の挙動の設定
-│ ├ devel                         Ansibleの接続先の設定(開発環境)
 │ └ site.yml                      Ansibleで設定を流すためのエントリーポイント
 ├ prod                            本番サーバ(Raspberry Pi)の設定
 ├ proxy
