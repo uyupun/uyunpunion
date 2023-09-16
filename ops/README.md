@@ -2,7 +2,8 @@
 
 - 以下の用途で使用します
     - 統合開発環境/本番環境の運用
-    - ※ プロキシ(Traefik)は開発環境/統合開発環境/本番環境で同様のコマンドを使用するため、 [proxy/README.md](../proxy/README.md) に記載
+    - ※ 本番サーバ固有の運用コマンドは [prod/README.md](../prod/README.md) に記載
+    - ※ リバースプロキシ(Traefik)は開発環境/統合開発環境/本番環境で同様のコマンドを使用するため、 [proxy/README.md](../proxy/README.md) に記載
 
 ```bash
 $ cd prod

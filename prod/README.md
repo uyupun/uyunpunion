@@ -38,4 +38,7 @@ $ ssh -i id_ed25519 pi@uyunpunion.local                                     # SS
 $ ssh -i ../playbook/roles/user/files/id_ed25519 takashi@uyunpunion.local   # SSH接続(takashiユーザ)
 $ ssh-keygen -R 192.168.XX.XX                                               # 本番サーバを作り直した場合に実行が必要
 $ ssh-keygen -R uyunpunion.local                                            # 本番サーバを作り直した場合に実行が必要
+$ make wlan-status                                                          # Wi-Fiの接続状況を確認
+$ make wlan-ls                                                              # 接続可能なWi-Fiの一覧を確認
+$ make wlan-change ssid="XXXX" psk="XXXX"                                   # Wi-Fiの接続先を変更
 ```

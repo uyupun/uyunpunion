@@ -18,12 +18,12 @@ $ openssl req -x509 -nodes -days 99999 -newkey ed25519 -keyout certs/selfsigned.
 $ openssl x509 -in certs/selfsigned.crt -text -noout                                                            # 証明書の内容を確認する
 $ openssl pkey -in certs/selfsigned.key -text -noout                                                            # 秘密鍵の内容を確認する
 $ htpasswd -n takashi                                                                                           # Basic認証のユーザを生成する(生成後、config/dashboard.tomlへの記載が必須)
-$ make start                                                                                                    # プロキシ(Traefik)の起動
-$ make restart                                                                                                  # プロキシ(Traefik)の再起動
-$ make stop                                                                                                     # プロキシ(Traefik)の停止
-$ make ps                                                                                                       # プロキシ(Traefik)の状態確認
-$ make log                                                                                                      # プロキシ(Traefik)のログ確認
-$ make shell                                                                                                    # プロキシ(Traefik)のシェルに入る
+$ make start                                                                                                    # リバースプロキシ(Traefik)の起動
+$ make restart                                                                                                  # リバースプロキシ(Traefik)の再起動
+$ make stop                                                                                                     # リバースプロキシ(Traefik)の停止
+$ make ps                                                                                                       # リバースプロキシ(Traefik)の状態確認
+$ make log                                                                                                      # リバースプロキシ(Traefik)のログ確認
+$ make shell                                                                                                    # リバースプロキシ(Traefik)のシェルに入る
 $ open https://localhost/dashboard/                                                                             # ダッシュボードを開く
 $ curl -k -L "https://localhost/ping"                                                                           # 疎通確認
 $ curl -k -L "https://<private ip address>/ping"                                                                # 疎通確認
