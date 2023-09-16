@@ -1,9 +1,8 @@
 .PHONY: status ls change
 
 wlan-status:
-	echo hello
-	# iwconfig wlan0
-	# ip a show wlan0
+	iwconfig wlan0
+	ip a show wlan0
 
 wlan-ls:
 	iwlist wlan0 scan | grep ESSID

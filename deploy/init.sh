@@ -11,12 +11,13 @@ if [ $# -gt 1 ]; then
     printf "\e[31m%s\e[m\n" "引数の数が不正です。"
     exit 1
 fi
-if ! [[ $1 =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
-    printf "\e[31m%s\e[m\n" "接続先はIPアドレスの形式で指定してください。"
-    exit 1
-fi
 
 HOST=$1
+
+if [[ $HOST == *.local ]]; then
+    HOST=$(dig +short "$HOST" @224.0.0.251 -p 5353)
+fi
+
 
 ssh-add ../playbook/roles/user/files/id_ed25519
 
