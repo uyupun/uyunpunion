@@ -6,3 +6,6 @@ env=prod
 ansible_port=22
 ansible_ssh_user=pi
 ansible_ssh_private_key_file=../prod/id_ed25519
+
+[display]
+uyunpunion.local

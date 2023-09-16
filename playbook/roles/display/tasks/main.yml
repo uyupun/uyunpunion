@@ -1,0 +1,21 @@
+---
+
+- name: Uncomment framebuffer_width
+  become: true
+  ansible.builtin.lineinfile:
+    path: /boot/config.txt
+    regexp: "^#framebuffer_width=1280"
+    line: "framebuffer_width=1280"
+    state: present
+  notify: Restart machine
+  tags: display
+
+- name: Uncomment framebuffer_height
+  become: true
+  ansible.builtin.lineinfile:
+    path: /boot/config.txt
+    regexp: "^#framebuffer_height=720"
+    line: "framebuffer_height=720"
+    state: present
+  notify: Restart machine
+  tags: display

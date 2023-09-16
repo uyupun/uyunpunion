@@ -6,3 +6,5 @@ env=devel
 ansible_port=22
 ansible_ssh_user=vagrant
 ansible_ssh_private_key_file=../devel/.vagrant/machines/default/virtualbox/private_key
+
+[display]

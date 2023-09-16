@@ -15,3 +15,8 @@
     - python
     - systemd
     - timezone
+
+- name: ディスプレイの設定
+  hosts: display
+  roles:
+    - display

@@ -16,6 +16,7 @@
           "dpkg",
           "drawio",
           "elif",
+          "framebuffer",
           "GPIO",
           "gunicorn",
           "htpasswd",
