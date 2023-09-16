@@ -1,0 +1,6 @@
+---
+
+- name: Restart machine
+  become: true
+  ansible.builtin.reboot:
+  tags: display
