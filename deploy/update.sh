@@ -18,6 +18,10 @@ fi
 
 HOST=$1
 
+if [[ $HOST == *.local ]]; then
+    HOST=$(dig +short "$HOST" @224.0.0.251 -p 5353)
+fi
+
 # APIとリバプロの起動
 ssh -i ../playbook/roles/user/files/id_ed25519 takashi@$HOST << EOF
     cd uyunpunion

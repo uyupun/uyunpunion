@@ -14,6 +14,10 @@ fi
 
 HOST=$1
 
+if [[ $HOST == *.local ]]; then
+    HOST=$(dig +short "$HOST" @224.0.0.251 -p 5353)
+fi
+
 # 公開鍵の取得
 rm -f id_rsa.pub
 scp -i ../playbook/roles/user/files/id_ed25519 takashi@$HOST:~/.ssh/id_rsa.pub ./
