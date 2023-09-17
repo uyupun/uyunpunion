@@ -9,6 +9,7 @@
 
 - 以下のファイルが必要です
     - `playbook/roles/user/files/id_ed25519`
+    - `playbook/roles/user/files/id_ed25519.pub`
     - `playbook/ANSIBLE_VAULT_PASSWORD`
 
 ```bash

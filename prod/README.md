@@ -2,6 +2,7 @@
 
 - 以下のファイルが必要です
     - `prod/id_ed25519`
+    - `prod/id_ed25519.pub`
 
 1. [Raspberry Pi 4 Model B 8GB RAM](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/?variant=raspberry-pi-4-model-b-8gb) を購入
 1. microSDカードをPCに接続

@@ -10,6 +10,7 @@
 
 - 以下のファイルが必要です
     - `proxy/certs/selfsigned.key`
+    - `proxy/certs/selfsigned.crt`
 
 ```bash
 $ cd proxy
