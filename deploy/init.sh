@@ -44,6 +44,10 @@ sed -i -e "s#http://192.168.0.10:8080#http://$HOST:8080#" ./api.toml.tmp
 scp -i ../playbook/roles/user/files/id_ed25519 ./api.toml.tmp takashi@$HOST:~/uyunpunion/proxy/config/api.toml
 rm -rf api.toml.tmp api.toml.tmp-e
 
+# 証明書と秘密鍵のコピー
+scp -i ../playbook/roles/user/files/id_ed25519 ../proxy/certs/selfsigned.key takashi@$HOST:~/uyunpunion/proxy/certs/selfsigned.key
+scp -i ../playbook/roles/user/files/id_ed25519 ../proxy/certs/selfsigned.crt takashi@$HOST:~/uyunpunion/proxy/certs/selfsigned.crt
+
 # APIとリバプロの起動
 ssh -i ../playbook/roles/user/files/id_ed25519 takashi@$HOST << EOF
     cd uyunpunion/api
