@@ -1,2 +1,4 @@
+certs/selfsigned.crt
 certs/selfsigned.key
+
 config/api.toml
