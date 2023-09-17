@@ -18,7 +18,6 @@ if [[ $HOST == *.local ]]; then
     HOST=$(dig +short "$HOST" @224.0.0.251 -p 5353)
 fi
 
-
 ssh-add ../playbook/roles/user/files/id_ed25519
 
 # GitHubからリポジトリをクローン
@@ -45,8 +44,10 @@ scp -i ../playbook/roles/user/files/id_ed25519 ./api.toml.tmp takashi@$HOST:~/uy
 rm -rf api.toml.tmp api.toml.tmp-e
 
 # 証明書と秘密鍵のコピー
-scp -i ../playbook/roles/user/files/id_ed25519 ../proxy/certs/selfsigned.key takashi@$HOST:~/uyunpunion/proxy/certs/selfsigned.key
-scp -i ../playbook/roles/user/files/id_ed25519 ../proxy/certs/selfsigned.crt takashi@$HOST:~/uyunpunion/proxy/certs/selfsigned.crt
+scp -i ../playbook/roles/user/files/id_ed25519 \
+    ../proxy/certs/selfsigned.key \
+    ../proxy/certs/selfsigned.crt \
+    takashi@$HOST:~/uyunpunion/proxy/certs/
 
 # APIとリバプロの起動
 ssh -i ../playbook/roles/user/files/id_ed25519 takashi@$HOST << EOF
