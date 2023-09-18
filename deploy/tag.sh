@@ -23,7 +23,7 @@ fi
 # .envと.env.exampleのバージョンの書き換え
 sed -i -e "s/VERSION=$CURRENT_VERSION/VERSION=$NEXT_VERSION/" ../api/.env
 sed -i -e "s/VERSION=$CURRENT_VERSION/VERSION=$NEXT_VERSION/" ../api/.env.example
-git add .env.example
+git add ../api/.env.example
 git commit -m "Add version ($CURRENT_VERSION to $NEXT_VERSION)"
 git push origin master
 
