@@ -12,12 +12,13 @@
 
 ```bash
 $ cd develop
-$ vagrant up
-$ vagrant ssh                                                           # SSH接続(vagrantユーザ)
-$ vagrant status
-$ vagrant halt
-$ vagrant reload
-$ vagrant destroy
-$ ssh -i ../playbook/roles/user/files/id_ed25519 takashi@192.168.56.10  # SSH接続(takashiユーザ)
-$ ssh-keygen -R 192.168.56.10                                           # 開発サーバを作り直した場合に実行が必要
+$ make up       # 開発サーバ(Vagrant)の起動
+$ make vssh     # SSH接続(vagrantユーザ)
+$ make halt     # 開発サーバ(Vagrant)の停止
+$ make reload   # 開発サーバ(Vagrant)の再起動
+$ make destroy  # 開発サーバ(Vagrant)の削除
+$ make status   # 開発サーバ(Vagrant)の状態確認
+$ make addkey   # コマンドの実行毎にパスフレーズの入力を催促することを回避するための設定(オプション)
+$ make ssh      # SSH接続(takashiユーザ) ※ Ansibleで設定を流し込んだ後に利用可能
+$ make remkey   # 開発サーバ(Vagrant)を作り直した場合に実行が必要
 ```

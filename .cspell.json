@@ -6,6 +6,7 @@
         "filename": "**",
         "words": [
           "accesslog",
+          "addkey",
           "apwm",
           "colded",
           "containerd",
@@ -15,6 +16,7 @@
           "dotenv",
           "dpkg",
           "drawio",
+          "dryrun",
           "elif",
           "framebuffer",
           "GPIO",
@@ -40,10 +42,12 @@
           "pkey",
           "posix",
           "proto",
+          "pssh",
           "Pyenv",
           "Pyright",
           "pythonpath",
           "Redoc",
+          "remkey",
           "saiteida",
           "selfsigned",
           "takashi",
@@ -52,7 +56,11 @@
           "UYUNPUNION",
           "venv",
           "vimrc",
-          "wlan"
+          "vssh",
+          "wlan",
+          "wlchange",
+          "wlstatus",
+          "wlls"
         ]
       }
     ]

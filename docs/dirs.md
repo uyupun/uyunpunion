@@ -44,5 +44,6 @@
 │ ├ Makefile                      リバースプロキシ(Traefik)の運用コマンド群の定義
 │ └ traefik.toml                  リバースプロキシ(Traefik)全体の静的設定
 ├ .cspell.json                    スペルチェックツール(CSpell)の設定
+├ LICENSE                         ライセンス(BSD 3-Clause License)
 └ README.md
 ```

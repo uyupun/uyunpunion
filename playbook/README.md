@@ -14,19 +14,18 @@
 
 ```bash
 $ cd playbook
-$ chmod 600 roles/user/files/id_ed25519                             # 秘密鍵のパーミッションを変更しないとSSH接続できないため
-$ ssh-add roles/user/files/id_ed25519                               # パスフレーズの入力を省略させるための設定(オプション)
-$ touch ANSIBLE_VAULT_PASSWORD                                      # Ansible Vaultのパスワードを設定する
-$ pipenv sync --dev
-$ pipenv shell
-$ ansible-vault encrypt roles/user/vars/main.yml
-$ ansible-vault decrypt roles/user/vars/main.yml
-$ ansible all -i inventories/devel -m ping                          # 疎通確認
-$ ansible-playbook -i inventories/devel site.yml --list-tasks       # タスク一覧
-$ ansible-playbook -i inventories/devel site.yml --syntax-check     # 構文エラーのチェック
-$ ansible-lint site.yml                                             # リンターの実行
-$ ansible-playbook -i inventories/devel site.yml --check --diff     # ドライラン
-$ ansible-playbook -i inventories/devel site.yml                    # 実行
-$ ansible-playbook -i inventories/devel site.yml --tags ssh         # タグを指定して実行
-$ ansible-playbook -i inventories/prod site.yml                     # 本番環境の場合
+$ ssh-keygen -t ed25519 -f roles/user/files/id_ed25519  # 秘密鍵と公開鍵の生成
+$ touch ANSIBLE_VAULT_PASSWORD                          # 作成後、パスワードを記載する
+$ make chmod                                            # 秘密鍵のパーミッションを適切なものに変更
+$ make addkey                                           # コマンドの実行毎にパスフレーズの入力を催促することを回避するための設定(オプション)
+$ make encrypt                                          # Ansible Vaultによるroles/user/vars/main.ymlの暗号化
+$ make decrypt                                          # Ansible Vaultによるroles/user/vars/main.ymlの復号
+$ make ping                                             # 疎通確認
+$ make ls                                               # タスク一覧
+$ make check                                            # 構文エラーのチェック
+$ make dryrun env=devel tags=all                        # ドライラン
+$ make run                                              # 実行
 ```
+
+- `ping` / `ls` / `check` / `dryrun` / `run` はインベントリを示す `env` の指定が可能です。デフォルトでは開発サーバである `devel` が指定されています。本番サーバの場合は `prod` を指定してください
+- `dryrun` / `run` はタスクのタグを示す `tags` の指定が可能です。デフォルトでは全てのタスクが実行される `all` が指定されています
