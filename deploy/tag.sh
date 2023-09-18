@@ -26,6 +26,8 @@ sed -i -e "s/VERSION=$CURRENT_VERSION/VERSION=$NEXT_VERSION/" ../api/.env.exampl
 git add ../api/.env.example
 git commit -m "Add version ($CURRENT_VERSION to $NEXT_VERSION)"
 git push origin master
+rm -rf ../api/.env-e
+rm -rf ../api/.env.example-e
 
 # タグ打ち
 git tag $NEXT_VERSION
