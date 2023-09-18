@@ -24,22 +24,21 @@
         - タイムゾーン: `Asia/Tokyo`
         - キーボードレイアウト: `us`
 1. 「書き込む」ボタンを押して書き込みを実行
+1. microSDカードをPCから取り外し、Raspberry Piに挿入して起動
 
 ```bash
+$ ssh-keygen -t ed25519 -f roles/user/files/id_ed25519  # 秘密鍵と公開鍵の生成
 $ brew install arp-scan
-$ arp-scan -l --interface en0
+$ make scan                                             # LAN内のデバイスをスキャンしてRaspberry Piを探す
 Interface: en0, type: EN10MB, MAC: XX:XX:XX:XX:XX:XX, IPv4: 192.168.XX.XX
 Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan)
 ...
 192.168.XX.XX    d8:3a:dd:48:96:3f       Raspberry Pi Trading Ltd
 ...
-$ cd prod
-$ ssh -i id_ed25519 pi@192.168.XX.XX                                        # SSH接続(piユーザ)
-$ ssh -i id_ed25519 pi@uyunpunion.local                                     # SSH接続(piユーザ)
-$ ssh -i ../playbook/roles/user/files/id_ed25519 takashi@uyunpunion.local   # SSH接続(takashiユーザ)
-$ ssh-keygen -R 192.168.XX.XX                                               # 本番サーバを作り直した場合に実行が必要
-$ ssh-keygen -R uyunpunion.local                                            # 本番サーバを作り直した場合に実行が必要
-$ make wlan-status                                                          # Wi-Fiの接続状況を確認
-$ make wlan-ls                                                              # 接続可能なWi-Fiの一覧を確認
-$ make wlan-change ssid="XXXX" psk="XXXX"                                   # Wi-Fiの接続先を変更
+$ make pssh                                             # SSH接続(piユーザ)
+$ make ssh                                              # SSH接続(takashiユーザ) ※ Ansibleで設定を流し込んだ後に利用可能
+$ make remove                                           # 本番サーバ(Raspberry Pi)を作り直した場合に実行が必要
+$ make wlstatus                                         # Wi-Fiの接続状況を確認 ※ このコマンドは本番サーバ内で実行可能
+$ make wlls                                             # 接続可能なWi-Fiの一覧を確認 ※ このコマンドは本番サーバ内で実行可能
+$ make wlchange ssid="XXXX" psk="XXXX"                  # Wi-Fiの接続先を変更 ※ このコマンドは本番サーバ内で実行可能
 ```

@@ -1,15 +1,27 @@
-.PHONY: status ls change
+.PHONY: scan pssh ssh remove wlstatus wlls wlchange
 
-wlan-status:
+scan:
+	arp-scan -l --interface en0 | grep "Raspberry Pi"
+
+pssh:
+	ssh -i id_ed25519 pi@uyunpunion.local
+
+ssh:
+	ssh -i ../playbook/roles/user/files/id_ed25519 takashi@uyunpunion.local
+
+remove:
+	ssh-keygen -R uyunpunion.local
+
+wlstatus:
 	iwconfig wlan0
 	ip a show wlan0
 
-wlan-ls:
+wlls:
 	iwlist wlan0 scan | grep ESSID
 
-wlan-change: ssid ?= ""
-wlan-change: psk ?= ""
-wlan-change:
+wlchange: ssid ?= ""
+wlchange: psk ?= ""
+wlchange:
 	@if [ -z "$(ssid)" ]; then printf "\e[31m%s\e[m\n" "SSIDが指定されていません。"; exit 1; fi
 	@if [ -z "$(psk)" ]; then printf "\e[31m%s\e[m\n" "PSKが指定されていません"; exit 1; fi
 	sudo sed -i '/network={/,/}/d' /etc/wpa_supplicant/wpa_supplicant.conf
