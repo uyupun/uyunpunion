@@ -6,7 +6,7 @@
 
 ---
 
-<img src="images/logo.png" width="500px">
+<img src="images/logo_one.png" width="500px">
 <img src="images/key_visual.png" width="500px">
 
 - **汎用五感伝達機構 ウユンプニオン 初号機**(通称: **UYU 初号機**)
