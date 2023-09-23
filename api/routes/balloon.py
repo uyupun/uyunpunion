@@ -1,5 +1,3 @@
-from typing import Literal
-
 from fastapi import APIRouter, Depends
 
 from drivers.balloon import BalloonDriver
@@ -19,14 +17,12 @@ router = APIRouter(
 
 @router.get("/status", response_model=BalloonStatusResponse)
 def status_balloon(
-    balloon_id: Literal[1, 2],
     UYUNPUNION_TOKEN: str = TokenRequestHeader(),
     driver: BalloonDriver = Depends(),
 ) -> BalloonStatusResponse:
     """
     風船の状態を取得する
     """
-    driver.status(balloon_id=balloon_id)
     balloonSensorA = BalloonSensor(PlayerSide.A)
     balloonSensorB = BalloonSensor(PlayerSide.B)
 
