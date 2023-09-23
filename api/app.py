@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 
-from routes import blower, humidifier, peltier, ping
+from routes import balloon, blower, humidifier, peltier, ping
 from settings import get_settings
 
 settings = get_settings()
@@ -21,6 +21,7 @@ def register_routes(app: FastAPI) -> None:
     app.include_router(router=peltier.router)
     app.include_router(router=blower.router)
     app.include_router(router=humidifier.router)
+    app.include_router(router=balloon.router)
 
 
 def run_app(app: FastAPI) -> None:
