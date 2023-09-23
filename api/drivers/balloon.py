@@ -1,9 +1,7 @@
 from typing import Literal
 
-from drivers.driver import Driver
 
-
-class BalloonDriver(Driver):
+class BalloonDriver:
     def status(self):
         print("balloon status")
 
