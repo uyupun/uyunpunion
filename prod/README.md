@@ -44,4 +44,4 @@ $ make wlls                             # 接続可能なWi-Fiの一覧を確認
 $ make wlchange ssid="XXXX" psk="XXXX"  # Wi-Fiの接続先を変更 ※ このコマンドは本番サーバ内で実行可能
 ```
 
-- `pssh` / `ssh` / `remkey` はホストを示す `host` の指定が可能です。デフォルトでは `uyunpunion-01.local` が指定されています
+- `pssh` / `ssh` / `remkey` はホストを示す `host` の指定が可能です。デフォルトでは `uyunpunion.local` が指定されています
