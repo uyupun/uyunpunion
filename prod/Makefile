@@ -1,16 +1,19 @@
-.PHONY: scan pssh ssh remove wlstatus wlls wlchange
+.PHONY: scan pssh ssh remkey wlstatus wlls wlchange
 
 scan:
 	arp-scan -l --interface en0 | grep "Raspberry Pi"
 
+pssh: host ?= "uyunpunion-01.local"
 pssh:
-	ssh -i id_ed25519 pi@uyunpunion.local
+	ssh -i id_ed25519 pi@$(host)
 
+ssh: host ?= "uyunpunion-01.local"
 ssh:
-	ssh -i ../playbook/roles/user/files/id_ed25519 takashi@uyunpunion.local
+	ssh -i ../playbook/roles/user/files/id_ed25519 takashi@$(host)
 
-remove:
-	ssh-keygen -R uyunpunion.local
+remkey: host ?= "uyunpunion-01.local"
+remkey:
+	ssh-keygen -R $(host)
 
 wlstatus:
 	iwconfig wlan0
