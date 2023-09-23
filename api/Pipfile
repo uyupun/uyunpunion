@@ -13,6 +13,7 @@ gunicorn = "*"
 setproctitle = "*"
 pigpio = "*"
 pydantic-settings = "*"
+smbus2 = "*"
 
 [dev-packages]
 flake8 = "*"
