@@ -8,7 +8,7 @@ from schemas.balloon import (
     BalloonStatusResponse,
 )
 from schemas.token import TokenRequestHeader
-from balloon import BalloonSensor
+from sensor.balloon import BalloonSensor
 
 router = APIRouter(
     prefix="/balloon", tags=["balloon"], dependencies=[Depends(verify_token_middleware)]

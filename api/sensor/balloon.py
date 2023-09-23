@@ -17,7 +17,7 @@ class BalloonSensor:
         )
 
     def measure(self):
-        data = i2c.read_i2c_block_data(SENSOR_ADDR, SENSOR_MEASURE_ADDR, 2)
+        data = self.i2c.read_i2c_block_data(SENSOR_ADDR, SENSOR_MEASURE_ADDR, 2)
         print(data[0] * 1000 + data[1])
         return data[0] * 1000 + data[1]
 
