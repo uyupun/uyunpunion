@@ -15,12 +15,14 @@
 - [Gitフックの設定](../hooks/README.md)
 - [開発サーバ(Vagrant)の環境構築](../devel/README.md)
 - [Ansibleによる設定の流し込み](../playbook/README.md)
+- [リバースプロキシの環境構築](../proxy/README.md)
 - [デプロイスクリプト](../deploy/README.md)
 - [統合開発環境/本番環境の運用](../ops/README.md)
 
 ## 本番環境の環境構築
 
-- [本番サーバ(Raspberry Pi)の環境構築](../devel/README.md)
+- [本番サーバ(Raspberry Pi)の環境構築](../prod/README.md)
 - [Ansibleによる設定の流し込み](../playbook/README.md)
+- [リバースプロキシの環境構築](../proxy/README.md)
 - [デプロイスクリプト](../deploy/README.md)
 - [統合開発環境/本番環境の運用](../ops/README.md)
