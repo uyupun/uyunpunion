@@ -3,15 +3,13 @@
 scan:
 	arp-scan -l --interface en0 | grep "Raspberry Pi"
 
-pssh: host ?= "uyunpunion-01.local"
 pssh:
-	ssh -i id_ed25519 pi@$(host)
+	ssh -i id_ed25519 pi@uyunpunion.local
 
-ssh: host ?= "uyunpunion-01.local"
 ssh:
-	ssh -i ../playbook/roles/user/files/id_ed25519 takashi@$(host)
+	ssh -i ../playbook/roles/user/files/id_ed25519 takashi@uyunpunion.local
 
-remkey: host ?= "uyunpunion-01.local"
+remkey: host ?= "uyunpunion.local"
 remkey:
 	ssh-keygen -R $(host)
 
