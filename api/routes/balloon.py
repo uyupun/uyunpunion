@@ -10,6 +10,7 @@ from schemas.balloon import (
     BalloonStatusResponse,
 )
 from schemas.token import TokenRequestHeader
+from balloon import BalloonSensor
 
 router = APIRouter(
     prefix="/balloon", tags=["balloon"], dependencies=[Depends(verify_token_middleware)]
@@ -26,7 +27,13 @@ def status_balloon(
     風船の状態を取得する
     """
     driver.status(balloon_id=balloon_id)
-    return BalloonStatusResponse(balloon_1=True, balloon_2=False)
+    balloonSensorA = BalloonSensor(PlayerSide.A)
+    balloonSensorB = BalloonSensor(PlayerSide.B)
+
+    return BalloonStatusResponse(
+        balloon_1= balloonSensorA.measure() > 1000,
+        balloon_2= balloonSensorB.measure() > 1000,
+    )
 
 
 @router.post("/needle", response_model=BalloonNeedleResponse)
