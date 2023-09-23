@@ -54,6 +54,7 @@ ssh -i ../playbook/roles/user/files/id_ed25519 takashi@$HOST << EOF
     cd uyunpunion/api
     pipenv sync --system
     cd ../ops
+    sudo chmod 646 /dev/i2c-*
     make start
     sleep 5
     echo ""
