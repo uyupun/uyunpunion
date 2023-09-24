@@ -19,7 +19,7 @@ class BalloonSensor:
             self.i2c = SMBus(4)
 
     def measure(self):
-        data = self.i2c.read_i2c_block_data(SENSOR_ADDR, SENSOR_MEASURE_ADDR, 2)
+        data = self.i2c.read_i2c_block_data(self.SENSOR_ADDR, self.SENSOR_MEASURE_ADDR, 2)
         print(data[0] * 1000 + data[1])
         return data[0] * 1000 + data[1]
 
