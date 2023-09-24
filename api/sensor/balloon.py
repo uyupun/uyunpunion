@@ -1,4 +1,5 @@
 from smbus2 import SMBus
+from enum import Enum
 import time
 
 class PlayerSide(Enum):
