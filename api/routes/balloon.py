@@ -9,8 +9,8 @@ from schemas.balloon import (
 )
 from schemas.token import TokenRequestHeader
 from sensor.balloon import (
-    BalloonSensor
-    PlayerSide
+    BalloonSensor,
+    PlayerSide,
 )
 
 router = APIRouter(
@@ -30,8 +30,8 @@ def status_balloon(
     balloonSensorB = BalloonSensor(PlayerSide.B)
 
     return BalloonStatusResponse(
-        balloon_1= balloonSensorA.measure() > 1000,
-        balloon_2= balloonSensorB.measure() > 1000,
+        balloon_1=balloonSensorA.measure() > 1000,
+        balloon_2=balloonSensorB.measure() > 1000,
     )
 
 
