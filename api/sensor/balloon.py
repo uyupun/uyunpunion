@@ -12,9 +12,10 @@ class BalloonSensor:
 
     def __init__(self, playerSide):
         self.playerSide = playerSide
-        self.i2c = SMBus(
-            SMBus(1) if self.playerSide.value === PlayerSide.A.value else SMBus(4)
-        )
+        if self.playerSide == PlayerSide.A:
+            self.i2c = SMBus(1)
+        else:
+            self.i2c = SMBus(4)
 
     def measure(self):
         data = self.i2c.read_i2c_block_data(SENSOR_ADDR, SENSOR_MEASURE_ADDR, 2)
