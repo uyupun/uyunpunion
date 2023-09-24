@@ -6,9 +6,10 @@ import pigpio
 
 class BalloonDriver:
     def __init__(self) -> None:
-        super().__init__()
+        # super().__init__()
         self.pi = pigpio.pi()
-        self.pin = 24
+        self.pin = 18
+        self.pi.set_mode(self.pin, pigpio.OUTPUT)
 
     def status(self):
         print("balloon status")
